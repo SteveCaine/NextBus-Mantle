@@ -1,0 +1,15 @@
+PODS:
+  - KissXML (5.0)
+  - Mantle (1.5.4):
+    - Mantle/extobjc (= 1.5.4)
+  - Mantle/extobjc (1.5.4)
+
+DEPENDENCIES:
+  - KissXML (~> 5.0)
+  - Mantle (< 2.0)
+
+SPEC CHECKSUMS:
+  KissXML: ce643413d618ad69886d0d43c3792b7dedfe476e
+  Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
+
+COCOAPODS: 0.36.0
