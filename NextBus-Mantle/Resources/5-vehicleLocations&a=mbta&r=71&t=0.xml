@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright MBTA 2015.">
+<vehicle id="4117" routeTag="71" dirTag="71_1_var0" lat="42.375106" lon="-71.1465655" secsSinceReport="27" predictable="true" heading="81"/>
+<vehicle id="4105" routeTag="71" dirTag="71_1_var0" lat="42.3751484" lon="-71.1464435" secsSinceReport="57" predictable="true" heading="79"/>
+<vehicle id="4102" routeTag="71" dirTag="71_1_var0" lat="42.3750366" lon="-71.1365858" secsSinceReport="133" predictable="true" heading="90"/>
+<vehicle id="4113" routeTag="71" dirTag="71_1_var0" lat="42.3653743" lon="-71.1839018" secsSinceReport="57" predictable="true" heading="58"/>
+<vehicle id="4121" routeTag="71" dirTag="71_0_var0" lat="42.3730598" lon="-71.1217661" secsSinceReport="163" predictable="true" heading="247"/>
+<vehicle id="4128" routeTag="71" dirTag="71_0_var0" lat="42.3750762" lon="-71.1476324" secsSinceReport="88" predictable="true" heading="260"/>
+<lastTime time="1435097733743"/>
+</body>

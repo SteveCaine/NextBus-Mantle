@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright MBTA 2015.">
+<Error shouldRetry="false">
+  For agency a=mbta route r=null is not currently available. It may be initializing still.
+</Error>
+</body>

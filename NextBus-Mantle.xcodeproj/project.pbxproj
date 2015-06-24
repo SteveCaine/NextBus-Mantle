@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E2C08B21B3A45AB0020E2BE /* NBAgencies.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08A11B3A45AB0020E2BE /* NBAgencies.m */; };
+		8E2C08B31B3A45AB0020E2BE /* NBError.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08A31B3A45AB0020E2BE /* NBError.m */; };
+		8E2C08B41B3A45AB0020E2BE /* NBPredictions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08A51B3A45AB0020E2BE /* NBPredictions.m */; };
+		8E2C08B51B3A45AB0020E2BE /* NBRouteConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08A71B3A45AB0020E2BE /* NBRouteConfig.m */; };
+		8E2C08B61B3A45AB0020E2BE /* NBRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08A91B3A45AB0020E2BE /* NBRoutes.m */; };
+		8E2C08B71B3A45AB0020E2BE /* NBVehicleLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08AB1B3A45AB0020E2BE /* NBVehicleLocations.m */; };
+		8E2C08B81B3A45AB0020E2BE /* NextBusUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08AD1B3A45AB0020E2BE /* NextBusUtil.m */; };
+		8E2C08B91B3A45AB0020E2BE /* NSDate+NextBus.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08AF1B3A45AB0020E2BE /* NSDate+NextBus.m */; };
+		8E2C08BA1B3A45AB0020E2BE /* NSString+NextBus.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08B11B3A45AB0020E2BE /* NSString+NextBus.m */; };
+		8E2C08BF1B3A477B0020E2BE /* NSValue+MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08BE1B3A477B0020E2BE /* NSValue+MapKit.m */; };
 		8E76F6341B3A056B00E03F55 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E76F6331B3A056B00E03F55 /* Foundation.framework */; };
 		8E76F6361B3A056B00E03F55 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E76F6351B3A056B00E03F55 /* CoreGraphics.framework */; };
 		8E76F6381B3A056B00E03F55 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E76F6371B3A056B00E03F55 /* UIKit.framework */; };
@@ -22,6 +32,19 @@
 		8E76F6581B3A056B00E03F55 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E76F6371B3A056B00E03F55 /* UIKit.framework */; };
 		8E76F6601B3A056B00E03F55 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8E76F65E1B3A056B00E03F55 /* InfoPlist.strings */; };
 		8E76F6621B3A056B00E03F55 /* NextBus_MantleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E76F6611B3A056B00E03F55 /* NextBus_MantleTests.m */; };
+		8EBD7AF61B3A0E9C00BA02BD /* Debug_iOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD7AAD1B3A0E9B00BA02BD /* Debug_iOS.cpp */; };
+		8EBD7AF71B3A0E9C00BA02BD /* Debug_iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD7AAF1B3A0E9B00BA02BD /* Debug_iOS.m */; };
+		8EBD7AF81B3A0E9C00BA02BD /* Debug_JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD7AB11B3A0E9B00BA02BD /* Debug_JSON.m */; };
+		8EBD7B151B3A0E9C00BA02BD /* FilesUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD7AEF1B3A0E9C00BA02BD /* FilesUtil.m */; };
+		8EBD7B161B3A0E9C00BA02BD /* FolderWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD7AF11B3A0E9C00BA02BD /* FolderWatcher.m */; };
+		8EBD7B2A1B3A0FCB00BA02BD /* MTLXMLAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD7B271B3A0FCB00BA02BD /* MTLXMLAdapter.m */; };
+		8EBD7B2B1B3A0FCB00BA02BD /* NSValueTransformer+MTLXMLTransformerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD7B291B3A0FCB00BA02BD /* NSValueTransformer+MTLXMLTransformerAdditions.m */; };
+		8EBD7B381B3A137D00BA02BD /* 1-agencyList.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8EBD7B2D1B3A137D00BA02BD /* 1-agencyList.xml */; };
+		8EBD7B391B3A137D00BA02BD /* 2-routeList&a=mbta.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8EBD7B2E1B3A137D00BA02BD /* 2-routeList&a=mbta.xml */; };
+		8EBD7B3A1B3A137D00BA02BD /* 3-routeConfig&a=mbta&r=71&verbose.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8EBD7B2F1B3A137D00BA02BD /* 3-routeConfig&a=mbta&r=71&verbose.xml */; };
+		8EBD7B3B1B3A137D00BA02BD /* 4-predictions&a=mbta&stopId=02021.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8EBD7B301B3A137D00BA02BD /* 4-predictions&a=mbta&stopId=02021.xml */; };
+		8EBD7B3C1B3A137D00BA02BD /* 5-vehicleLocations&a=mbta&r=71&t=0.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8EBD7B311B3A137D00BA02BD /* 5-vehicleLocations&a=mbta&r=71&t=0.xml */; };
+		8EBF1E5A1B3A54F500CF38C4 /* 0-error.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF1E591B3A54F500CF38C4 /* 0-error.xml */; };
 		F1B5BB87C571687776217C19 /* libPods-NextBus-Mantle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74534276BE41B141E9D792FE /* libPods-NextBus-Mantle.a */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +61,28 @@
 /* Begin PBXFileReference section */
 		49158CBA4616CFDB77884202 /* Pods-NextBus-Mantle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextBus-Mantle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NextBus-Mantle/Pods-NextBus-Mantle.debug.xcconfig"; sourceTree = "<group>"; };
 		74534276BE41B141E9D792FE /* libPods-NextBus-Mantle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NextBus-Mantle.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E2C089F1B3A45AB0020E2BE /* MantleXMLMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MantleXMLMacros.h; sourceTree = "<group>"; };
+		8E2C08A01B3A45AB0020E2BE /* NBAgencies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBAgencies.h; sourceTree = "<group>"; };
+		8E2C08A11B3A45AB0020E2BE /* NBAgencies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBAgencies.m; sourceTree = "<group>"; };
+		8E2C08A21B3A45AB0020E2BE /* NBError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBError.h; sourceTree = "<group>"; };
+		8E2C08A31B3A45AB0020E2BE /* NBError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBError.m; sourceTree = "<group>"; };
+		8E2C08A41B3A45AB0020E2BE /* NBPredictions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPredictions.h; sourceTree = "<group>"; };
+		8E2C08A51B3A45AB0020E2BE /* NBPredictions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPredictions.m; sourceTree = "<group>"; };
+		8E2C08A61B3A45AB0020E2BE /* NBRouteConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBRouteConfig.h; sourceTree = "<group>"; };
+		8E2C08A71B3A45AB0020E2BE /* NBRouteConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBRouteConfig.m; sourceTree = "<group>"; };
+		8E2C08A81B3A45AB0020E2BE /* NBRoutes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBRoutes.h; sourceTree = "<group>"; };
+		8E2C08A91B3A45AB0020E2BE /* NBRoutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBRoutes.m; sourceTree = "<group>"; };
+		8E2C08AA1B3A45AB0020E2BE /* NBVehicleLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBVehicleLocations.h; sourceTree = "<group>"; };
+		8E2C08AB1B3A45AB0020E2BE /* NBVehicleLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBVehicleLocations.m; sourceTree = "<group>"; };
+		8E2C08AC1B3A45AB0020E2BE /* NextBusUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextBusUtil.h; sourceTree = "<group>"; };
+		8E2C08AD1B3A45AB0020E2BE /* NextBusUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextBusUtil.m; sourceTree = "<group>"; };
+		8E2C08AE1B3A45AB0020E2BE /* NSDate+NextBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NextBus.h"; sourceTree = "<group>"; };
+		8E2C08AF1B3A45AB0020E2BE /* NSDate+NextBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NextBus.m"; sourceTree = "<group>"; };
+		8E2C08B01B3A45AB0020E2BE /* NSString+NextBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NextBus.h"; sourceTree = "<group>"; };
+		8E2C08B11B3A45AB0020E2BE /* NSString+NextBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NextBus.m"; sourceTree = "<group>"; };
+		8E2C08BC1B3A477B0020E2BE /* MapKitStructs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapKitStructs.h; sourceTree = "<group>"; };
+		8E2C08BD1B3A477B0020E2BE /* NSValue+MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+MapKit.h"; sourceTree = "<group>"; };
+		8E2C08BE1B3A477B0020E2BE /* NSValue+MapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+MapKit.m"; sourceTree = "<group>"; };
 		8E76F6301B3A056B00E03F55 /* NextBus-Mantle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NextBus-Mantle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E76F6331B3A056B00E03F55 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8E76F6351B3A056B00E03F55 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -59,6 +104,31 @@
 		8E76F65D1B3A056B00E03F55 /* NextBus-MantleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NextBus-MantleTests-Info.plist"; sourceTree = "<group>"; };
 		8E76F65F1B3A056B00E03F55 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8E76F6611B3A056B00E03F55 /* NextBus_MantleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NextBus_MantleTests.m; sourceTree = "<group>"; };
+		8EBD7AAD1B3A0E9B00BA02BD /* Debug_iOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Debug_iOS.cpp; sourceTree = "<group>"; };
+		8EBD7AAE1B3A0E9B00BA02BD /* Debug_iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug_iOS.h; sourceTree = "<group>"; };
+		8EBD7AAF1B3A0E9B00BA02BD /* Debug_iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Debug_iOS.m; sourceTree = "<group>"; };
+		8EBD7AB01B3A0E9B00BA02BD /* Debug_JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug_JSON.h; sourceTree = "<group>"; };
+		8EBD7AB11B3A0E9B00BA02BD /* Debug_JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Debug_JSON.m; sourceTree = "<group>"; };
+		8EBD7AEA1B3A0E9C00BA02BD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		8EBD7AEB1B3A0E9C00BA02BD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		8EBD7AEE1B3A0E9C00BA02BD /* FilesUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilesUtil.h; sourceTree = "<group>"; };
+		8EBD7AEF1B3A0E9C00BA02BD /* FilesUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesUtil.m; sourceTree = "<group>"; };
+		8EBD7AF01B3A0E9C00BA02BD /* FolderWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderWatcher.h; sourceTree = "<group>"; };
+		8EBD7AF11B3A0E9C00BA02BD /* FolderWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderWatcher.m; sourceTree = "<group>"; };
+		8EBD7AF21B3A0E9C00BA02BD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		8EBD7AF31B3A0E9C00BA02BD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		8EBD7B261B3A0FCB00BA02BD /* MTLXMLAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLXMLAdapter.h; sourceTree = "<group>"; };
+		8EBD7B271B3A0FCB00BA02BD /* MTLXMLAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLXMLAdapter.m; sourceTree = "<group>"; };
+		8EBD7B281B3A0FCB00BA02BD /* NSValueTransformer+MTLXMLTransformerAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValueTransformer+MTLXMLTransformerAdditions.h"; sourceTree = "<group>"; };
+		8EBD7B291B3A0FCB00BA02BD /* NSValueTransformer+MTLXMLTransformerAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+MTLXMLTransformerAdditions.m"; sourceTree = "<group>"; };
+		8EBD7B2D1B3A137D00BA02BD /* 1-agencyList.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "1-agencyList.xml"; sourceTree = "<group>"; };
+		8EBD7B2E1B3A137D00BA02BD /* 2-routeList&a=mbta.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "2-routeList&a=mbta.xml"; sourceTree = "<group>"; };
+		8EBD7B2F1B3A137D00BA02BD /* 3-routeConfig&a=mbta&r=71&verbose.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "3-routeConfig&a=mbta&r=71&verbose.xml"; sourceTree = "<group>"; };
+		8EBD7B301B3A137D00BA02BD /* 4-predictions&a=mbta&stopId=02021.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "4-predictions&a=mbta&stopId=02021.xml"; sourceTree = "<group>"; };
+		8EBD7B311B3A137D00BA02BD /* 5-vehicleLocations&a=mbta&r=71&t=0.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "5-vehicleLocations&a=mbta&r=71&t=0.xml"; sourceTree = "<group>"; };
+		8EBF1E591B3A54F500CF38C4 /* 0-error.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "0-error.xml"; sourceTree = "<group>"; };
+		8EBF1E5B1B3A5CEC00CF38C4 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		8EBF1E5C1B3A5CEC00CF38C4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F8C9A1D29E2CEE130AAF020A /* Pods-NextBus-Mantle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextBus-Mantle.release.xcconfig"; path = "Pods/Target Support Files/Pods-NextBus-Mantle/Pods-NextBus-Mantle.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,9 +157,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E2C089E1B3A45AA0020E2BE /* NextBus-Data */ = {
+			isa = PBXGroup;
+			children = (
+				8E2C089F1B3A45AB0020E2BE /* MantleXMLMacros.h */,
+				8E2C08A01B3A45AB0020E2BE /* NBAgencies.h */,
+				8E2C08A11B3A45AB0020E2BE /* NBAgencies.m */,
+				8E2C08A21B3A45AB0020E2BE /* NBError.h */,
+				8E2C08A31B3A45AB0020E2BE /* NBError.m */,
+				8E2C08A41B3A45AB0020E2BE /* NBPredictions.h */,
+				8E2C08A51B3A45AB0020E2BE /* NBPredictions.m */,
+				8E2C08A61B3A45AB0020E2BE /* NBRouteConfig.h */,
+				8E2C08A71B3A45AB0020E2BE /* NBRouteConfig.m */,
+				8E2C08A81B3A45AB0020E2BE /* NBRoutes.h */,
+				8E2C08A91B3A45AB0020E2BE /* NBRoutes.m */,
+				8E2C08AA1B3A45AB0020E2BE /* NBVehicleLocations.h */,
+				8E2C08AB1B3A45AB0020E2BE /* NBVehicleLocations.m */,
+				8E2C08AC1B3A45AB0020E2BE /* NextBusUtil.h */,
+				8E2C08AD1B3A45AB0020E2BE /* NextBusUtil.m */,
+				8E2C08AE1B3A45AB0020E2BE /* NSDate+NextBus.h */,
+				8E2C08AF1B3A45AB0020E2BE /* NSDate+NextBus.m */,
+				8E2C08B01B3A45AB0020E2BE /* NSString+NextBus.h */,
+				8E2C08B11B3A45AB0020E2BE /* NSString+NextBus.m */,
+			);
+			path = "NextBus-Data";
+			sourceTree = "<group>";
+		};
+		8E2C08BB1B3A477B0020E2BE /* HACKS */ = {
+			isa = PBXGroup;
+			children = (
+				8E2C08BC1B3A477B0020E2BE /* MapKitStructs.h */,
+				8E2C08BD1B3A477B0020E2BE /* NSValue+MapKit.h */,
+				8E2C08BE1B3A477B0020E2BE /* NSValue+MapKit.m */,
+			);
+			path = HACKS;
+			sourceTree = "<group>";
+		};
 		8E76F6271B3A056B00E03F55 = {
 			isa = PBXGroup;
 			children = (
+				8EBD7AA91B3A0E9B00BA02BD /* DebugUtil */,
+				8EBD7AEC1B3A0E9C00BA02BD /* FilesUtil */,
+				8E2C08BB1B3A477B0020E2BE /* HACKS */,
+				8EBD7B251B3A0FCB00BA02BD /* MantleXMLAdapter */,
+				8E2C089E1B3A45AA0020E2BE /* NextBus-Data */,
 				8E76F6391B3A056B00E03F55 /* NextBus-Mantle */,
 				8E76F65B1B3A056B00E03F55 /* NextBus-MantleTests */,
 				8E76F6321B3A056B00E03F55 /* Frameworks */,
@@ -130,6 +241,7 @@
 				8E76F64B1B3A056B00E03F55 /* DetailViewController.h */,
 				8E76F64C1B3A056B00E03F55 /* DetailViewController.m */,
 				8E76F64E1B3A056B00E03F55 /* Images.xcassets */,
+				8EBD7B2C1B3A137D00BA02BD /* Resources */,
 				8E76F63A1B3A056B00E03F55 /* Supporting Files */,
 			);
 			path = "NextBus-Mantle";
@@ -162,6 +274,61 @@
 				8E76F65E1B3A056B00E03F55 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8EBD7AA91B3A0E9B00BA02BD /* DebugUtil */ = {
+			isa = PBXGroup;
+			children = (
+				8EBD7AAD1B3A0E9B00BA02BD /* Debug_iOS.cpp */,
+				8EBD7AAE1B3A0E9B00BA02BD /* Debug_iOS.h */,
+				8EBD7AAF1B3A0E9B00BA02BD /* Debug_iOS.m */,
+				8EBD7AB01B3A0E9B00BA02BD /* Debug_JSON.h */,
+				8EBD7AB11B3A0E9B00BA02BD /* Debug_JSON.m */,
+				8EBD7AEA1B3A0E9C00BA02BD /* LICENSE */,
+				8EBD7AEB1B3A0E9C00BA02BD /* README.md */,
+			);
+			name = DebugUtil;
+			path = ../DebugUtil;
+			sourceTree = "<group>";
+		};
+		8EBD7AEC1B3A0E9C00BA02BD /* FilesUtil */ = {
+			isa = PBXGroup;
+			children = (
+				8EBD7AEE1B3A0E9C00BA02BD /* FilesUtil.h */,
+				8EBD7AEF1B3A0E9C00BA02BD /* FilesUtil.m */,
+				8EBD7AF01B3A0E9C00BA02BD /* FolderWatcher.h */,
+				8EBD7AF11B3A0E9C00BA02BD /* FolderWatcher.m */,
+				8EBD7AF21B3A0E9C00BA02BD /* LICENSE */,
+				8EBD7AF31B3A0E9C00BA02BD /* README.md */,
+			);
+			name = FilesUtil;
+			path = ../FilesUtil;
+			sourceTree = "<group>";
+		};
+		8EBD7B251B3A0FCB00BA02BD /* MantleXMLAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				8EBD7B261B3A0FCB00BA02BD /* MTLXMLAdapter.h */,
+				8EBD7B271B3A0FCB00BA02BD /* MTLXMLAdapter.m */,
+				8EBD7B281B3A0FCB00BA02BD /* NSValueTransformer+MTLXMLTransformerAdditions.h */,
+				8EBD7B291B3A0FCB00BA02BD /* NSValueTransformer+MTLXMLTransformerAdditions.m */,
+				8EBF1E5B1B3A5CEC00CF38C4 /* LICENSE.md */,
+				8EBF1E5C1B3A5CEC00CF38C4 /* README.md */,
+			);
+			path = MantleXMLAdapter;
+			sourceTree = "<group>";
+		};
+		8EBD7B2C1B3A137D00BA02BD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8EBF1E591B3A54F500CF38C4 /* 0-error.xml */,
+				8EBD7B2D1B3A137D00BA02BD /* 1-agencyList.xml */,
+				8EBD7B2E1B3A137D00BA02BD /* 2-routeList&a=mbta.xml */,
+				8EBD7B2F1B3A137D00BA02BD /* 3-routeConfig&a=mbta&r=71&verbose.xml */,
+				8EBD7B301B3A137D00BA02BD /* 4-predictions&a=mbta&stopId=02021.xml */,
+				8EBD7B311B3A137D00BA02BD /* 5-vehicleLocations&a=mbta&r=71&t=0.xml */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		F060843066F1FD87EE75FB6C /* Pods */ = {
@@ -251,9 +418,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EBD7B381B3A137D00BA02BD /* 1-agencyList.xml in Resources */,
 				8E76F64F1B3A056B00E03F55 /* Images.xcassets in Resources */,
 				8E76F63E1B3A056B00E03F55 /* InfoPlist.strings in Resources */,
 				8E76F6471B3A056B00E03F55 /* Main.storyboard in Resources */,
+				8EBD7B3B1B3A137D00BA02BD /* 4-predictions&a=mbta&stopId=02021.xml in Resources */,
+				8EBD7B3A1B3A137D00BA02BD /* 3-routeConfig&a=mbta&r=71&verbose.xml in Resources */,
+				8EBD7B391B3A137D00BA02BD /* 2-routeList&a=mbta.xml in Resources */,
+				8EBF1E5A1B3A54F500CF38C4 /* 0-error.xml in Resources */,
+				8EBD7B3C1B3A137D00BA02BD /* 5-vehicleLocations&a=mbta&r=71&t=0.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,10 +478,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E2C08B31B3A45AB0020E2BE /* NBError.m in Sources */,
+				8E2C08B81B3A45AB0020E2BE /* NextBusUtil.m in Sources */,
+				8EBD7B2B1B3A0FCB00BA02BD /* NSValueTransformer+MTLXMLTransformerAdditions.m in Sources */,
 				8E76F6441B3A056B00E03F55 /* AppDelegate.m in Sources */,
+				8E2C08B21B3A45AB0020E2BE /* NBAgencies.m in Sources */,
+				8E2C08BA1B3A45AB0020E2BE /* NSString+NextBus.m in Sources */,
+				8E2C08B41B3A45AB0020E2BE /* NBPredictions.m in Sources */,
+				8EBD7AF71B3A0E9C00BA02BD /* Debug_iOS.m in Sources */,
+				8EBD7B151B3A0E9C00BA02BD /* FilesUtil.m in Sources */,
+				8E2C08B71B3A45AB0020E2BE /* NBVehicleLocations.m in Sources */,
+				8E2C08B61B3A45AB0020E2BE /* NBRoutes.m in Sources */,
+				8EBD7B161B3A0E9C00BA02BD /* FolderWatcher.m in Sources */,
+				8EBD7AF61B3A0E9C00BA02BD /* Debug_iOS.cpp in Sources */,
+				8E2C08BF1B3A477B0020E2BE /* NSValue+MapKit.m in Sources */,
 				8E76F64A1B3A056B00E03F55 /* MasterViewController.m in Sources */,
 				8E76F6401B3A056B00E03F55 /* main.m in Sources */,
 				8E76F64D1B3A056B00E03F55 /* DetailViewController.m in Sources */,
+				8EBD7AF81B3A0E9C00BA02BD /* Debug_JSON.m in Sources */,
+				8E2C08B91B3A45AB0020E2BE /* NSDate+NextBus.m in Sources */,
+				8E2C08B51B3A45AB0020E2BE /* NBRouteConfig.m in Sources */,
+				8EBD7B2A1B3A0FCB00BA02BD /* MTLXMLAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright MBTA 2015.">
+<vehicle id="0697" routeTag="73" dirTag="73_0_var0" lat="42.3768718" lon="-71.1616802" secsSinceReport="72" predictable="true" heading="274"/>
+<vehicle id="0731" routeTag="73" dirTag="73_1_var0" lat="42.3748206" lon="-71.1389698" secsSinceReport="27" predictable="true" heading="99"/>
+<vehicle id="0308" routeTag="73" dirTag="73_0_var0" lat="42.3799503" lon="-71.1733295" secsSinceReport="27" predictable="true" heading="303"/>
+<vehicle id="0627" routeTag="73" dirTag="73_1_var0" lat="42.3749547" lon="-71.14783" secsSinceReport="27" predictable="true" heading="73"/>
+<vehicle id="0150" routeTag="73" dirTag="73_1_var0" lat="42.3734808" lon="-71.1233895" secsSinceReport="118" predictable="true" heading="122"/>
+<vehicle id="0640" routeTag="73" dirTag="73_1_var0" lat="42.3761763" lon="-71.1586011" secsSinceReport="12" predictable="true" heading="194"/>
+<vehicle id="0685" routeTag="73" dirTag="73_1_var1" lat="42.3875764" lon="-71.1902564" secsSinceReport="42" predictable="true" heading="217"/>
+<vehicle id="0723" routeTag="73" dirTag="73_0_var0" lat="42.3788004" lon="-71.1713527" secsSinceReport="42" predictable="true" heading="36"/>
+<vehicle id="0092" routeTag="73" dirTag="73_0_var0" lat="42.3731233" lon="-71.1214459" secsSinceReport="72" predictable="true" heading="265"/>
+<vehicle id="0305" routeTag="73" dirTag="73_1_var0" lat="42.3743958" lon="-71.1188191" secsSinceReport="42" predictable="true" heading="54"/>
+<vehicle id="0623" routeTag="73" dirTag="73_0_var0" lat="42.3805015" lon="-71.1744617" secsSinceReport="42" predictable="true" heading="303"/>
+<vehicle id="0019" routeTag="73" dirTag="73_0_var0" lat="42.3744372" lon="-71.1262605" secsSinceReport="148" predictable="true" heading="276"/>
+<vehicle id="1433" routeTag="73" dirTag="73_1_var0" lat="42.3877061" lon="-71.1910958" secsSinceReport="57" predictable="true" heading="217"/>
+<lastTime time="1435097748875"/>
+</body>

@@ -10,10 +10,33 @@
 
 #import "DetailViewController.h"
 
+#import "FilesUtil.h"
+
+#import "DDXML.h"
+#import "DDXMLElementAdditions.h"
+
+#import "NBError.h"
+#import "NBAgencies.h"
+#import "NBRoutes.h"
+#import "NBRouteConfig.h"
+#import "NBPredictions.h"
+#import "NBVehicleLocations.h"
+
+#import "NextBusUtil.h"
+
+#import "Debug_iOS.h"
+
+// ----------------------------------------------------------------------
+
+static NSString * const str_sequeID_DetailViewController = @"showDetail";
+
+static NSString * const str_type_xml = @"xml";
+
 // ----------------------------------------------------------------------
 
 @interface MasterViewController ()
-@property (strong, nonatomic) NSArray *strs;
+//@property (strong, nonatomic) NSArray *strs;
+@property (strong, nonatomic) NSArray *xmlNames;
 @end
 
 // ----------------------------------------------------------------------
@@ -22,6 +45,74 @@
 
 @implementation MasterViewController
 
+// ----------------------------------------------------------------------
+
+- (BOOL)parseXML:(NSString *)xmlPath {
+	BOOL result = NO;
+	
+	NSData *data = [NSData dataWithContentsOfFile:xmlPath];
+	if ([data length]) {
+		NSError *error = nil;
+		DDXMLDocument *doc = [[DDXMLDocument alloc] initWithData:data options:0 error:&error];
+		if (error)
+			NSLog(@"Error (1): %@", [error debugDescription]);
+		else {
+			NSString *name = [[FilesUtil namesFromPaths:@[xmlPath] stripExtensions:YES] firstObject];
+			NBRequestType requestType = [NextBusUtil findRequestTypeInName:name];
+			
+			id obj = nil;
+			
+			// our test "error.xml" file?
+			if ([name rangeOfString:@"error"].location != NSNotFound) {
+				obj = [MTLXMLAdapter modelOfClass:[NBError class] fromXMLNode:doc error:&error];
+				MyLog(@"\n obj = %@\n", obj);
+				result = (obj != nil);
+			}
+			else {
+				// standard practice: check every NextBus response for an error;
+				// if none found, move on to process response
+				obj = [MTLXMLAdapter modelOfClass:[NBError class] fromXMLNode:doc error:&error];
+				if (obj) {
+					NBError *error = (NBError *)obj;
+					NSLog(@"Error (2) - NextBus error in response: %@", error.message);
+				}
+				else {
+					switch (requestType) {
+						case NBRequest_agencyList:
+							obj = [MTLXMLAdapter modelOfClass:[NBAgencyList class] fromXMLNode:doc error:&error];
+							break;
+						case NBRequest_routeList:
+							obj = [MTLXMLAdapter modelOfClass:[NBRouteList class] fromXMLNode:doc error:&error];
+							break;
+						case NBRequest_routeConfig:
+							obj = [MTLXMLAdapter modelOfClass:[NBRouteConfig class] fromXMLNode:doc error:&error];
+							break;
+						case NBRequest_predictions:
+							obj = [MTLXMLAdapter modelOfClass:[NBPredictionsResponse class] fromXMLNode:doc error:&error];
+							break;
+						case NBRequest_vehicleLocations:
+							obj = [MTLXMLAdapter modelOfClass:[NBVehicleLocations class] fromXMLNode:doc error:&error];
+							break;
+						default:
+							break;
+					}
+					if (error)
+						NSLog(@"Error (3): %@", [error debugDescription]);
+					else {
+						MyLog(@"\n obj = %@\n", obj);
+						result = (obj != nil);
+					}
+				}
+			}
+		}
+	}
+	return result;
+}
+
+// ----------------------------------------------------------------------
+#pragma mark -
+// ----------------------------------------------------------------------
+
 - (void)awakeFromNib {
 	[super awakeFromNib];
 }
@@ -29,7 +120,9 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-	self.strs = @[ @"one", @"two", @"three" ];
+//	self.strs = @[ @"one", @"two", @"three" ];
+	NSArray *xmlPaths = [FilesUtil pathsForBundleFilesType:str_type_xml sortedBy:SortFiles_alphabeticalAscending];
+	self.xmlNames = [FilesUtil namesFromPaths:xmlPaths stripExtensions:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,14 +139,18 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [self.strs count];
+//	return [self.strs count];
+	return [self.xmlNames count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-	if (indexPath.row < [self.strs count])
-		cell.textLabel.text = self.strs[indexPath.row];
+//	if (indexPath.row < [self.strs count])
+//		cell.textLabel.text = self.strs[indexPath.row];
+	if (indexPath.row < [self.xmlNames count])
+		cell.textLabel.text = self.xmlNames[indexPath.row];
+	
 	cell.detailTextLabel.text = nil;
 	
 	return cell;
@@ -71,6 +168,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
 	[cell setSelected:NO animated:YES];
+
+	if (indexPath.row < [self.xmlNames count]) {
+		NSString *xmlName = self.xmlNames[indexPath.row];
+		NSString *xmlPath = [[NSBundle mainBundle] pathForResource:xmlName ofType:str_type_xml];
+		if ([xmlPath length]) {
+			BOOL success = [self parseXML:xmlPath];
+			cell.detailTextLabel.text = (success ? @"Success!" : @"Failed!");
+		}
+	}
 }
 
 // ----------------------------------------------------------------------
@@ -82,7 +188,7 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if ([[segue identifier] isEqualToString:@"showDetail"]) {
+	if ([[segue identifier] isEqualToString:str_sequeID_DetailViewController]) {
 //		NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
 		NSDate *object = [NSDate date];
 		[[segue destinationViewController] setDetailItem:object];

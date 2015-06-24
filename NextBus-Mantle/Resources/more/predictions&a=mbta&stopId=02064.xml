@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright MBTA 2015.">
+<predictions agencyTitle="MBTA" routeTitle="73" routeTag="73" stopTitle="Mt Auburn St opp Homer Ave" stopTag="2064">
+  <direction title="Harvard via Mt. Auburn">
+  <prediction epochTime="1435097910604" seconds="149" minutes="2" isDeparture="false" dirTag="73_1_var0" vehicle="0640" block="T73_56" tripTag="27574598" />
+  <prediction epochTime="1435098243658" seconds="482" minutes="8" isDeparture="false" affectedByLayover="true" delayed="true" slowness="0.422" dirTag="73_1_var1" vehicle="0685" block="T73_58" tripTag="27574610" />
+  <prediction epochTime="1435098388117" seconds="626" minutes="10" isDeparture="false" affectedByLayover="true" dirTag="73_1_var0" vehicle="1433" block="T73_57" tripTag="27574533" />
+  <prediction epochTime="1435098837878" seconds="1076" minutes="17" isDeparture="false" affectedByLayover="true" dirTag="73_1_var0" vehicle="0723" block="T73_59" tripTag="27574648" />
+  <prediction epochTime="1435098999117" seconds="1237" minutes="20" isDeparture="false" affectedByLayover="true" dirTag="73_1_var0" vehicle="0623" block="T73_60" tripTag="27574543" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="71" routeTag="71" stopTitle="Mt Auburn St opp Homer Ave" stopTag="2064">
+  <direction title="Harvard via Mt. Auburn St.">
+  <prediction epochTime="1435098336234" seconds="575" minutes="9" isDeparture="false" dirTag="71_1_var0" vehicle="4113" block="T71_4" tripTag="27581013" />
+  <prediction epochTime="1435099339352" seconds="1578" minutes="26" isDeparture="false" affectedByLayover="true" dirTag="71_1_var1" vehicle="4128" block="T71_10" tripTag="27581104" />
+  <prediction epochTime="1435099963601" seconds="2202" minutes="36" isDeparture="false" affectedByLayover="true" dirTag="71_1_var0" vehicle="4121" block="T71_2" tripTag="27580980" />
+  <prediction epochTime="1435100512763" seconds="2751" minutes="45" isDeparture="false" affectedByLayover="true" dirTag="71_1_var0" vehicle="4102" block="T71_9" tripTag="27581087" />
+  <prediction epochTime="1435100883863" seconds="3122" minutes="52" isDeparture="false" affectedByLayover="true" dirTag="71_1_var1" vehicle="4117" block="T71_12" tripTag="27581151" />
+  </direction>
+</predictions>
+</body>

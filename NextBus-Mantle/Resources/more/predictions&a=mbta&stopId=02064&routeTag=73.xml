@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright MBTA 2015.">
+<predictions agencyTitle="MBTA" routeTitle="73" routeTag="73" stopTitle="Mt Auburn St opp Homer Ave" stopTag="2064">
+  <direction title="Harvard via Mt. Auburn">
+  <prediction epochTime="1435097728986" seconds="18" minutes="0" isDeparture="false" dirTag="73_1_var0" vehicle="0627" block="T73_51" tripTag="27574471" />
+  <prediction epochTime="1435097861988" seconds="151" minutes="2" isDeparture="false" dirTag="73_1_var0" vehicle="0640" block="T73_56" tripTag="27574598" />
+  <prediction epochTime="1435098242658" seconds="532" minutes="8" isDeparture="false" affectedByLayover="true" delayed="true" slowness="0.422" dirTag="73_1_var1" vehicle="0685" block="T73_58" tripTag="27574610" />
+  <prediction epochTime="1435098388117" seconds="677" minutes="11" isDeparture="false" affectedByLayover="true" dirTag="73_1_var0" vehicle="1433" block="T73_57" tripTag="27574533" />
+  <prediction epochTime="1435098858611" seconds="1148" minutes="19" isDeparture="false" affectedByLayover="true" dirTag="73_1_var0" vehicle="0723" block="T73_59" tripTag="27574648" />
+  </direction>
+</predictions>
+</body>

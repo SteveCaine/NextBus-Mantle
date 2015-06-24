@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright MBTA 2015.">
+<predictions agencyTitle="MBTA" routeTitle="71" routeTag="71" stopTitle="Mt Auburn St @ Ash St" stopTag="2021">
+  <direction title="Watertown Square via Mt. Auburn St.">
+  <prediction epochTime="1435098582506" seconds="889" minutes="14" isDeparture="false" affectedByLayover="true" dirTag="71_0_var0" vehicle="4102" block="T71_9" tripTag="27581081" />
+  <prediction epochTime="1435099020986" seconds="1327" minutes="22" isDeparture="false" affectedByLayover="true" dirTag="71_0_var0" vehicle="4117" block="T71_12" tripTag="27581166" />
+  <prediction epochTime="1435099560986" seconds="1867" minutes="31" isDeparture="false" affectedByLayover="true" dirTag="71_0_var0" vehicle="4105" block="T71_1" tripTag="27580976" />
+  <prediction epochTime="1435100100986" seconds="2407" minutes="40" isDeparture="false" affectedByLayover="true" dirTag="71_0_var0" vehicle="4113" block="T71_4" tripTag="27581012" />
+  <prediction epochTime="1435101296876" seconds="3603" minutes="60" isDeparture="false" affectedByLayover="true" dirTag="71_0_var0" vehicle="4121" block="T71_2" tripTag="27580985" />
+  </direction>
+</predictions>
+</body>
