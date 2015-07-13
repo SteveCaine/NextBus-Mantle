@@ -156,11 +156,6 @@ static NSString * const str_type_xml = @"xml";
 	return cell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-	// Return NO if you do not want the specified item to be editable.
-	return YES;
-}
-
 // ----------------------------------------------------------------------
 #pragma mark - UITableViewDelegate
 // ----------------------------------------------------------------------
