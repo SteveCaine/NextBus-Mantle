@@ -17,6 +17,7 @@
 		8E2C08B91B3A45AB0020E2BE /* NSDate+NextBus.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08AF1B3A45AB0020E2BE /* NSDate+NextBus.m */; };
 		8E2C08BA1B3A45AB0020E2BE /* NSString+NextBus.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08B11B3A45AB0020E2BE /* NSString+NextBus.m */; };
 		8E2C08BF1B3A477B0020E2BE /* NSValue+MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08BE1B3A477B0020E2BE /* NSValue+MapKit.m */; };
+		8E7254C31B54A814007937FB /* Debug_KissXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7254C21B54A814007937FB /* Debug_KissXML.m */; };
 		8E76F6341B3A056B00E03F55 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E76F6331B3A056B00E03F55 /* Foundation.framework */; };
 		8E76F6361B3A056B00E03F55 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E76F6351B3A056B00E03F55 /* CoreGraphics.framework */; };
 		8E76F6381B3A056B00E03F55 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E76F6371B3A056B00E03F55 /* UIKit.framework */; };
@@ -45,6 +46,8 @@
 		8EBD7B3B1B3A137D00BA02BD /* 4-predictions&a=mbta&stopId=02021.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8EBD7B301B3A137D00BA02BD /* 4-predictions&a=mbta&stopId=02021.xml */; };
 		8EBD7B3C1B3A137D00BA02BD /* 5-vehicleLocations&a=mbta&r=71&t=0.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8EBD7B311B3A137D00BA02BD /* 5-vehicleLocations&a=mbta&r=71&t=0.xml */; };
 		8EBF1E5A1B3A54F500CF38C4 /* 0-error.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF1E591B3A54F500CF38C4 /* 0-error.xml */; };
+		8EC0803C1B82769F00BFE99E /* TAlerts.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC0803B1B82769F00BFE99E /* TAlerts.m */; };
+		8EC0803F1B82778100BFE99E /* talerts.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0803E1B82778100BFE99E /* talerts.xml */; };
 		F1B5BB87C571687776217C19 /* libPods-NextBus-Mantle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74534276BE41B141E9D792FE /* libPods-NextBus-Mantle.a */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +86,8 @@
 		8E2C08BC1B3A477B0020E2BE /* MapKitStructs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapKitStructs.h; sourceTree = "<group>"; };
 		8E2C08BD1B3A477B0020E2BE /* NSValue+MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+MapKit.h"; sourceTree = "<group>"; };
 		8E2C08BE1B3A477B0020E2BE /* NSValue+MapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+MapKit.m"; sourceTree = "<group>"; };
+		8E7254C11B54A814007937FB /* Debug_KissXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug_KissXML.h; sourceTree = "<group>"; };
+		8E7254C21B54A814007937FB /* Debug_KissXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Debug_KissXML.m; sourceTree = "<group>"; };
 		8E76F6301B3A056B00E03F55 /* NextBus-Mantle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NextBus-Mantle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E76F6331B3A056B00E03F55 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8E76F6351B3A056B00E03F55 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -129,6 +134,9 @@
 		8EBF1E591B3A54F500CF38C4 /* 0-error.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "0-error.xml"; sourceTree = "<group>"; };
 		8EBF1E5B1B3A5CEC00CF38C4 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		8EBF1E5C1B3A5CEC00CF38C4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8EC0803A1B82769F00BFE99E /* TAlerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TAlerts.h; path = "TAlerts-Data/TAlerts.h"; sourceTree = "<group>"; };
+		8EC0803B1B82769F00BFE99E /* TAlerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TAlerts.m; path = "TAlerts-Data/TAlerts.m"; sourceTree = "<group>"; };
+		8EC0803E1B82778100BFE99E /* talerts.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = talerts.xml; sourceTree = "<group>"; };
 		F8C9A1D29E2CEE130AAF020A /* Pods-NextBus-Mantle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextBus-Mantle.release.xcconfig"; path = "Pods/Target Support Files/Pods-NextBus-Mantle/Pods-NextBus-Mantle.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,6 +208,7 @@
 				8EBD7AEC1B3A0E9C00BA02BD /* FilesUtil */,
 				8E2C08BB1B3A477B0020E2BE /* HACKS */,
 				8EBD7B251B3A0FCB00BA02BD /* MantleXMLAdapter */,
+				8EC0803D1B8276B700BFE99E /* TAlerts-Data */,
 				8E2C089E1B3A45AA0020E2BE /* NextBus-Data */,
 				8E76F6391B3A056B00E03F55 /* NextBus-Mantle */,
 				8E76F65B1B3A056B00E03F55 /* NextBus-MantleTests */,
@@ -284,6 +293,8 @@
 				8EBD7AAF1B3A0E9B00BA02BD /* Debug_iOS.m */,
 				8EBD7AB01B3A0E9B00BA02BD /* Debug_JSON.h */,
 				8EBD7AB11B3A0E9B00BA02BD /* Debug_JSON.m */,
+				8E7254C11B54A814007937FB /* Debug_KissXML.h */,
+				8E7254C21B54A814007937FB /* Debug_KissXML.m */,
 				8EBD7AEA1B3A0E9C00BA02BD /* LICENSE */,
 				8EBD7AEB1B3A0E9C00BA02BD /* README.md */,
 			);
@@ -321,6 +332,7 @@
 		8EBD7B2C1B3A137D00BA02BD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8EC0803E1B82778100BFE99E /* talerts.xml */,
 				8EBF1E591B3A54F500CF38C4 /* 0-error.xml */,
 				8EBD7B2D1B3A137D00BA02BD /* 1-agencyList.xml */,
 				8EBD7B2E1B3A137D00BA02BD /* 2-routeList&a=mbta.xml */,
@@ -329,6 +341,15 @@
 				8EBD7B311B3A137D00BA02BD /* 5-vehicleLocations&a=mbta&r=71&t=0.xml */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		8EC0803D1B8276B700BFE99E /* TAlerts-Data */ = {
+			isa = PBXGroup;
+			children = (
+				8EC0803A1B82769F00BFE99E /* TAlerts.h */,
+				8EC0803B1B82769F00BFE99E /* TAlerts.m */,
+			);
+			name = "TAlerts-Data";
 			sourceTree = "<group>";
 		};
 		F060843066F1FD87EE75FB6C /* Pods */ = {
@@ -427,6 +448,7 @@
 				8EBD7B391B3A137D00BA02BD /* 2-routeList&a=mbta.xml in Resources */,
 				8EBF1E5A1B3A54F500CF38C4 /* 0-error.xml in Resources */,
 				8EBD7B3C1B3A137D00BA02BD /* 5-vehicleLocations&a=mbta&r=71&t=0.xml in Resources */,
+				8EC0803F1B82778100BFE99E /* talerts.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,12 +501,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E2C08B31B3A45AB0020E2BE /* NBError.m in Sources */,
+				8E7254C31B54A814007937FB /* Debug_KissXML.m in Sources */,
 				8E2C08B81B3A45AB0020E2BE /* NextBusUtil.m in Sources */,
 				8EBD7B2B1B3A0FCB00BA02BD /* NSValueTransformer+MTLXMLTransformerAdditions.m in Sources */,
 				8E76F6441B3A056B00E03F55 /* AppDelegate.m in Sources */,
 				8E2C08B21B3A45AB0020E2BE /* NBAgencies.m in Sources */,
 				8E2C08BA1B3A45AB0020E2BE /* NSString+NextBus.m in Sources */,
 				8E2C08B41B3A45AB0020E2BE /* NBPredictions.m in Sources */,
+				8EC0803C1B82769F00BFE99E /* TAlerts.m in Sources */,
 				8EBD7AF71B3A0E9C00BA02BD /* Debug_iOS.m in Sources */,
 				8EBD7B151B3A0E9C00BA02BD /* FilesUtil.m in Sources */,
 				8E2C08B71B3A45AB0020E2BE /* NBVehicleLocations.m in Sources */,

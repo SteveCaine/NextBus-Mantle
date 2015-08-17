@@ -22,9 +22,12 @@
 #import "NBPredictions.h"
 #import "NBVehicleLocations.h"
 
+#import "TAlerts.h"
+
 #import "NextBusUtil.h"
 
 #import "Debug_iOS.h"
+#import "Debug_KissXML.h"
 
 // ----------------------------------------------------------------------
 
@@ -57,11 +60,20 @@ static NSString * const str_type_xml = @"xml";
 		if (error)
 			NSLog(@"Error (1): %@", [error debugDescription]);
 		else {
+#if 0
+			d_DDXMLNode(doc);
+#else
 			NSString *name = [[FilesUtil namesFromPaths:@[xmlPath] stripExtensions:YES] firstObject];
 			NBRequestType requestType = [NextBusUtil findRequestTypeInName:name];
 			
 			id obj = nil;
 			
+			if ([name rangeOfString:@"talerts"].location != NSNotFound) {
+				obj = [MTLXMLAdapter modelOfClass:[TAlertsList class] fromXMLNode:doc error:&error];
+				MyLog(@"\n obj = %@\n", obj);
+				result = (obj != nil);
+			}
+			else
 			// our test "error.xml" file?
 			if ([name rangeOfString:@"error"].location != NSNotFound) {
 				obj = [MTLXMLAdapter modelOfClass:[NBError class] fromXMLNode:doc error:&error];
@@ -104,6 +116,7 @@ static NSString * const str_type_xml = @"xml";
 					}
 				}
 			}
+#endif
 		}
 	}
 	return result;

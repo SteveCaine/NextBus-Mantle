@@ -62,8 +62,7 @@ static NSString * const attr_time	  = @"time";
 + (NSDictionary *)XMLKeyPathsByPropertyKey {
 	return @{
 			 // children
-			 @"vehicles"	: @"vehicle",
-			 
+			 @"vehicles"			: @"vehicle",
 			 PROPERTY_FROM_XML_CHILD( lastTime )
 			 };
 }
