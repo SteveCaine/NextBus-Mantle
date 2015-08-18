@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E2959391B83A7D9004DE0A5 /* MBTA-data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E2959381B83A7D9004DE0A5 /* MBTA-data.plist */; };
 		8E2C08B21B3A45AB0020E2BE /* NBAgencies.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08A11B3A45AB0020E2BE /* NBAgencies.m */; };
 		8E2C08B31B3A45AB0020E2BE /* NBError.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08A31B3A45AB0020E2BE /* NBError.m */; };
 		8E2C08B41B3A45AB0020E2BE /* NBPredictions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08A51B3A45AB0020E2BE /* NBPredictions.m */; };
@@ -64,6 +65,7 @@
 /* Begin PBXFileReference section */
 		49158CBA4616CFDB77884202 /* Pods-NextBus-Mantle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextBus-Mantle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NextBus-Mantle/Pods-NextBus-Mantle.debug.xcconfig"; sourceTree = "<group>"; };
 		74534276BE41B141E9D792FE /* libPods-NextBus-Mantle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NextBus-Mantle.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E2959381B83A7D9004DE0A5 /* MBTA-data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MBTA-data.plist"; sourceTree = "<group>"; };
 		8E2C089F1B3A45AB0020E2BE /* MantleXMLMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MantleXMLMacros.h; sourceTree = "<group>"; };
 		8E2C08A01B3A45AB0020E2BE /* NBAgencies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBAgencies.h; sourceTree = "<group>"; };
 		8E2C08A11B3A45AB0020E2BE /* NBAgencies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBAgencies.m; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 		8EBD7B2C1B3A137D00BA02BD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8E2959381B83A7D9004DE0A5 /* MBTA-data.plist */,
 				8EC0803E1B82778100BFE99E /* talerts.xml */,
 				8EBF1E591B3A54F500CF38C4 /* 0-error.xml */,
 				8EBD7B2D1B3A137D00BA02BD /* 1-agencyList.xml */,
@@ -440,6 +443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EBD7B381B3A137D00BA02BD /* 1-agencyList.xml in Resources */,
+				8E2959391B83A7D9004DE0A5 /* MBTA-data.plist in Resources */,
 				8E76F64F1B3A056B00E03F55 /* Images.xcassets in Resources */,
 				8E76F63E1B3A056B00E03F55 /* InfoPlist.strings in Resources */,
 				8E76F6471B3A056B00E03F55 /* Main.storyboard in Resources */,

@@ -8,7 +8,29 @@
 
 #import "AppDelegate.h"
 
+// ----------------------------------------------------------------------
+
+static NSString * const type_plist		= @"plist";
+static NSString * const plist_MBTA_data = @"MBTA-data";
+
+// ----------------------------------------------------------------------
+
 @implementation AppDelegate
+
++ (NSDictionary *)mbtaData {
+	static NSDictionary *result;
+
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		NSString *path = [[NSBundle mainBundle] pathForResource:plist_MBTA_data ofType:type_plist];
+		if (path.length)
+			result = [[NSDictionary alloc] initWithContentsOfFile:path];
+	});
+	
+	return result;
+}
+
+// ----------------------------------------------------------------------
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
@@ -38,3 +60,5 @@
 }
 
 @end
+
+// ----------------------------------------------------------------------

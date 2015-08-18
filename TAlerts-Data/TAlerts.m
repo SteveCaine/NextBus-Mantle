@@ -12,22 +12,60 @@
 
 #import "MantleXMLMacros.h"
 
+#import "AppDelegate.h"
+
 #import "Debug_iOS.h"
 
 // ----------------------------------------------------------------------
+
+static NSString * const key_alertModes = @"alertModes";
 
 static NSString * const elem_pubDate = @"pubDate";
 
 // ----------------------------------------------------------------------
 
+@interface TAlert ()
+@property (copy, nonatomic) NSString *mode;
++ (AlertMode)modeForString:(NSString *)name;
+@end
+
+// ----------------------------------------------------------------------
+#pragma mark -
+// ----------------------------------------------------------------------
+
 @implementation TAlert
+
++ (AlertMode)modeForString:(NSString *)name {
+	static NSArray *modeNames;
+	
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		NSDictionary *mbtaData = [AppDelegate mbtaData];
+		id array = mbtaData[key_alertModes];
+		if ([array isKindOfClass:[NSArray class]])
+			modeNames = (NSArray *)array;
+	});
+
+	AlertMode result = AlertMode_other;
+	
+	NSUInteger index = [modeNames indexOfObject:name];
+	if (index <= AlertMode_Subway)
+		result = index;
+	return result;
+}
 
 + (NSDictionary *)XMLKeyPathsByPropertyKey {
 	return @{
-			 PROPERTY_FROM_XML_CONTENT(title),
+			 PROPERTY_FROM_XML_CONTENT( title ),
+			 
 			 @"desc"		: @"description/text()",
-			 @"direction"	: @"metadata/@direction",
-			 PROPERTY_FROM_XML_CONTENT(pubDate),
+			 
+			 PROPERTY_FROM_XML_CHILD_ATTRIBUTE( mode,		metadata ),
+			 PROPERTY_FROM_XML_CHILD_ATTRIBUTE( line,		metadata ),
+			 PROPERTY_FROM_XML_CHILD_ATTRIBUTE( name,		metadata ),
+			 PROPERTY_FROM_XML_CHILD_ATTRIBUTE( direction,	metadata ),
+			 
+			 PROPERTY_FROM_XML_CONTENT( pubDate ),
 			 };
 }
 
@@ -53,22 +91,42 @@ static NSString * const elem_pubDate = @"pubDate";
 	}];
 }
 
+- (AlertMode)alertMode {
+	return [TAlert modeForString:self.mode];
+}
+
 - (NSString *)description {
 	NSMutableString *result = [NSMutableString stringWithFormat:@"<%@ %p> ", NSStringFromClass(self.class), self];
 	[result appendFormat:@"date = '%@', direction = '%@', title = '%@', desc = '%@'", self.pubDate, self.direction, self.title, self.desc];
-	/** /
-	[result appendFormat:@"route: tag = '%@', title='%@'", self.routeTag, self.routeTitle];
-	[result appendFormat:@", stop: tag = '%@', title='%@'", self.stopTag, self.stopTitle];
-	int index = 0;
-	for (NBPredictionsDirection *direction in self.directions) {
-		[result appendFormat:@"\n%2i: %@", index++, direction];
+	NSString *mode = nil;
+	switch (self.alertMode) {
+		case AlertMode_Access:
+			mode = @"access";
+			break;
+		case AlertMode_Bus:
+			mode = @"bus";
+			break;
+		case AlertMode_Boat:
+			mode = @"ferry";
+			break;
+		case AlertMode_Rail:
+			mode = @"train";
+			break;
+		case AlertMode_Subway:
+			mode = @"subway";
+			break;
+		default:
+			break;
 	}
-	/ **/
+	if (mode.length)
+		[result appendFormat:@"mode='%@'", mode];
 	return result;
 }
 
 @end
 
+// ----------------------------------------------------------------------
+#pragma mark -
 // ----------------------------------------------------------------------
 
 @implementation TAlertsList
