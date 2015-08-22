@@ -46,10 +46,10 @@ static NSString * const attr_epochTime	= @"epochTime";
 			NSString *epochString = aNode.stringValue;
 			// moved logic into NSString+NextBus category
 			result = [epochString epochTime];
-			//			if ([epochString length]) {
-			//				NSTimeInterval epoch = [epochString doubleValue] / 1000.0;
-			//				result = [NSDate dateWithTimeIntervalSince1970:epoch];
-			//			}
+//			if ([epochString length]) {
+//				NSTimeInterval epoch = [epochString doubleValue] / 1000.0;
+//				result = [NSDate dateWithTimeIntervalSince1970:epoch];
+//			}
 		}
 		return result;
 	}];
@@ -61,6 +61,17 @@ static NSString * const attr_epochTime	= @"epochTime";
 	[result appendFormat:@"epoch=%@, minutes=%i, vehicle='%@'", predictionString, (int) self.minutes, self.vehicle];
 	return result;
 }
+
+- (NSDictionary *)plist {
+	NSMutableDictionary *result = [NSMutableDictionary dictionary];
+	
+	result[@"minutes"] = [NSNumber numberWithInteger:self.minutes];
+//	if (self.dirTag)  result[@"dirTag"]  = self.dirTag;
+	if (self.vehicle) result[@"vehicle"] = self.vehicle;
+	
+	return result;
+}
+
 
 @end
 
@@ -93,6 +104,21 @@ static NSString * const attr_epochTime	= @"epochTime";
 	for (NBPrediction *prediction in self.predictions) {
 		[result appendFormat:@"\n%2i: %@", index++, prediction];
 	}
+	return result;
+}
+
+- (NSDictionary *)plist {
+	NSMutableDictionary *result = [NSMutableDictionary dictionary];
+	
+	NSMutableArray *array = [NSMutableArray arrayWithCapacity:self.predictions.count];
+	for (NBPrediction *prediction in self.predictions) {
+		NSDictionary *plist = [prediction plist];
+		if (plist.count)
+			[array addObject:plist];
+	}
+	if (array.count) result[@"predictions"] = array;
+	if (self.title)	 result[@"title"] = self.title;
+	
 	return result;
 }
 
@@ -134,6 +160,22 @@ static NSString * const attr_epochTime	= @"epochTime";
 	return result;
 }
 
+- (NSDictionary *)plist {
+	NSMutableDictionary *result = [NSMutableDictionary dictionary];
+
+	NSMutableArray *array = [NSMutableArray arrayWithCapacity:self.directions.count];
+	for (NBPredictionsDirection *direction in self.directions) {
+		NSDictionary *plist = [direction plist];
+		if (plist.count)
+			[array addObject:plist];
+	}
+	if (array.count)	 result[@"directions"] = array;
+	if (self.routeTitle) result[@"routeTitle"] = self.routeTitle;
+	if (self.stopTitle)	 result[@"stopTitle"]  = self.stopTitle;
+
+	return result;
+}
+
 @end
 
 // ----------------------------------------------------------------------
@@ -162,6 +204,20 @@ static NSString * const attr_epochTime	= @"epochTime";
 	for (NBPrediction *prediction in self.predictions) {
 		[result appendFormat:@"\n%2i: %@", index++, prediction];
 	}
+	return result;
+}
+
+- (NSDictionary *)plist {
+	NSMutableDictionary *result = [NSMutableDictionary dictionary];
+	
+	NSMutableArray *array = [NSMutableArray arrayWithCapacity:self.predictions.count];
+	for (NBPredictions *predictions in self.predictions) {
+		NSDictionary *plist = [predictions plist];
+		if (plist.count)
+			[array addObject:plist];
+	}
+	if (array.count) result[@"predictions"] = array;
+	
 	return result;
 }
 

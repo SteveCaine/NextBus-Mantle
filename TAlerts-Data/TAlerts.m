@@ -49,23 +49,26 @@ static NSString * const elem_pubDate = @"pubDate";
 	AlertMode result = AlertMode_other;
 	
 	NSUInteger index = [modeNames indexOfObject:name];
-	if (index <= AlertMode_Subway)
-		result = index;
+	if (index <= (int) AlertMode_Subway)
+		result = (AlertMode) index;
 	return result;
 }
 
 + (NSDictionary *)XMLKeyPathsByPropertyKey {
 	return @{
-			 PROPERTY_FROM_XML_CONTENT( title ),
+			 PROPERTY_FROM_XML_CHILD_ATTRIBUTE( messageid,	metadata ),
+			 PROPERTY_FROM_XML_CONTENT(			guid ),
 			 
-			 @"desc"		: @"description/text()",
+			 PROPERTY_FROM_XML_CONTENT(			title ),
+			 
+			 @"desc"						: @"description/text()",
 			 
 			 PROPERTY_FROM_XML_CHILD_ATTRIBUTE( mode,		metadata ),
 			 PROPERTY_FROM_XML_CHILD_ATTRIBUTE( line,		metadata ),
 			 PROPERTY_FROM_XML_CHILD_ATTRIBUTE( name,		metadata ),
 			 PROPERTY_FROM_XML_CHILD_ATTRIBUTE( direction,	metadata ),
 			 
-			 PROPERTY_FROM_XML_CONTENT( pubDate ),
+			 PROPERTY_FROM_XML_CONTENT(			pubDate ),
 			 };
 }
 
@@ -123,6 +126,18 @@ static NSString * const elem_pubDate = @"pubDate";
 	return result;
 }
 
+- (NSDictionary *)plist {
+	NSMutableDictionary *result = [NSMutableDictionary dictionary];
+	
+	if (self.messageid)	result[@"messageid"] = self.messageid;
+	if (self.title)		result[@"title"] = self.title;
+	if (self.desc)		result[@"desc"]  = self.desc;
+	if (self.mode)		result[@"mode"]  = self.mode;
+	if (self.guid)		result[@"guid"]  = self.guid;
+	
+	return result;
+}
+
 @end
 
 // ----------------------------------------------------------------------
@@ -151,6 +166,20 @@ static NSString * const elem_pubDate = @"pubDate";
 	for (TAlert *alert in self.alerts) {
 		[result appendFormat:@"\n%2i: %@", index++, alert];
 	}
+	return result;
+}
+
+- (NSDictionary *)plist {
+	NSMutableDictionary *result = [NSMutableDictionary dictionary];
+	
+	NSMutableArray *alerts = [NSMutableArray arrayWithCapacity:self.alerts.count];
+	for (TAlert *alert in self.alerts) {
+		NSDictionary *plist = [alert plist];
+		if (plist.count)
+			[alerts addObject:plist];
+	}
+	result[@"TAlerts"] = alerts;
+
 	return result;
 }
 

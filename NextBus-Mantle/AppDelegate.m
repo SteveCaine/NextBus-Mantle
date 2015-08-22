@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "Debug_iOS.h"
+
 // ----------------------------------------------------------------------
 
 static NSString * const type_plist		= @"plist";
@@ -34,6 +36,7 @@ static NSString * const plist_MBTA_data = @"MBTA-data";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
+	NSLog(@" docs dir = '%@'", str_DocumentsPath());
 	return YES;
 }
 							

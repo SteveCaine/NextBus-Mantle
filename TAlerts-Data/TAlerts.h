@@ -23,6 +23,9 @@ typedef enum AlertModes {
 // ----------------------------------------------------------------------
 
 @interface TAlert : MTLModel <MTLXMLSerializing>
+@property (assign, nonatomic, readonly) NSNumber	*messageid;
+@property (  copy, nonatomic, readonly) NSString	*guid;
+
 @property (  copy, nonatomic, readonly) NSString	*title;
 @property (  copy, nonatomic, readonly) NSString	*desc; // <description>
 /**/
@@ -41,6 +44,7 @@ typedef enum AlertModes {
 @property (strong, nonatomic, readonly) NSArray *alerts;
 @property (assign, nonatomic, readonly) NSTimeInterval timeToLive; // <ttl>
 // language-region?
+- (NSDictionary *)plist;
 @end
 
 // ----------------------------------------------------------------------
