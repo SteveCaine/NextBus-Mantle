@@ -212,7 +212,7 @@
 				8EBD7B251B3A0FCB00BA02BD /* MantleXMLAdapter */,
 				8EC0803D1B8276B700BFE99E /* TAlerts-Data */,
 				8E2C089E1B3A45AA0020E2BE /* NextBus-Data */,
-				8E76F6391B3A056B00E03F55 /* NextBus-Mantle */,
+				8E76F6391B3A056B00E03F55 /* NextBus-Mantle-Requests */,
 				8E76F65B1B3A056B00E03F55 /* NextBus-MantleTests */,
 				8E76F6321B3A056B00E03F55 /* Frameworks */,
 				8E76F6311B3A056B00E03F55 /* Products */,
@@ -241,7 +241,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8E76F6391B3A056B00E03F55 /* NextBus-Mantle */ = {
+		8E76F6391B3A056B00E03F55 /* NextBus-Mantle-Requests */ = {
 			isa = PBXGroup;
 			children = (
 				8E76F6421B3A056B00E03F55 /* AppDelegate.h */,
@@ -255,6 +255,7 @@
 				8EBD7B2C1B3A137D00BA02BD /* Resources */,
 				8E76F63A1B3A056B00E03F55 /* Supporting Files */,
 			);
+			name = "NextBus-Mantle-Requests";
 			path = "NextBus-Mantle";
 			sourceTree = "<group>";
 		};
