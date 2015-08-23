@@ -49,6 +49,9 @@
 		8EBF1E5A1B3A54F500CF38C4 /* 0-error.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF1E591B3A54F500CF38C4 /* 0-error.xml */; };
 		8EC0803C1B82769F00BFE99E /* TAlerts.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC0803B1B82769F00BFE99E /* TAlerts.m */; };
 		8EC0803F1B82778100BFE99E /* talerts.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0803E1B82778100BFE99E /* talerts.xml */; };
+		8EC62EFA1B8A5FC0008B546A /* NBRequestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC62EF91B8A5FC0008B546A /* NBRequestClient.m */; };
+		8EC62EFE1B8A6117008B546A /* NBRequestTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC62EFD1B8A6117008B546A /* NBRequestTypes.m */; };
+		8EC62F011B8A6127008B546A /* NBRequestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC62F001B8A6127008B546A /* NBRequestService.m */; };
 		F1B5BB87C571687776217C19 /* libPods-NextBus-Mantle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74534276BE41B141E9D792FE /* libPods-NextBus-Mantle.a */; };
 /* End PBXBuildFile section */
 
@@ -66,7 +69,7 @@
 		49158CBA4616CFDB77884202 /* Pods-NextBus-Mantle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextBus-Mantle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NextBus-Mantle/Pods-NextBus-Mantle.debug.xcconfig"; sourceTree = "<group>"; };
 		74534276BE41B141E9D792FE /* libPods-NextBus-Mantle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NextBus-Mantle.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E2959381B83A7D9004DE0A5 /* MBTA-data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MBTA-data.plist"; sourceTree = "<group>"; };
-		8E2C089F1B3A45AB0020E2BE /* MantleXMLMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MantleXMLMacros.h; sourceTree = "<group>"; };
+		8E2C089F1B3A45AB0020E2BE /* MantleXMLMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MantleXMLMacros.h; path = utils/MantleXMLMacros.h; sourceTree = "<group>"; };
 		8E2C08A01B3A45AB0020E2BE /* NBAgencies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBAgencies.h; sourceTree = "<group>"; };
 		8E2C08A11B3A45AB0020E2BE /* NBAgencies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBAgencies.m; sourceTree = "<group>"; };
 		8E2C08A21B3A45AB0020E2BE /* NBError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBError.h; sourceTree = "<group>"; };
@@ -79,12 +82,12 @@
 		8E2C08A91B3A45AB0020E2BE /* NBRoutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBRoutes.m; sourceTree = "<group>"; };
 		8E2C08AA1B3A45AB0020E2BE /* NBVehicleLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBVehicleLocations.h; sourceTree = "<group>"; };
 		8E2C08AB1B3A45AB0020E2BE /* NBVehicleLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBVehicleLocations.m; sourceTree = "<group>"; };
-		8E2C08AC1B3A45AB0020E2BE /* NextBusUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextBusUtil.h; sourceTree = "<group>"; };
-		8E2C08AD1B3A45AB0020E2BE /* NextBusUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextBusUtil.m; sourceTree = "<group>"; };
-		8E2C08AE1B3A45AB0020E2BE /* NSDate+NextBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NextBus.h"; sourceTree = "<group>"; };
-		8E2C08AF1B3A45AB0020E2BE /* NSDate+NextBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NextBus.m"; sourceTree = "<group>"; };
-		8E2C08B01B3A45AB0020E2BE /* NSString+NextBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NextBus.h"; sourceTree = "<group>"; };
-		8E2C08B11B3A45AB0020E2BE /* NSString+NextBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NextBus.m"; sourceTree = "<group>"; };
+		8E2C08AC1B3A45AB0020E2BE /* NextBusUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NextBusUtil.h; path = utils/NextBusUtil.h; sourceTree = "<group>"; };
+		8E2C08AD1B3A45AB0020E2BE /* NextBusUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NextBusUtil.m; path = utils/NextBusUtil.m; sourceTree = "<group>"; };
+		8E2C08AE1B3A45AB0020E2BE /* NSDate+NextBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+NextBus.h"; path = "utils/NSDate+NextBus.h"; sourceTree = "<group>"; };
+		8E2C08AF1B3A45AB0020E2BE /* NSDate+NextBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+NextBus.m"; path = "utils/NSDate+NextBus.m"; sourceTree = "<group>"; };
+		8E2C08B01B3A45AB0020E2BE /* NSString+NextBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+NextBus.h"; path = "utils/NSString+NextBus.h"; sourceTree = "<group>"; };
+		8E2C08B11B3A45AB0020E2BE /* NSString+NextBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+NextBus.m"; path = "utils/NSString+NextBus.m"; sourceTree = "<group>"; };
 		8E2C08BC1B3A477B0020E2BE /* MapKitStructs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapKitStructs.h; sourceTree = "<group>"; };
 		8E2C08BD1B3A477B0020E2BE /* NSValue+MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+MapKit.h"; sourceTree = "<group>"; };
 		8E2C08BE1B3A477B0020E2BE /* NSValue+MapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+MapKit.m"; sourceTree = "<group>"; };
@@ -139,6 +142,12 @@
 		8EC0803A1B82769F00BFE99E /* TAlerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TAlerts.h; path = "TAlerts-Data/TAlerts.h"; sourceTree = "<group>"; };
 		8EC0803B1B82769F00BFE99E /* TAlerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TAlerts.m; path = "TAlerts-Data/TAlerts.m"; sourceTree = "<group>"; };
 		8EC0803E1B82778100BFE99E /* talerts.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = talerts.xml; sourceTree = "<group>"; };
+		8EC62EF81B8A5FC0008B546A /* NBRequestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBRequestClient.h; sourceTree = "<group>"; };
+		8EC62EF91B8A5FC0008B546A /* NBRequestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBRequestClient.m; sourceTree = "<group>"; };
+		8EC62EFC1B8A6117008B546A /* NBRequestTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBRequestTypes.h; sourceTree = "<group>"; };
+		8EC62EFD1B8A6117008B546A /* NBRequestTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBRequestTypes.m; sourceTree = "<group>"; };
+		8EC62EFF1B8A6127008B546A /* NBRequestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBRequestService.h; sourceTree = "<group>"; };
+		8EC62F001B8A6127008B546A /* NBRequestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBRequestService.m; sourceTree = "<group>"; };
 		F8C9A1D29E2CEE130AAF020A /* Pods-NextBus-Mantle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextBus-Mantle.release.xcconfig"; path = "Pods/Target Support Files/Pods-NextBus-Mantle/Pods-NextBus-Mantle.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,7 +179,7 @@
 		8E2C089E1B3A45AA0020E2BE /* NextBus-Data */ = {
 			isa = PBXGroup;
 			children = (
-				8E2C089F1B3A45AB0020E2BE /* MantleXMLMacros.h */,
+				8EC62F021B8A6A0D008B546A /* utils */,
 				8E2C08A01B3A45AB0020E2BE /* NBAgencies.h */,
 				8E2C08A11B3A45AB0020E2BE /* NBAgencies.m */,
 				8E2C08A21B3A45AB0020E2BE /* NBError.h */,
@@ -183,12 +192,6 @@
 				8E2C08A91B3A45AB0020E2BE /* NBRoutes.m */,
 				8E2C08AA1B3A45AB0020E2BE /* NBVehicleLocations.h */,
 				8E2C08AB1B3A45AB0020E2BE /* NBVehicleLocations.m */,
-				8E2C08AC1B3A45AB0020E2BE /* NextBusUtil.h */,
-				8E2C08AD1B3A45AB0020E2BE /* NextBusUtil.m */,
-				8E2C08AE1B3A45AB0020E2BE /* NSDate+NextBus.h */,
-				8E2C08AF1B3A45AB0020E2BE /* NSDate+NextBus.m */,
-				8E2C08B01B3A45AB0020E2BE /* NSString+NextBus.h */,
-				8E2C08B11B3A45AB0020E2BE /* NSString+NextBus.m */,
 			);
 			path = "NextBus-Data";
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				8EBD7B251B3A0FCB00BA02BD /* MantleXMLAdapter */,
 				8EC0803D1B8276B700BFE99E /* TAlerts-Data */,
 				8E2C089E1B3A45AA0020E2BE /* NextBus-Data */,
+				8EC62EFB1B8A5FFE008B546A /* NextBus-Requests */,
 				8E76F6391B3A056B00E03F55 /* NextBus-Mantle-Requests */,
 				8E76F65B1B3A056B00E03F55 /* NextBus-MantleTests */,
 				8E76F6321B3A056B00E03F55 /* Frameworks */,
@@ -354,6 +358,42 @@
 				8EC0803B1B82769F00BFE99E /* TAlerts.m */,
 			);
 			name = "TAlerts-Data";
+			sourceTree = "<group>";
+		};
+		8EC62EFB1B8A5FFE008B546A /* NextBus-Requests */ = {
+			isa = PBXGroup;
+			children = (
+				8EC62F031B8A6AAD008B546A /* requests */,
+			);
+			name = "NextBus-Requests";
+			sourceTree = "<group>";
+		};
+		8EC62F021B8A6A0D008B546A /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				8E2C089F1B3A45AB0020E2BE /* MantleXMLMacros.h */,
+				8E2C08AC1B3A45AB0020E2BE /* NextBusUtil.h */,
+				8E2C08AD1B3A45AB0020E2BE /* NextBusUtil.m */,
+				8E2C08AE1B3A45AB0020E2BE /* NSDate+NextBus.h */,
+				8E2C08AF1B3A45AB0020E2BE /* NSDate+NextBus.m */,
+				8E2C08B01B3A45AB0020E2BE /* NSString+NextBus.h */,
+				8E2C08B11B3A45AB0020E2BE /* NSString+NextBus.m */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
+		8EC62F031B8A6AAD008B546A /* requests */ = {
+			isa = PBXGroup;
+			children = (
+				8EC62EF81B8A5FC0008B546A /* NBRequestClient.h */,
+				8EC62EF91B8A5FC0008B546A /* NBRequestClient.m */,
+				8EC62EFC1B8A6117008B546A /* NBRequestTypes.h */,
+				8EC62EFD1B8A6117008B546A /* NBRequestTypes.m */,
+				8EC62EFF1B8A6127008B546A /* NBRequestService.h */,
+				8EC62F001B8A6127008B546A /* NBRequestService.m */,
+			);
+			name = requests;
+			path = "NextBus-Requests/requests";
 			sourceTree = "<group>";
 		};
 		F060843066F1FD87EE75FB6C /* Pods */ = {
@@ -507,12 +547,14 @@
 			files = (
 				8E2C08B31B3A45AB0020E2BE /* NBError.m in Sources */,
 				8E7254C31B54A814007937FB /* Debug_KissXML.m in Sources */,
+				8EC62EFA1B8A5FC0008B546A /* NBRequestClient.m in Sources */,
 				8E2C08B81B3A45AB0020E2BE /* NextBusUtil.m in Sources */,
 				8EBD7B2B1B3A0FCB00BA02BD /* NSValueTransformer+MTLXMLTransformerAdditions.m in Sources */,
 				8E76F6441B3A056B00E03F55 /* AppDelegate.m in Sources */,
 				8E2C08B21B3A45AB0020E2BE /* NBAgencies.m in Sources */,
 				8E2C08BA1B3A45AB0020E2BE /* NSString+NextBus.m in Sources */,
 				8E2C08B41B3A45AB0020E2BE /* NBPredictions.m in Sources */,
+				8EC62F011B8A6127008B546A /* NBRequestService.m in Sources */,
 				8EC0803C1B82769F00BFE99E /* TAlerts.m in Sources */,
 				8EBD7AF71B3A0E9C00BA02BD /* Debug_iOS.m in Sources */,
 				8EBD7B151B3A0E9C00BA02BD /* FilesUtil.m in Sources */,
@@ -525,6 +567,7 @@
 				8E76F6401B3A056B00E03F55 /* main.m in Sources */,
 				8E76F64D1B3A056B00E03F55 /* DetailViewController.m in Sources */,
 				8EBD7AF81B3A0E9C00BA02BD /* Debug_JSON.m in Sources */,
+				8EC62EFE1B8A6117008B546A /* NBRequestTypes.m in Sources */,
 				8E2C08B91B3A45AB0020E2BE /* NSDate+NextBus.m in Sources */,
 				8E2C08B51B3A45AB0020E2BE /* NBRouteConfig.m in Sources */,
 				8EBD7B2A1B3A0FCB00BA02BD /* MTLXMLAdapter.m in Sources */,

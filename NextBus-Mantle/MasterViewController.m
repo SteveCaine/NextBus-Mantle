@@ -31,15 +31,17 @@
 
 // ----------------------------------------------------------------------
 
-static NSString * const str_sequeID_DetailViewController = @"showDetail";
+static NSString * const SequeID_DetailViewController = @"showDetail";
 
 static NSString * const str_type_xml = @"xml";
 
 // ----------------------------------------------------------------------
 
 @interface MasterViewController ()
-//@property (strong, nonatomic) NSArray *strs;
-@property (strong, nonatomic) NSArray *xmlNames;
+//@property (strong, nonatomic) NSArray		*strs;
+@property (strong, nonatomic) NSArray		*xmlNames;
+
+@property (strong, nonatomic) NBRouteList	*routes;
 @end
 
 // ----------------------------------------------------------------------
@@ -48,6 +50,11 @@ static NSString * const str_type_xml = @"xml";
 
 @implementation MasterViewController
 
+// ----------------------------------------------------------------------
+- (void)get_routes {
+	
+}
+// ----------------------------------------------------------------------
 // ----------------------------------------------------------------------
 
 - (BOOL)write_plist:(id)obj name:(NSString *)name {
@@ -225,7 +232,7 @@ static NSString * const str_type_xml = @"xml";
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if ([[segue identifier] isEqualToString:str_sequeID_DetailViewController]) {
+	if ([[segue identifier] isEqualToString:SequeID_DetailViewController]) {
 //		NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
 		NSDate *object = [NSDate date];
 		[[segue destinationViewController] setDetailItem:object];
