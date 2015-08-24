@@ -2,6 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>staleAges</key>
+	<dict>
+		<key>routeList</key>
+		<integer>30</integer>
+		<key>routeConfig</key>
+		<integer>30</integer>
+		<key>predictions</key>
+		<integer>0</integer>
+		<key>vehicleLocations</key>
+		<integer>0</integer>
+		<key>talerts</key>
+		<real>0.01</real>
+	</dict>
 	<key>alertModes</key>
 	<array>
 		<string>Access</string>

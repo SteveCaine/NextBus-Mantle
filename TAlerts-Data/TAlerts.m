@@ -40,8 +40,8 @@ static NSString * const elem_pubDate = @"pubDate";
 	
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-		NSDictionary *mbtaData = [AppDelegate mbtaData];
-		id array = mbtaData[key_alertModes];
+		NSDictionary *appData = [AppDelegate appData];
+		id array = appData[key_alertModes];
 		if ([array isKindOfClass:[NSArray class]])
 			modeNames = (NSArray *)array;
 	});

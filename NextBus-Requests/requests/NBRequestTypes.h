@@ -1,9 +1,9 @@
 //
-//  NBRequestTypes.h
-//  ReactiveCocoaTester
+//	NBRequestTypes.h
+//	ReactiveCocoaTester
 //
-//  Created by Steve Caine on 06/24/15.
-//  Copyright (c) 2015 Steve Caine. All rights reserved.
+//	Created by Steve Caine on 06/24/15.
+//	Copyright (c) 2015 Steve Caine. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -21,7 +21,7 @@ typedef enum NBRequestTypes {
 	NBRequestType_begin = NBRequest_agencyList
 } NBRequestType;
 
-@interface NextBusRequests : NSObject
+@interface NBRequestTypes : NSObject
 
 + (NSUInteger)requestsCount;
 

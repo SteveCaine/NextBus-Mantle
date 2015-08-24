@@ -22,9 +22,14 @@
 #import "NBPredictions.h"
 #import "NBVehicleLocations.h"
 
+#import "NBRoutesRequest.h"
+
 #import "TAlerts.h"
 
-#import "NextBusUtil.h"
+//#import "NextBusUtil.h"
+#import "NBRequestTypes.h"
+
+#import "EXTScope.h"
 
 #import "Debug_iOS.h"
 #import "Debug_KissXML.h"
@@ -41,7 +46,8 @@ static NSString * const str_type_xml = @"xml";
 //@property (strong, nonatomic) NSArray		*strs;
 @property (strong, nonatomic) NSArray		*xmlNames;
 
-@property (strong, nonatomic) NBRouteList	*routes;
+@property (strong, nonatomic) NBRouteList		*routes;
+@property (strong, nonatomic) NBRoutesRequest	*routesRequest;
 @end
 
 // ----------------------------------------------------------------------
@@ -55,6 +61,18 @@ static NSString * const str_type_xml = @"xml";
 	
 }
 // ----------------------------------------------------------------------
+- (void)request_routes {
+	if (self.routesRequest == nil)
+		self.routesRequest = [[NBRoutesRequest alloc] init];
+//	@weakify(self)
+	[self.routesRequest refresh_success:^(NBRequest *request) {
+		NBRouteList *routeList = (NBRouteList *)[request response];
+//		@strongify(self)
+		MyLog(@" => routeList = %@", routeList);
+	} failure:^(NSError *error) {
+		NSLog(@"Error: %@", [error localizedDescription]);
+	}];
+}
 // ----------------------------------------------------------------------
 
 - (BOOL)write_plist:(id)obj name:(NSString *)name {
@@ -99,7 +117,7 @@ static NSString * const str_type_xml = @"xml";
 			d_DDXMLNode(doc);
 #else
 			NSString *name = [[FilesUtil namesFromPaths:@[xmlPath] stripExtensions:YES] firstObject];
-			NBRequestType requestType = [NextBusUtil findRequestTypeInName:name];
+			NBRequestType requestType = [NBRequestTypes findRequestTypeInName:name];
 			
 			id obj = nil;
 			
@@ -184,21 +202,35 @@ static NSString * const str_type_xml = @"xml";
 // ----------------------------------------------------------------------
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 1;
+	return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	return (section == 0 ? @"Requests" : @"Files");
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //	return [self.strs count];
-	return [self.xmlNames count];
+	return (section == 0 ? 1 : [self.xmlNames count]);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
+	
 //	if (indexPath.row < [self.strs count])
 //		cell.textLabel.text = self.strs[indexPath.row];
-	if (indexPath.row < [self.xmlNames count])
-		cell.textLabel.text = self.xmlNames[indexPath.row];
+
+	switch (indexPath.section) {
+		case 0:
+			cell.textLabel.text = @"request: routeList";
+			break;
+		case 1:
+			if (indexPath.row < [self.xmlNames count])
+				cell.textLabel.text = self.xmlNames[indexPath.row];
+			break;
+		default:
+			break;
+	}
 	
 	cell.detailTextLabel.text = nil;
 	
@@ -213,13 +245,22 @@ static NSString * const str_type_xml = @"xml";
 	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
 	[cell setSelected:NO animated:YES];
 
-	if (indexPath.row < [self.xmlNames count]) {
-		NSString *xmlName = self.xmlNames[indexPath.row];
-		NSString *xmlPath = [[NSBundle mainBundle] pathForResource:xmlName ofType:str_type_xml];
-		if ([xmlPath length]) {
-			BOOL success = [self parseXML:xmlPath];
-			cell.detailTextLabel.text = (success ? @"Success!" : @"Failed!");
-		}
+	switch (indexPath.section) {
+		case 0:
+			[self request_routes];
+			break;
+		case 1:
+			if (indexPath.row < [self.xmlNames count]) {
+				NSString *xmlName = self.xmlNames[indexPath.row];
+				NSString *xmlPath = [[NSBundle mainBundle] pathForResource:xmlName ofType:str_type_xml];
+				if ([xmlPath length]) {
+					BOOL success = [self parseXML:xmlPath];
+					cell.detailTextLabel.text = (success ? @"Success!" : @"Failed!");
+				}
+			}
+			break;
+		default:
+			break;
 	}
 }
 

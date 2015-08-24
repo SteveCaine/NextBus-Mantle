@@ -1,9 +1,9 @@
 //
-//  NextBusRequests.m
-//  ReactiveCocoaTester
+//	NBRequestTypes.m
+//	ReactiveCocoaTester
 //
-//  Created by Steve Caine on 06/24/15.
-//  Copyright (c) 2015 Steve Caine. All rights reserved.
+//	Created by Steve Caine on 06/24/15.
+//	Copyright (c) 2015 Steve Caine. All rights reserved.
 //
 
 #import "NBRequestTypes.h"
@@ -24,7 +24,7 @@ static NSUInteger num_requestTypes = sizeof(requestTypes)/sizeof(requestTypes[0]
 
 // ----------------------------------------------------------------------
 
-@implementation NextBusRequests
+@implementation NBRequestTypes
 
 + (NSUInteger)requestsCount {
 	return num_requestTypes;

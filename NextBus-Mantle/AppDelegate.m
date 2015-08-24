@@ -12,19 +12,26 @@
 
 // ----------------------------------------------------------------------
 
-static NSString * const type_plist		= @"plist";
-static NSString * const plist_MBTA_data = @"MBTA-data";
+static NSString * const type_plist			= @"plist";
+static NSString * const plist_appData		= @"appData";
+static NSString * const xml_file_extension	= @"xml";
+
+// ----------------------------------------------------------------------
+
+@interface AppDelegate ()
++ (NSString *)xmlsDirectory;
+@end
 
 // ----------------------------------------------------------------------
 
 @implementation AppDelegate
 
-+ (NSDictionary *)mbtaData {
++ (NSDictionary *)appData {
 	static NSDictionary *result;
 
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-		NSString *path = [[NSBundle mainBundle] pathForResource:plist_MBTA_data ofType:type_plist];
+		NSString *path = [[NSBundle mainBundle] pathForResource:plist_appData ofType:type_plist];
 		if (path.length)
 			result = [[NSDictionary alloc] initWithContentsOfFile:path];
 	});
@@ -33,10 +40,98 @@ static NSString * const plist_MBTA_data = @"MBTA-data";
 }
 
 // ----------------------------------------------------------------------
+// will replace existing files
+
++ (BOOL)cacheResponse:(NSData *)data asFile:(NSString *)name {
+	BOOL result = NO;
+	
+	if (name.length) {
+		NSString *path = [[self xmlsDirectory] stringByAppendingPathComponent:name];
+		BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:path];
+		NSError *error = nil;
+		if (exists) {
+			BOOL cleared = [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+			if (!cleared)
+				NSLog(@" error clearing older response file '%@' - %@", name, [error localizedDescription]);
+		}
+		if (error == nil) {
+			result = [[NSFileManager defaultManager] createFileAtPath:path contents:data attributes:nil];
+			if (!result)
+				NSLog(@" error saving response as file '%@'", name);
+		}
+	}
+	return result;
+}
+
+// ----------------------------------------------------------------------
+
++ (NSString *)responseFileForKey:(NSString *)key {
+	NSString *result = nil;
+	if (key.length) {
+		NSString *name = [key stringByAppendingPathExtension:xml_file_extension];
+		NSString *path = [[self xmlsDirectory] stringByAppendingPathComponent:name];
+		if ([[NSFileManager defaultManager] fileExistsAtPath:path])
+			result = path;
+	}
+	return result;
+}
+
+// ----------------------------------------------------------------------
+
++ (double)ageOfFile:(NSString *)path error:(NSError **)errorP {
+	double result = 0.0;
+	
+	NSError *error = nil;
+	NSDictionary *attribs = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:&error];
+	if (error) {
+		if (errorP)
+			*errorP = error;
+	}
+	else if (attribs == nil) {
+		// TODO: custom app error here
+		if (errorP)
+			;
+	}
+	else {
+		NSDate *date = [attribs objectForKey:NSFileModificationDate];
+		result = -[date timeIntervalSinceNow];
+	}
+	return result;
+}
+
+// ----------------------------------------------------------------------
+
++ (NSString *)xmlsDirectory {
+	NSString *result = nil;
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    result = [[paths firstObject] stringByAppendingPathComponent:@"XMLs"];
+	return result;
+}
+
+// ----------------------------------------------------------------------
+#pragma mark -
+// ----------------------------------------------------------------------
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
 	NSLog(@" docs dir = '%@'", str_DocumentsPath());
+	NSLog(@" xmls dir = '%@'", [self.class xmlsDirectory]);
+	
+	// if XMLs folder doesn't already exist, create it
+	NSString *xmlsDir = [AppDelegate xmlsDirectory];
+	if ([xmlsDir length]) {
+		if (![[NSFileManager defaultManager] fileExistsAtPath:xmlsDir]) {
+			NSError *error = nil;
+			if ([[NSFileManager defaultManager] createDirectoryAtPath:xmlsDir
+										  withIntermediateDirectories:NO
+														   attributes:nil
+																error:&error]) {
+			}
+			else {
+				NSLog(@"Error creating XMLs directory: %@", [error localizedDescription]);
+			}
+		}
+	}
 	return YES;
 }
 							

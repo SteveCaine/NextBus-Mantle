@@ -1,9 +1,9 @@
 //
-//  NBRequestClient.m
-//  ReactiveCocoaTester
+//	NBRequestClient.m
+//	ReactiveCocoaTester
 //
-//  Created by Steve Caine on 06/24/15.
-//  Copyright (c) 2015 Steve Caine. All rights reserved.
+//	Created by Steve Caine on 06/24/15.
+//	Copyright (c) 2015 Steve Caine. All rights reserved.
 //
 
 #import "NBRequestClient.h"
@@ -37,11 +37,11 @@ static NSString * const format_path = @"publicXMLFeed?command=%@&a=mbta%@";
 			   params:(NSDictionary *)params
 			  success:(void(^)(NSURLSessionDataTask *task, id responseObject))success
 			  failure:(void(^)(NSURLSessionDataTask *task, NSError *error))failure {
-	MyLog(@"%s command='%@' params=%@", __FUNCTION__, [NextBusRequests nameOfRequest:request], params);
+	MyLog(@"%s command='%@' params=%@", __FUNCTION__, [NBRequestTypes nameOfRequest:request], params);
 	
 	NSString *result = nil;
 
-	NSString *command = [NextBusRequests nameOfRequest:request];
+	NSString *command = [NBRequestTypes nameOfRequest:request];
 
 	NSMutableString *str_params = [NSMutableString string];
 	NSArray *keys = [params allKeys];

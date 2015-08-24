@@ -12,6 +12,12 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-+ (NSDictionary *)mbtaData;
++ (NSDictionary *)appData;
+
++ (BOOL)cacheResponse:(NSData *)data asFile:(NSString *)name;
+
++ (NSString *)responseFileForKey:(NSString *)key;
+
++ (double)ageOfFile:(NSString *)path error:(NSError **)error;
 
 @end
