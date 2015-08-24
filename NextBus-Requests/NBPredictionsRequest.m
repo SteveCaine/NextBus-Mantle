@@ -31,7 +31,7 @@ static NSString * const key_routeTag2	= @"r";
 // ----------------------------------------------------------------------
 
 @interface NBPredictionsRequest()
-@property (strong, nonatomic) NSDictionary *params_; //Mutable
+@property (strong, nonatomic) NSDictionary *params_;
 @end
 
 // ----------------------------------------------------------------------
@@ -76,7 +76,7 @@ static NSString * const key_routeTag2	= @"r";
 	return NBRequest_predictions;
 }
 
-//-staleAge is 0
+//-staleAge is 0 - never cache response
 
 - (NSDictionary *)params {
 	return self.params_;

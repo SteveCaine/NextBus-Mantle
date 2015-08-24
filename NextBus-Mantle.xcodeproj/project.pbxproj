@@ -57,6 +57,7 @@
 		8EC62F101B8ABD90008B546A /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC62F0F1B8ABD90008B546A /* EXTScope.m */; };
 		8ECBE7841B8B91E2002F8365 /* NBRouteConfigRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECBE7831B8B91E2002F8365 /* NBRouteConfigRequest.m */; };
 		8ECBE7871B8BA322002F8365 /* NBPredictionsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECBE7861B8BA322002F8365 /* NBPredictionsRequest.m */; };
+		8ECBE78A1B8BBDBA002F8365 /* NBVehiclesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECBE7891B8BBDBA002F8365 /* NBVehiclesRequest.m */; };
 		F1B5BB87C571687776217C19 /* libPods-NextBus-Mantle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74534276BE41B141E9D792FE /* libPods-NextBus-Mantle.a */; };
 /* End PBXBuildFile section */
 
@@ -164,6 +165,8 @@
 		8ECBE7831B8B91E2002F8365 /* NBRouteConfigRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRouteConfigRequest.m; path = "NextBus-Requests/NBRouteConfigRequest.m"; sourceTree = "<group>"; };
 		8ECBE7851B8BA322002F8365 /* NBPredictionsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBPredictionsRequest.h; path = "NextBus-Requests/NBPredictionsRequest.h"; sourceTree = "<group>"; };
 		8ECBE7861B8BA322002F8365 /* NBPredictionsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBPredictionsRequest.m; path = "NextBus-Requests/NBPredictionsRequest.m"; sourceTree = "<group>"; };
+		8ECBE7881B8BBDBA002F8365 /* NBVehiclesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBVehiclesRequest.h; path = "NextBus-Requests/NBVehiclesRequest.h"; sourceTree = "<group>"; };
+		8ECBE7891B8BBDBA002F8365 /* NBVehiclesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBVehiclesRequest.m; path = "NextBus-Requests/NBVehiclesRequest.m"; sourceTree = "<group>"; };
 		F8C9A1D29E2CEE130AAF020A /* Pods-NextBus-Mantle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextBus-Mantle.release.xcconfig"; path = "Pods/Target Support Files/Pods-NextBus-Mantle/Pods-NextBus-Mantle.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -391,6 +394,8 @@
 				8ECBE7831B8B91E2002F8365 /* NBRouteConfigRequest.m */,
 				8ECBE7851B8BA322002F8365 /* NBPredictionsRequest.h */,
 				8ECBE7861B8BA322002F8365 /* NBPredictionsRequest.m */,
+				8ECBE7881B8BBDBA002F8365 /* NBVehiclesRequest.h */,
+				8ECBE7891B8BBDBA002F8365 /* NBVehiclesRequest.m */,
 			);
 			name = "NextBus-Requests";
 			sourceTree = "<group>";
@@ -599,6 +604,7 @@
 				8E76F64D1B3A056B00E03F55 /* DetailViewController.m in Sources */,
 				8EBD7AF81B3A0E9C00BA02BD /* Debug_JSON.m in Sources */,
 				8EC62EFE1B8A6117008B546A /* NBRequestTypes.m in Sources */,
+				8ECBE78A1B8BBDBA002F8365 /* NBVehiclesRequest.m in Sources */,
 				8E2C08B91B3A45AB0020E2BE /* NSDate+NextBus.m in Sources */,
 				8E2C08B51B3A45AB0020E2BE /* NBRouteConfig.m in Sources */,
 				8EBD7B2A1B3A0FCB00BA02BD /* MTLXMLAdapter.m in Sources */,

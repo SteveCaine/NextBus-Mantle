@@ -25,6 +25,7 @@
 #import "NBRoutesRequest.h"
 #import "NBRouteConfigRequest.h"
 #import "NBPredictionsRequest.h"
+#import "NBVehiclesRequest.h"
 
 #import "TAlerts.h"
 
@@ -52,6 +53,7 @@ static NSString * const str_type_xml = @"xml";
 @property (strong, nonatomic) NBRoutesRequest		*routesRequest;
 @property (strong, nonatomic) NBRouteConfigRequest	*routeConfigRequest;
 @property (strong, nonatomic) NBPredictionsRequest	*predictionsRequest;
+@property (strong, nonatomic) NBVehiclesRequest		*vehiclesRequest;
 @end
 
 // ----------------------------------------------------------------------
@@ -94,16 +96,30 @@ static NSString * const str_type_xml = @"xml";
 
 - (void)request_predictions {
 	if (self.predictionsRequest == nil)
-//		self.predictionsRequest = [[NBPredictionsRequest alloc] initWithStopID:@"02021"];
+		self.predictionsRequest = [[NBPredictionsRequest alloc] initWithStopID:@"02021"];
 //		self.predictionsRequest = [[NBPredictionsRequest alloc] initWithStopID:@"02021" routeTag:@"71"];
 //		self.predictionsRequest = [[NBPredictionsRequest alloc] initWithStopTag:@"2021" routeTag:@"71"];
-		self.predictionsRequest = [[NBPredictionsRequest alloc] initWithStopTag:@"2021" routeTag:@""];
 	
 //	@weakify(self)
 	[self.predictionsRequest refresh_success:^(NBRequest *request) {
 		NBPredictions *predictions = (NBPredictions *)[request response];
 //		@strongify(self)
 		MyLog(@" => routeList = %@", predictions);
+	} failure:^(NSError *error) {
+		NSLog(@"Error: %@", [error localizedDescription]);
+	}];
+}
+
+// ----------------------------------------------------------------------
+
+- (void)request_vehicleLocations {
+	if (self.vehiclesRequest == nil)
+		self.vehiclesRequest = [[NBVehiclesRequest alloc] initWithRoute:@"71"];
+	//	@weakify(self)
+	[self.vehiclesRequest refresh_success:^(NBRequest *request) {
+		NBVehicleLocations *vehicles = (NBVehicleLocations *)[request response];
+//		@strongify(self)
+		MyLog(@" => vehicleLocations = %@", vehicles);
 	} failure:^(NSError *error) {
 		NSLog(@"Error: %@", [error localizedDescription]);
 	}];
@@ -223,7 +239,7 @@ static NSString * const str_type_xml = @"xml";
 	NSArray *xmlPaths = [FilesUtil pathsForBundleFilesType:str_type_xml sortedBy:SortFiles_alphabeticalAscending];
 	self.xmlNames = [FilesUtil namesFromPaths:xmlPaths stripExtensions:YES];
 	
-	self.requestNames = @[ @"routeList", @"routeConfig", @"predictions", ];
+	self.requestNames = @[ @"routeList", @"routeConfig", @"predictions", @"vehicleLocations" ];
 }
 
 - (void)viewDidLoad {
@@ -296,6 +312,9 @@ static NSString * const str_type_xml = @"xml";
 					break;
 				case 2:
 					[self request_predictions];
+					break;
+				case 3:
+					[self request_vehicleLocations];
 					break;
 				default:
 					break;
