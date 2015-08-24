@@ -79,16 +79,24 @@ static NSString * const key_staleAges = @"staleAges";
 
 - (void)refresh_success:(void(^)(NBRequest *request))success
 				failure:(void(^)(NSError *error))failure {
-	// check for existing response file in our cache
-	id cachedObject = [self.class cachedObjectForKey:[self key] staleAge:[self staleAge]];
+	
+	id cachedObject = nil;
+	// if we cache these requests, check for existing response file in cache
+	double staleAge = [self staleAge];
+	if (staleAge > 0.0)
+		cachedObject = [self.class cachedObjectForKey:[self key] staleAge:[self staleAge]];
+	
 	if (cachedObject) {
 		self.data = cachedObject;
 		if (success)
 			success(self);
 	}
 	else {
+		// only cache now if we cache such requests
+		NSString *cache_key = (staleAge > 0 ? [self key] : nil);
+		
 		// make request to web service
-		[NBRequestService request:[self type] params:[self params] key:[self key] success:^(id data) {
+		[NBRequestService request:[self type] params:[self params] key:cache_key success:^(id data) {
 			self.data = data;
 			if (success) {
 				success(self);
@@ -121,12 +129,27 @@ static NSString * const key_staleAges = @"staleAges";
 }
 
 - (NSString *)key {
-	NSAssert(false, @"Abstract class 'NBRequest' should never be instantiated.");
-	return nil;
+//	NSAssert(false, @"Abstract class 'NBRequest' should never be instantiated.");
+//	return nil;
+	NSString *str = [NBRequestTypes nameOfRequest:[self type]];
+	NSString *request_key = [str stringByAppendingString:@"&a=mbta"];
+	
+	NSMutableString *result = [request_key mutableCopy];
+	NSDictionary *params = [self params];
+	NSArray *allKeys = [params allKeys];
+	for (NSString *key in allKeys) {
+		NSString *val = params[key];
+		if (val.length)
+			[result appendFormat:@"&%@=%@", key, val];
+		else
+			[result appendFormat:@"&%@", key];
+	}
+	return result;
 }
 
 - (double)staleAge {
-	NSAssert(false, @"Abstract class 'NBRequest' should never be instantiated.");
+//	NSAssert(false, @"Abstract class 'NBRequest' should never be instantiated.");
+	// default is to never use cache
 	return 0.0;
 }
 

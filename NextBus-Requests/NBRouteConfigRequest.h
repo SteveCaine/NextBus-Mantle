@@ -10,17 +10,17 @@
 
 // ----------------------------------------------------------------------
 
-typedef enum RouteConfigRequestOptions {
-	RouteConfigRequestOption_Default,
-	RouteConfigRequestOption_Terse,
-	RouteConfigRequestOption_Verbose
-} RouteConfigRequestOption;
+typedef enum NBRouteConfigOptions {
+	NBRouteConfigOption_Default,
+	NBRouteConfigOption_Terse,
+	NBRouteConfigOption_Verbose
+} NBRouteConfigOption;
 
 // ----------------------------------------------------------------------
 
 @interface NBRouteConfigRequest : NBRequest
 
-- (instancetype)initForRoute:(NSString *)routeTag option:(RouteConfigRequestOption)option;
+- (instancetype)initWithRoute:(NSString *)routeTag option:(NBRouteConfigOption)option;
 
 @end
 

@@ -11,8 +11,8 @@
 
 // ----------------------------------------------------------------------
 
-static NSString * const str_key			= @"routeConfig&a=mbta";
-static NSString * const str_key_routeTag= @"r";
+static NSString * const request_key		= @"routeConfig&a=mbta";
+static NSString * const key_routeTag	= @"r";
 
 static NSString * const option_terse	= @"terse";
 static NSString * const option_verbose	= @"verbose";
@@ -21,7 +21,7 @@ static NSString * const option_verbose	= @"verbose";
 
 @interface NBRouteConfigRequest ()
 @property (  copy, nonatomic) NSString				  *routeTag;
-@property (assign, nonatomic) RouteConfigRequestOption option;
+@property (assign, nonatomic) NBRouteConfigOption option;
 @end
 
 // ----------------------------------------------------------------------
@@ -30,7 +30,7 @@ static NSString * const option_verbose	= @"verbose";
 
 @implementation NBRouteConfigRequest
 
-- (instancetype)initForRoute:(NSString *)routeTag option:(RouteConfigRequestOption)option {
+- (instancetype)initWithRoute:(NSString *)routeTag option:(NBRouteConfigOption)option {
 	self = [super init];
 	if (self) {
 		_routeTag = routeTag;
@@ -46,10 +46,10 @@ static NSString * const option_verbose	= @"verbose";
 }
 
 // ----------------------------------------------------------------------
-
+/** /
 - (NSString *)key {
 #if 1
-	NSMutableString *result = [str_key mutableCopy];
+	NSMutableString *result = [request_key mutableCopy];
 	NSDictionary *params = [self params];
 	NSArray *allKeys = [params allKeys];
 	for (NSString *key in allKeys) {
@@ -61,22 +61,22 @@ static NSString * const option_verbose	= @"verbose";
 	}
 	return result;
 #else
-	NSString *result = [NSString stringWithFormat:@"%@&r=%@", str_key, self.routeTag];
+	NSString *result = [NSString stringWithFormat:@"%@&r=%@", request_key, self.routeTag];
 	switch (self.option) {
-		case RouteConfigRequestOption_Terse:
+		case NBRouteConfigOption_Terse:
 			result = [result stringByAppendingFormat:@"&%@", option_terse];
 			break;
-		case RouteConfigRequestOption_Verbose:
+		case NBRouteConfigOption_Verbose:
 			result = [result stringByAppendingFormat:@"&%@", option_verbose];
 			break;
-		case RouteConfigRequestOption_Default:
+		case NBRouteConfigOption_Default:
 		default:
 			break;
 	}
 	return result;
 #endif
 }
-
+/ **/
 // ----------------------------------------------------------------------
 
 - (double)staleAge {
@@ -89,16 +89,19 @@ static NSString * const option_verbose	= @"verbose";
 // ----------------------------------------------------------------------
 
 - (NSDictionary *)params {
-	NSMutableDictionary *result = [@{ str_key_routeTag : self.routeTag } mutableCopy];
+	NSMutableDictionary *result = nil;
+	
+	if (self.routeTag.length)
+		result = [@{ key_routeTag : self.routeTag } mutableCopy];
 	
 	switch (self.option) {
-		case RouteConfigRequestOption_Terse:
+		case NBRouteConfigOption_Terse:
 			result[option_terse] = @"";
 			break;
-		case RouteConfigRequestOption_Verbose:
+		case NBRouteConfigOption_Verbose:
 			result[option_verbose] = @"";
 			break;
-		case RouteConfigRequestOption_Default:
+		case NBRouteConfigOption_Default:
 		default:
 			break;
 	}

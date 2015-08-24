@@ -24,6 +24,7 @@
 
 #import "NBRoutesRequest.h"
 #import "NBRouteConfigRequest.h"
+#import "NBPredictionsRequest.h"
 
 #import "TAlerts.h"
 
@@ -50,6 +51,7 @@ static NSString * const str_type_xml = @"xml";
 
 @property (strong, nonatomic) NBRoutesRequest		*routesRequest;
 @property (strong, nonatomic) NBRouteConfigRequest	*routeConfigRequest;
+@property (strong, nonatomic) NBPredictionsRequest	*predictionsRequest;
 @end
 
 // ----------------------------------------------------------------------
@@ -77,12 +79,31 @@ static NSString * const str_type_xml = @"xml";
 
 - (void)request_routeConfig {
 	if (self.routeConfigRequest == nil)
-		self.routeConfigRequest = [[NBRouteConfigRequest alloc] initForRoute:@"71" option:RouteConfigRequestOption_Verbose];
+		self.routeConfigRequest = [[NBRouteConfigRequest alloc] initWithRoute:@"71" option:NBRouteConfigOption_Verbose];
 //	@weakify(self)
 	[self.routeConfigRequest refresh_success:^(NBRequest *request) {
 		NBRouteConfig *routeConfig = (NBRouteConfig *)[request response];
 //		@strongify(self)
 		MyLog(@" => routeList = %@", routeConfig);
+	} failure:^(NSError *error) {
+		NSLog(@"Error: %@", [error localizedDescription]);
+	}];
+}
+
+// ----------------------------------------------------------------------
+
+- (void)request_predictions {
+	if (self.predictionsRequest == nil)
+//		self.predictionsRequest = [[NBPredictionsRequest alloc] initWithStopID:@"02021"];
+//		self.predictionsRequest = [[NBPredictionsRequest alloc] initWithStopID:@"02021" routeTag:@"71"];
+//		self.predictionsRequest = [[NBPredictionsRequest alloc] initWithStopTag:@"2021" routeTag:@"71"];
+		self.predictionsRequest = [[NBPredictionsRequest alloc] initWithStopTag:@"2021" routeTag:@""];
+	
+//	@weakify(self)
+	[self.predictionsRequest refresh_success:^(NBRequest *request) {
+		NBPredictions *predictions = (NBPredictions *)[request response];
+//		@strongify(self)
+		MyLog(@" => routeList = %@", predictions);
 	} failure:^(NSError *error) {
 		NSLog(@"Error: %@", [error localizedDescription]);
 	}];
@@ -202,7 +223,7 @@ static NSString * const str_type_xml = @"xml";
 	NSArray *xmlPaths = [FilesUtil pathsForBundleFilesType:str_type_xml sortedBy:SortFiles_alphabeticalAscending];
 	self.xmlNames = [FilesUtil namesFromPaths:xmlPaths stripExtensions:YES];
 	
-	self.requestNames = @[ @"routeList", @"routeConfig", ];
+	self.requestNames = @[ @"routeList", @"routeConfig", @"predictions", ];
 }
 
 - (void)viewDidLoad {
@@ -229,7 +250,7 @@ static NSString * const str_type_xml = @"xml";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //	return [self.strs count];
-	return (section == 0 ? 2 : [self.xmlNames count]);
+	return (section == 0 ? self.requestNames.count : self.xmlNames.count);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -266,10 +287,19 @@ static NSString * const str_type_xml = @"xml";
 
 	switch (indexPath.section) {
 		case 0:
-			if (indexPath.row == 0)
-				[self request_routes];
-			else if (indexPath.row == 1)
-				[self request_routeConfig];
+			switch (indexPath.row) {
+				case 0:
+					[self request_routes];
+					break;
+				case 1:
+					[self request_routeConfig];
+					break;
+				case 2:
+					[self request_predictions];
+					break;
+				default:
+					break;
+			}
 			break;
 		case 1:
 			if (indexPath.row < [self.xmlNames count]) {
