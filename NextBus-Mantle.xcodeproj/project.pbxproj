@@ -62,6 +62,7 @@
 		8ECBE7911B8BC939002F8365 /* TAlertsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECBE7901B8BC939002F8365 /* TAlertsRequest.m */; };
 		8ECBE7961B8BCC77002F8365 /* TAlertsData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECBE7951B8BCC77002F8365 /* TAlertsData.m */; };
 		8ECBE7991B8BD225002F8365 /* TAlertsRequestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECBE7981B8BD225002F8365 /* TAlertsRequestService.m */; };
+		8ECBE79D1B8BDAF0002F8365 /* Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECBE79C1B8BDAF0002F8365 /* Categories.m */; };
 		F1B5BB87C571687776217C19 /* libPods-NextBus-Mantle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74534276BE41B141E9D792FE /* libPods-NextBus-Mantle.a */; };
 /* End PBXBuildFile section */
 
@@ -179,6 +180,8 @@
 		8ECBE7951B8BCC77002F8365 /* TAlertsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TAlertsData.m; path = "TAlerts-Data/TAlertsData.m"; sourceTree = "<group>"; };
 		8ECBE7971B8BD225002F8365 /* TAlertsRequestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TAlertsRequestService.h; path = "TAlerts-Requests/TAlertsRequestService.h"; sourceTree = "<group>"; };
 		8ECBE7981B8BD225002F8365 /* TAlertsRequestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TAlertsRequestService.m; path = "TAlerts-Requests/TAlertsRequestService.m"; sourceTree = "<group>"; };
+		8ECBE79B1B8BDAF0002F8365 /* Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Categories.h; sourceTree = "<group>"; };
+		8ECBE79C1B8BDAF0002F8365 /* Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Categories.m; sourceTree = "<group>"; };
 		F8C9A1D29E2CEE130AAF020A /* Pods-NextBus-Mantle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextBus-Mantle.release.xcconfig"; path = "Pods/Target Support Files/Pods-NextBus-Mantle/Pods-NextBus-Mantle.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -244,6 +247,7 @@
 			children = (
 				8EBD7AA91B3A0E9B00BA02BD /* DebugUtil */,
 				8EBD7AEC1B3A0E9C00BA02BD /* FilesUtil */,
+				8ECBE79A1B8BDAF0002F8365 /* Categories */,
 				8E2C08BB1B3A477B0020E2BE /* HACKS */,
 				8EBD7B251B3A0FCB00BA02BD /* MantleXMLAdapter */,
 				8EC0803D1B8276B700BFE99E /* TAlerts-Data */,
@@ -456,6 +460,15 @@
 			name = "TAlerts-Requests";
 			sourceTree = "<group>";
 		};
+		8ECBE79A1B8BDAF0002F8365 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				8ECBE79B1B8BDAF0002F8365 /* Categories.h */,
+				8ECBE79C1B8BDAF0002F8365 /* Categories.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 		F060843066F1FD87EE75FB6C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -617,6 +630,7 @@
 				8E2C08BA1B3A45AB0020E2BE /* NSString+NextBus.m in Sources */,
 				8E2C08B41B3A45AB0020E2BE /* NBPredictions.m in Sources */,
 				8ECBE7911B8BC939002F8365 /* TAlertsRequest.m in Sources */,
+				8ECBE79D1B8BDAF0002F8365 /* Categories.m in Sources */,
 				8EC62F011B8A6127008B546A /* NBRequestService.m in Sources */,
 				8EC0803C1B82769F00BFE99E /* TAlerts.m in Sources */,
 				8EBD7AF71B3A0E9C00BA02BD /* Debug_iOS.m in Sources */,
