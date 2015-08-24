@@ -23,6 +23,7 @@
 #import "NBVehicleLocations.h"
 
 #import "NBRoutesRequest.h"
+#import "NBRouteConfigRequest.h"
 
 #import "TAlerts.h"
 
@@ -45,9 +46,10 @@ static NSString * const str_type_xml = @"xml";
 @interface MasterViewController ()
 //@property (strong, nonatomic) NSArray		*strs;
 @property (strong, nonatomic) NSArray		*xmlNames;
+@property (strong, nonatomic) NSArray		*requestNames;
 
-@property (strong, nonatomic) NBRouteList		*routes;
-@property (strong, nonatomic) NBRoutesRequest	*routesRequest;
+@property (strong, nonatomic) NBRoutesRequest		*routesRequest;
+@property (strong, nonatomic) NBRouteConfigRequest	*routeConfigRequest;
 @end
 
 // ----------------------------------------------------------------------
@@ -57,10 +59,7 @@ static NSString * const str_type_xml = @"xml";
 @implementation MasterViewController
 
 // ----------------------------------------------------------------------
-- (void)get_routes {
-	
-}
-// ----------------------------------------------------------------------
+
 - (void)request_routes {
 	if (self.routesRequest == nil)
 		self.routesRequest = [[NBRoutesRequest alloc] init];
@@ -73,6 +72,22 @@ static NSString * const str_type_xml = @"xml";
 		NSLog(@"Error: %@", [error localizedDescription]);
 	}];
 }
+
+// ----------------------------------------------------------------------
+
+- (void)request_routeConfig {
+	if (self.routeConfigRequest == nil)
+		self.routeConfigRequest = [[NBRouteConfigRequest alloc] initForRoute:@"71" option:RouteConfigRequestOption_Verbose];
+//	@weakify(self)
+	[self.routeConfigRequest refresh_success:^(NBRequest *request) {
+		NBRouteConfig *routeConfig = (NBRouteConfig *)[request response];
+//		@strongify(self)
+		MyLog(@" => routeList = %@", routeConfig);
+	} failure:^(NSError *error) {
+		NSLog(@"Error: %@", [error localizedDescription]);
+	}];
+}
+
 // ----------------------------------------------------------------------
 
 - (BOOL)write_plist:(id)obj name:(NSString *)name {
@@ -182,14 +197,17 @@ static NSString * const str_type_xml = @"xml";
 
 - (void)awakeFromNib {
 	[super awakeFromNib];
+//	self.strs = @[ @"one", @"two", @"three" ];
+	
+	NSArray *xmlPaths = [FilesUtil pathsForBundleFilesType:str_type_xml sortedBy:SortFiles_alphabeticalAscending];
+	self.xmlNames = [FilesUtil namesFromPaths:xmlPaths stripExtensions:YES];
+	
+	self.requestNames = @[ @"routeList", @"routeConfig", ];
 }
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-//	self.strs = @[ @"one", @"two", @"three" ];
-	NSArray *xmlPaths = [FilesUtil pathsForBundleFilesType:str_type_xml sortedBy:SortFiles_alphabeticalAscending];
-	self.xmlNames = [FilesUtil namesFromPaths:xmlPaths stripExtensions:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -211,7 +229,7 @@ static NSString * const str_type_xml = @"xml";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //	return [self.strs count];
-	return (section == 0 ? 1 : [self.xmlNames count]);
+	return (section == 0 ? 2 : [self.xmlNames count]);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -222,10 +240,11 @@ static NSString * const str_type_xml = @"xml";
 
 	switch (indexPath.section) {
 		case 0:
-			cell.textLabel.text = @"request: routeList";
+			if (indexPath.row < self.requestNames.count)
+				cell.textLabel.text = self.requestNames[indexPath.row];
 			break;
 		case 1:
-			if (indexPath.row < [self.xmlNames count])
+			if (indexPath.row < self.xmlNames.count)
 				cell.textLabel.text = self.xmlNames[indexPath.row];
 			break;
 		default:
@@ -247,7 +266,10 @@ static NSString * const str_type_xml = @"xml";
 
 	switch (indexPath.section) {
 		case 0:
-			[self request_routes];
+			if (indexPath.row == 0)
+				[self request_routes];
+			else if (indexPath.row == 1)
+				[self request_routeConfig];
 			break;
 		case 1:
 			if (indexPath.row < [self.xmlNames count]) {

@@ -55,6 +55,7 @@
 		8EC62F0A1B8A8116008B546A /* NBRoutesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC62F091B8A8116008B546A /* NBRoutesRequest.m */; };
 		8EC62F0D1B8A8ABD008B546A /* NBData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC62F0C1B8A8ABD008B546A /* NBData.m */; };
 		8EC62F101B8ABD90008B546A /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC62F0F1B8ABD90008B546A /* EXTScope.m */; };
+		8ECBE7841B8B91E2002F8365 /* NBRouteConfigRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECBE7831B8B91E2002F8365 /* NBRouteConfigRequest.m */; };
 		F1B5BB87C571687776217C19 /* libPods-NextBus-Mantle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74534276BE41B141E9D792FE /* libPods-NextBus-Mantle.a */; };
 /* End PBXBuildFile section */
 
@@ -143,12 +144,12 @@
 		8EC0803A1B82769F00BFE99E /* TAlerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TAlerts.h; path = "TAlerts-Data/TAlerts.h"; sourceTree = "<group>"; };
 		8EC0803B1B82769F00BFE99E /* TAlerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TAlerts.m; path = "TAlerts-Data/TAlerts.m"; sourceTree = "<group>"; };
 		8EC0803E1B82778100BFE99E /* talerts.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = talerts.xml; sourceTree = "<group>"; };
-		8EC62EF81B8A5FC0008B546A /* NBRequestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBRequestClient.h; sourceTree = "<group>"; };
-		8EC62EF91B8A5FC0008B546A /* NBRequestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBRequestClient.m; sourceTree = "<group>"; };
-		8EC62EFC1B8A6117008B546A /* NBRequestTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBRequestTypes.h; sourceTree = "<group>"; };
-		8EC62EFD1B8A6117008B546A /* NBRequestTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBRequestTypes.m; sourceTree = "<group>"; };
-		8EC62EFF1B8A6127008B546A /* NBRequestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBRequestService.h; sourceTree = "<group>"; };
-		8EC62F001B8A6127008B546A /* NBRequestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBRequestService.m; sourceTree = "<group>"; };
+		8EC62EF81B8A5FC0008B546A /* NBRequestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRequestClient.h; path = ../utils/NBRequestClient.h; sourceTree = "<group>"; };
+		8EC62EF91B8A5FC0008B546A /* NBRequestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRequestClient.m; path = ../utils/NBRequestClient.m; sourceTree = "<group>"; };
+		8EC62EFC1B8A6117008B546A /* NBRequestTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRequestTypes.h; path = ../utils/NBRequestTypes.h; sourceTree = "<group>"; };
+		8EC62EFD1B8A6117008B546A /* NBRequestTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRequestTypes.m; path = ../utils/NBRequestTypes.m; sourceTree = "<group>"; };
+		8EC62EFF1B8A6127008B546A /* NBRequestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRequestService.h; path = ../utils/NBRequestService.h; sourceTree = "<group>"; };
+		8EC62F001B8A6127008B546A /* NBRequestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRequestService.m; path = ../utils/NBRequestService.m; sourceTree = "<group>"; };
 		8EC62F041B8A6CDB008B546A /* NBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRequest.h; path = "NextBus-Requests/NBRequest.h"; sourceTree = "<group>"; };
 		8EC62F051B8A6CDB008B546A /* NBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRequest.m; path = "NextBus-Requests/NBRequest.m"; sourceTree = "<group>"; };
 		8EC62F071B8A6DB5008B546A /* NBRequest_private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NBRequest_private.h; path = "NextBus-Requests/NBRequest_private.h"; sourceTree = "<group>"; };
@@ -158,6 +159,8 @@
 		8EC62F0C1B8A8ABD008B546A /* NBData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBData.m; sourceTree = "<group>"; };
 		8EC62F0E1B8ABD90008B546A /* EXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXTScope.h; path = utils/EXTScope.h; sourceTree = "<group>"; };
 		8EC62F0F1B8ABD90008B546A /* EXTScope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXTScope.m; path = utils/EXTScope.m; sourceTree = "<group>"; };
+		8ECBE7821B8B91E2002F8365 /* NBRouteConfigRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRouteConfigRequest.h; path = "NextBus-Requests/NBRouteConfigRequest.h"; sourceTree = "<group>"; };
+		8ECBE7831B8B91E2002F8365 /* NBRouteConfigRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRouteConfigRequest.m; path = "NextBus-Requests/NBRouteConfigRequest.m"; sourceTree = "<group>"; };
 		F8C9A1D29E2CEE130AAF020A /* Pods-NextBus-Mantle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextBus-Mantle.release.xcconfig"; path = "Pods/Target Support Files/Pods-NextBus-Mantle/Pods-NextBus-Mantle.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -375,12 +378,14 @@
 		8EC62EFB1B8A5FFE008B546A /* NextBus-Requests */ = {
 			isa = PBXGroup;
 			children = (
-				8EC62F031B8A6AAD008B546A /* requests */,
+				8EC62F031B8A6AAD008B546A /* utils */,
 				8EC62F041B8A6CDB008B546A /* NBRequest.h */,
 				8EC62F071B8A6DB5008B546A /* NBRequest_private.h */,
 				8EC62F051B8A6CDB008B546A /* NBRequest.m */,
 				8EC62F081B8A8116008B546A /* NBRoutesRequest.h */,
 				8EC62F091B8A8116008B546A /* NBRoutesRequest.m */,
+				8ECBE7821B8B91E2002F8365 /* NBRouteConfigRequest.h */,
+				8ECBE7831B8B91E2002F8365 /* NBRouteConfigRequest.m */,
 			);
 			name = "NextBus-Requests";
 			sourceTree = "<group>";
@@ -399,7 +404,7 @@
 			name = utils;
 			sourceTree = "<group>";
 		};
-		8EC62F031B8A6AAD008B546A /* requests */ = {
+		8EC62F031B8A6AAD008B546A /* utils */ = {
 			isa = PBXGroup;
 			children = (
 				8EC62EF81B8A5FC0008B546A /* NBRequestClient.h */,
@@ -409,7 +414,7 @@
 				8EC62EFF1B8A6127008B546A /* NBRequestService.h */,
 				8EC62F001B8A6127008B546A /* NBRequestService.m */,
 			);
-			name = requests;
+			name = utils;
 			path = "NextBus-Requests/requests";
 			sourceTree = "<group>";
 		};
@@ -591,6 +596,7 @@
 				8E2C08B91B3A45AB0020E2BE /* NSDate+NextBus.m in Sources */,
 				8E2C08B51B3A45AB0020E2BE /* NBRouteConfig.m in Sources */,
 				8EBD7B2A1B3A0FCB00BA02BD /* MTLXMLAdapter.m in Sources */,
+				8ECBE7841B8B91E2002F8365 /* NBRouteConfigRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
