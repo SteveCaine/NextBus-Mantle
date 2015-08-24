@@ -58,13 +58,13 @@ static NSString * const xml_file_extension = @"xml";
 			if (failure)
 				failure(error);
 			else
-				MyLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
+				NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
 		}
 	} failure:^(NSURLSessionDataTask *task, NSError *error) {
 		if (failure)
 			failure(error);
 		else
-			MyLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
+			NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
 	}];
 }
 

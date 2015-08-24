@@ -15,8 +15,6 @@
 
 // ----------------------------------------------------------------------
 
-static NSString * const str_urlRoot = @"http://webservices.nextbus.com/service/publicXMLFeed?command=";
-
 static NSString * const key_staleAges = @"staleAges";
 
 // ----------------------------------------------------------------------
@@ -105,7 +103,7 @@ static NSString * const key_staleAges = @"staleAges";
 			if (failure)
 				failure(error);
 			else
-				NSLog(@"Error: %@", [error localizedDescription]);
+				NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
 		}];
 	}
 }

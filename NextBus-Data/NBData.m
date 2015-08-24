@@ -31,10 +31,10 @@
 	if (path.length && type >= NBRequestType_begin && type < NBRequestType_end) {
 		
 		if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-			NSData *data = [NSData dataWithContentsOfFile:path];
+			NSData *xml = [NSData dataWithContentsOfFile:path];
 			
-			if (data.length)
-				return [self dataForXML:data type:type error:errorP];
+			if (xml.length)
+				return [self dataForXML:xml type:type error:errorP];
 		}
 	}
 	return nil;
@@ -42,12 +42,12 @@
 
 // ----------------------------------------------------------------------
 
-+ (id)dataForXML:(NSData *)data type:(NBRequestType)requestType error:(NSError **)errorP {
++ (id)dataForXML:(NSData *)xml type:(NBRequestType)requestType error:(NSError **)errorP {
 	id result = nil;
 	
-	if ([data length]) {
+	if (xml.length) {
 		NSError *error = nil;
-		DDXMLDocument *doc = [[DDXMLDocument alloc] initWithData:data options:0 error:&error];
+		DDXMLDocument *doc = [[DDXMLDocument alloc] initWithData:xml options:0 error:&error];
 		if (error)
 			NSLog(@"Error (1): %@", [error debugDescription]);
 		else {

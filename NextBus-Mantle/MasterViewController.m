@@ -28,6 +28,7 @@
 #import "NBVehiclesRequest.h"
 
 #import "TAlerts.h"
+#import "TAlertsRequest.h"
 
 //#import "NextBusUtil.h"
 #import "NBRequestTypes.h"
@@ -50,6 +51,8 @@ static NSString * const str_type_xml = @"xml";
 @property (strong, nonatomic) NSArray		*xmlNames;
 @property (strong, nonatomic) NSArray		*requestNames;
 
+@property (strong, nonatomic) TAlertsRequest		*alertsRequest;
+
 @property (strong, nonatomic) NBRoutesRequest		*routesRequest;
 @property (strong, nonatomic) NBRouteConfigRequest	*routeConfigRequest;
 @property (strong, nonatomic) NBPredictionsRequest	*predictionsRequest;
@@ -61,6 +64,21 @@ static NSString * const str_type_xml = @"xml";
 // ----------------------------------------------------------------------
 
 @implementation MasterViewController
+
+// ----------------------------------------------------------------------
+
+- (void)request_alerts {
+	if (self.alertsRequest == nil)
+		self.alertsRequest = [[TAlertsRequest alloc] init];
+//	@weakify(self)
+	[self.alertsRequest refresh_success:^(TAlertsRequest *request) {
+		TAlertsList *alertsList = (TAlertsList *)[request response];
+//		@strongify(self)
+		MyLog(@" => alertsList = %@", alertsList);
+	} failure:^(NSError *error) {
+		NSLog(@"Error: %@", [error localizedDescription]);
+	}];
+}
 
 // ----------------------------------------------------------------------
 
@@ -239,7 +257,7 @@ static NSString * const str_type_xml = @"xml";
 	NSArray *xmlPaths = [FilesUtil pathsForBundleFilesType:str_type_xml sortedBy:SortFiles_alphabeticalAscending];
 	self.xmlNames = [FilesUtil namesFromPaths:xmlPaths stripExtensions:YES];
 	
-	self.requestNames = @[ @"routeList", @"routeConfig", @"predictions", @"vehicleLocations" ];
+	self.requestNames = @[ @"t-alerts", @"routeList", @"routeConfig", @"predictions", @"vehicleLocations" ];
 }
 
 - (void)viewDidLoad {
@@ -305,15 +323,18 @@ static NSString * const str_type_xml = @"xml";
 		case 0:
 			switch (indexPath.row) {
 				case 0:
-					[self request_routes];
+					[self request_alerts];
 					break;
 				case 1:
-					[self request_routeConfig];
+					[self request_routes];
 					break;
 				case 2:
-					[self request_predictions];
+					[self request_routeConfig];
 					break;
 				case 3:
+					[self request_predictions];
+					break;
+				case 4:
 					[self request_vehicleLocations];
 					break;
 				default:

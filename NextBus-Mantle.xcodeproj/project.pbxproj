@@ -58,6 +58,10 @@
 		8ECBE7841B8B91E2002F8365 /* NBRouteConfigRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECBE7831B8B91E2002F8365 /* NBRouteConfigRequest.m */; };
 		8ECBE7871B8BA322002F8365 /* NBPredictionsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECBE7861B8BA322002F8365 /* NBPredictionsRequest.m */; };
 		8ECBE78A1B8BBDBA002F8365 /* NBVehiclesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECBE7891B8BBDBA002F8365 /* NBVehiclesRequest.m */; };
+		8ECBE78D1B8BC61B002F8365 /* TAlertsRequestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECBE78C1B8BC61B002F8365 /* TAlertsRequestClient.m */; };
+		8ECBE7911B8BC939002F8365 /* TAlertsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECBE7901B8BC939002F8365 /* TAlertsRequest.m */; };
+		8ECBE7961B8BCC77002F8365 /* TAlertsData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECBE7951B8BCC77002F8365 /* TAlertsData.m */; };
+		8ECBE7991B8BD225002F8365 /* TAlertsRequestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECBE7981B8BD225002F8365 /* TAlertsRequestService.m */; };
 		F1B5BB87C571687776217C19 /* libPods-NextBus-Mantle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74534276BE41B141E9D792FE /* libPods-NextBus-Mantle.a */; };
 /* End PBXBuildFile section */
 
@@ -154,7 +158,6 @@
 		8EC62F001B8A6127008B546A /* NBRequestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRequestService.m; path = ../utils/NBRequestService.m; sourceTree = "<group>"; };
 		8EC62F041B8A6CDB008B546A /* NBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRequest.h; path = "NextBus-Requests/NBRequest.h"; sourceTree = "<group>"; };
 		8EC62F051B8A6CDB008B546A /* NBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRequest.m; path = "NextBus-Requests/NBRequest.m"; sourceTree = "<group>"; };
-		8EC62F071B8A6DB5008B546A /* NBRequest_private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NBRequest_private.h; path = "NextBus-Requests/NBRequest_private.h"; sourceTree = "<group>"; };
 		8EC62F081B8A8116008B546A /* NBRoutesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRoutesRequest.h; path = "NextBus-Requests/NBRoutesRequest.h"; sourceTree = "<group>"; };
 		8EC62F091B8A8116008B546A /* NBRoutesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRoutesRequest.m; path = "NextBus-Requests/NBRoutesRequest.m"; sourceTree = "<group>"; };
 		8EC62F0B1B8A8ABD008B546A /* NBData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBData.h; sourceTree = "<group>"; };
@@ -167,6 +170,15 @@
 		8ECBE7861B8BA322002F8365 /* NBPredictionsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBPredictionsRequest.m; path = "NextBus-Requests/NBPredictionsRequest.m"; sourceTree = "<group>"; };
 		8ECBE7881B8BBDBA002F8365 /* NBVehiclesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBVehiclesRequest.h; path = "NextBus-Requests/NBVehiclesRequest.h"; sourceTree = "<group>"; };
 		8ECBE7891B8BBDBA002F8365 /* NBVehiclesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBVehiclesRequest.m; path = "NextBus-Requests/NBVehiclesRequest.m"; sourceTree = "<group>"; };
+		8ECBE78B1B8BC61B002F8365 /* TAlertsRequestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TAlertsRequestClient.h; path = "TAlerts-Requests/TAlertsRequestClient.h"; sourceTree = "<group>"; };
+		8ECBE78C1B8BC61B002F8365 /* TAlertsRequestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TAlertsRequestClient.m; path = "TAlerts-Requests/TAlertsRequestClient.m"; sourceTree = "<group>"; };
+		8ECBE78F1B8BC939002F8365 /* TAlertsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TAlertsRequest.h; path = "TAlerts-Requests/TAlertsRequest.h"; sourceTree = "<group>"; };
+		8ECBE7901B8BC939002F8365 /* TAlertsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TAlertsRequest.m; path = "TAlerts-Requests/TAlertsRequest.m"; sourceTree = "<group>"; };
+		8ECBE7931B8BCB3E002F8365 /* NBRequest_private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRequest_private.h; path = "NextBus-Requests/NBRequest_private.h"; sourceTree = "<group>"; };
+		8ECBE7941B8BCC77002F8365 /* TAlertsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TAlertsData.h; path = "TAlerts-Data/TAlertsData.h"; sourceTree = "<group>"; };
+		8ECBE7951B8BCC77002F8365 /* TAlertsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TAlertsData.m; path = "TAlerts-Data/TAlertsData.m"; sourceTree = "<group>"; };
+		8ECBE7971B8BD225002F8365 /* TAlertsRequestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TAlertsRequestService.h; path = "TAlerts-Requests/TAlertsRequestService.h"; sourceTree = "<group>"; };
+		8ECBE7981B8BD225002F8365 /* TAlertsRequestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TAlertsRequestService.m; path = "TAlerts-Requests/TAlertsRequestService.m"; sourceTree = "<group>"; };
 		F8C9A1D29E2CEE130AAF020A /* Pods-NextBus-Mantle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextBus-Mantle.release.xcconfig"; path = "Pods/Target Support Files/Pods-NextBus-Mantle/Pods-NextBus-Mantle.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -235,6 +247,7 @@
 				8E2C08BB1B3A477B0020E2BE /* HACKS */,
 				8EBD7B251B3A0FCB00BA02BD /* MantleXMLAdapter */,
 				8EC0803D1B8276B700BFE99E /* TAlerts-Data */,
+				8ECBE78E1B8BC629002F8365 /* TAlerts-Requests */,
 				8E2C089E1B3A45AA0020E2BE /* NextBus-Data */,
 				8EC62EFB1B8A5FFE008B546A /* NextBus-Requests */,
 				8E76F6391B3A056B00E03F55 /* NextBus-Mantle-Requests */,
@@ -377,6 +390,8 @@
 			children = (
 				8EC0803A1B82769F00BFE99E /* TAlerts.h */,
 				8EC0803B1B82769F00BFE99E /* TAlerts.m */,
+				8ECBE7941B8BCC77002F8365 /* TAlertsData.h */,
+				8ECBE7951B8BCC77002F8365 /* TAlertsData.m */,
 			);
 			name = "TAlerts-Data";
 			sourceTree = "<group>";
@@ -386,7 +401,7 @@
 			children = (
 				8EC62F031B8A6AAD008B546A /* utils */,
 				8EC62F041B8A6CDB008B546A /* NBRequest.h */,
-				8EC62F071B8A6DB5008B546A /* NBRequest_private.h */,
+				8ECBE7931B8BCB3E002F8365 /* NBRequest_private.h */,
 				8EC62F051B8A6CDB008B546A /* NBRequest.m */,
 				8EC62F081B8A8116008B546A /* NBRoutesRequest.h */,
 				8EC62F091B8A8116008B546A /* NBRoutesRequest.m */,
@@ -426,6 +441,19 @@
 			);
 			name = utils;
 			path = "NextBus-Requests/requests";
+			sourceTree = "<group>";
+		};
+		8ECBE78E1B8BC629002F8365 /* TAlerts-Requests */ = {
+			isa = PBXGroup;
+			children = (
+				8ECBE78B1B8BC61B002F8365 /* TAlertsRequestClient.h */,
+				8ECBE78C1B8BC61B002F8365 /* TAlertsRequestClient.m */,
+				8ECBE7971B8BD225002F8365 /* TAlertsRequestService.h */,
+				8ECBE7981B8BD225002F8365 /* TAlertsRequestService.m */,
+				8ECBE78F1B8BC939002F8365 /* TAlertsRequest.h */,
+				8ECBE7901B8BC939002F8365 /* TAlertsRequest.m */,
+			);
+			name = "TAlerts-Requests";
 			sourceTree = "<group>";
 		};
 		F060843066F1FD87EE75FB6C /* Pods */ = {
@@ -588,6 +616,7 @@
 				8E2C08B21B3A45AB0020E2BE /* NBAgencies.m in Sources */,
 				8E2C08BA1B3A45AB0020E2BE /* NSString+NextBus.m in Sources */,
 				8E2C08B41B3A45AB0020E2BE /* NBPredictions.m in Sources */,
+				8ECBE7911B8BC939002F8365 /* TAlertsRequest.m in Sources */,
 				8EC62F011B8A6127008B546A /* NBRequestService.m in Sources */,
 				8EC0803C1B82769F00BFE99E /* TAlerts.m in Sources */,
 				8EBD7AF71B3A0E9C00BA02BD /* Debug_iOS.m in Sources */,
@@ -607,7 +636,10 @@
 				8ECBE78A1B8BBDBA002F8365 /* NBVehiclesRequest.m in Sources */,
 				8E2C08B91B3A45AB0020E2BE /* NSDate+NextBus.m in Sources */,
 				8E2C08B51B3A45AB0020E2BE /* NBRouteConfig.m in Sources */,
+				8ECBE7991B8BD225002F8365 /* TAlertsRequestService.m in Sources */,
 				8EBD7B2A1B3A0FCB00BA02BD /* MTLXMLAdapter.m in Sources */,
+				8ECBE7961B8BCC77002F8365 /* TAlertsData.m in Sources */,
+				8ECBE78D1B8BC61B002F8365 /* TAlertsRequestClient.m in Sources */,
 				8ECBE7841B8B91E2002F8365 /* NBRouteConfigRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
