@@ -40,9 +40,17 @@
 
 // ----------------------------------------------------------------------
 
+enum {
+	Section_Request,
+	Section_Parse,
+};
+
+static NSString * const CellID						 = @"Cell";
 static NSString * const SequeID_DetailViewController = @"showDetail";
 
 static NSString * const str_type_xml = @"xml";
+
+static const NSTimeInterval resetDelay = 1.5;
 
 // ----------------------------------------------------------------------
 
@@ -50,6 +58,9 @@ static NSString * const str_type_xml = @"xml";
 //@property (strong, nonatomic) NSArray		*strs;
 @property (strong, nonatomic) NSArray		*xmlNames;
 @property (strong, nonatomic) NSArray		*requestNames;
+@property (strong, nonatomic) NSArray		*requestMethods;
+@property (strong, nonatomic) NSArray		*sectionTitles;
+@property (strong, nonatomic) NSArray		*sectionCellSubtitles;
 
 @property (strong, nonatomic) TAlertsRequest		*alertsRequest;
 
@@ -70,13 +81,16 @@ static NSString * const str_type_xml = @"xml";
 - (void)request_alerts {
 	if (self.alertsRequest == nil)
 		self.alertsRequest = [[TAlertsRequest alloc] init];
-//	@weakify(self)
+	@weakify(self)
 	[self.alertsRequest refresh_success:^(TAlertsRequest *request) {
 		TAlertsList *alertsList = (TAlertsList *)[request response];
-//		@strongify(self)
 		MyLog(@" => alertsList = %@", alertsList);
+		@strongify(self)
+		[self reportSuccess:YES forRequest:__FUNCTION__];
 	} failure:^(NSError *error) {
 		NSLog(@"Error: %@", [error localizedDescription]);
+		@strongify(self)
+		[self reportSuccess:NO forRequest:__FUNCTION__];
 	}];
 }
 
@@ -85,13 +99,16 @@ static NSString * const str_type_xml = @"xml";
 - (void)request_routes {
 	if (self.routesRequest == nil)
 		self.routesRequest = [[NBRoutesRequest alloc] init];
-//	@weakify(self)
+	@weakify(self)
 	[self.routesRequest refresh_success:^(NBRequest *request) {
 		NBRouteList *routeList = (NBRouteList *)[request response];
-//		@strongify(self)
 		MyLog(@" => routeList = %@", routeList);
+		@strongify(self)
+		[self reportSuccess:YES forRequest:__FUNCTION__];
 	} failure:^(NSError *error) {
 		NSLog(@"Error: %@", [error localizedDescription]);
+		@strongify(self)
+		[self reportSuccess:NO forRequest:__FUNCTION__];
 	}];
 }
 
@@ -100,31 +117,38 @@ static NSString * const str_type_xml = @"xml";
 - (void)request_routeConfig {
 	if (self.routeConfigRequest == nil)
 		self.routeConfigRequest = [[NBRouteConfigRequest alloc] initWithRoute:@"71" option:NBRouteConfigOption_Verbose];
-//	@weakify(self)
+	@weakify(self)
 	[self.routeConfigRequest refresh_success:^(NBRequest *request) {
 		NBRouteConfig *routeConfig = (NBRouteConfig *)[request response];
-//		@strongify(self)
 		MyLog(@" => routeList = %@", routeConfig);
+		@strongify(self)
+		[self reportSuccess:YES forRequest:__FUNCTION__];
 	} failure:^(NSError *error) {
 		NSLog(@"Error: %@", [error localizedDescription]);
+		@strongify(self)
+		[self reportSuccess:NO forRequest:__FUNCTION__];
 	}];
 }
 
 // ----------------------------------------------------------------------
 
 - (void)request_predictions {
+	// choose any of these three alternatives
 	if (self.predictionsRequest == nil)
 		self.predictionsRequest = [[NBPredictionsRequest alloc] initWithStopID:@"02021"];
 //		self.predictionsRequest = [[NBPredictionsRequest alloc] initWithStopID:@"02021" routeTag:@"71"];
 //		self.predictionsRequest = [[NBPredictionsRequest alloc] initWithStopTag:@"2021" routeTag:@"71"];
 	
-//	@weakify(self)
+	@weakify(self)
 	[self.predictionsRequest refresh_success:^(NBRequest *request) {
 		NBPredictions *predictions = (NBPredictions *)[request response];
-//		@strongify(self)
-		MyLog(@" => routeList = %@", predictions);
+		MyLog(@" => predictions = %@", predictions);
+		@strongify(self)
+		[self reportSuccess:YES forRequest:__FUNCTION__];
 	} failure:^(NSError *error) {
 		NSLog(@"Error: %@", [error localizedDescription]);
+		@strongify(self)
+		[self reportSuccess:NO forRequest:__FUNCTION__];
 	}];
 }
 
@@ -133,16 +157,21 @@ static NSString * const str_type_xml = @"xml";
 - (void)request_vehicleLocations {
 	if (self.vehiclesRequest == nil)
 		self.vehiclesRequest = [[NBVehiclesRequest alloc] initWithRoute:@"71"];
-	//	@weakify(self)
+	@weakify(self)
 	[self.vehiclesRequest refresh_success:^(NBRequest *request) {
 		NBVehicleLocations *vehicles = (NBVehicleLocations *)[request response];
-//		@strongify(self)
 		MyLog(@" => vehicleLocations = %@", vehicles);
+		@strongify(self)
+		[self reportSuccess:YES forRequest:__FUNCTION__];
 	} failure:^(NSError *error) {
 		NSLog(@"Error: %@", [error localizedDescription]);
+		@strongify(self)
+		[self reportSuccess:NO forRequest:__FUNCTION__];
 	}];
 }
 
+// ----------------------------------------------------------------------
+#pragma mark -
 // ----------------------------------------------------------------------
 
 - (BOOL)write_plist:(id)obj name:(NSString *)name {
@@ -183,9 +212,6 @@ static NSString * const str_type_xml = @"xml";
 		if (error)
 			NSLog(@"Error (1): %@", [error debugDescription]);
 		else {
-#if 0
-			d_DDXMLNode(doc);
-#else
 			NSString *name = [[FilesUtil namesFromPaths:@[xmlPath] stripExtensions:YES] firstObject];
 			NBRequestType requestType = [NBRequestTypes findRequestTypeInName:name];
 			
@@ -240,10 +266,58 @@ static NSString * const str_type_xml = @"xml";
 					}
 				}
 			}
-#endif
 		}
 	}
 	return result;
+}
+
+// ----------------------------------------------------------------------
+
+- (void)reportSuccess:(BOOL)success forRequest:(const char *)function {
+	MyLog(@"success? %s for method %s", (success ? "YES" : "NO"), function);
+	
+	// find table cell for request
+	NSIndexPath *indexPath = nil;
+	
+	// parse method name from function signature
+	// ex., "__38-[MasterViewController request_routes]_block_invoke" => "request_routes"
+	NSString *name = [NSString stringWithCString:function encoding:NSUTF8StringEncoding];
+	NSRange r1 = [name rangeOfString:@"]"];
+	NSRange r2 = [name rangeOfString:@" " options:NSBackwardsSearch];
+	
+	if (r1.location != NSNotFound && r2.location != NSNotFound) {
+		NSUInteger i2 = r2.location + r2.length;
+		NSRange r3 = NSMakeRange(i2, r1.location - i2);
+		NSString *methodName = [name substringWithRange:r3];
+		MyLog(@" methodName = '%@'", methodName);
+		
+		NSUInteger row = [self.requestMethods indexOfObject:methodName];
+		MyLog(@" row = %i", row);
+		if (row != NSNotFound)
+			indexPath = [NSIndexPath indexPathForRow:row inSection:Section_Request];
+	}
+	if (indexPath) {
+		UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+		// flash cell briefly to indicate response has arrived
+		[cell setSelected:YES animated:YES];
+		[cell setSelected: NO animated:YES];
+		// stop spinner
+		UIView *accessoryView = cell.accessoryView;
+		if ([accessoryView isKindOfClass:[UIActivityIndicatorView class]]) {
+			UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)accessoryView;
+			[spinner stopAnimating];
+		}
+		cell.detailTextLabel.text = (success ? @"Success!" : @"Failed!");
+		
+		// now post new 'reset' for this row: after X seconds, reset to its original state
+		[self performSelector:@selector(resetForIndexPath:) withObject:indexPath afterDelay:resetDelay];
+	}
+}
+
+- (void)resetForIndexPath:(NSIndexPath *)indexPath {
+	// ASSUMED: we've already validated indexPath in caller
+	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+	cell.detailTextLabel.text = self.sectionCellSubtitles[indexPath.section];
 }
 
 // ----------------------------------------------------------------------
@@ -257,7 +331,21 @@ static NSString * const str_type_xml = @"xml";
 	NSArray *xmlPaths = [FilesUtil pathsForBundleFilesType:str_type_xml sortedBy:SortFiles_alphabeticalAscending];
 	self.xmlNames = [FilesUtil namesFromPaths:xmlPaths stripExtensions:YES];
 	
-	self.requestNames = @[ @"t-alerts", @"routeList", @"routeConfig", @"predictions", @"vehicleLocations" ];
+	self.requestNames = @[@"t-alerts",
+						  @"routeList",
+						  @"routeConfig",
+						  @"predictions",
+						  @"vehicleLocations" ];
+	
+	self.requestMethods = @[NSStringFromSelector(@selector(request_alerts)),
+							NSStringFromSelector(@selector(request_routes)),
+							NSStringFromSelector(@selector(request_routeConfig)),
+							NSStringFromSelector(@selector(request_predictions)),
+							NSStringFromSelector(@selector(request_vehicleLocations)),
+							];
+	
+	self.sectionTitles = @[ @"Make Requests", @"Parse Files" ];
+	self.sectionCellSubtitles = @[ @"idle", @"ready" ];
 }
 
 - (void)viewDidLoad {
@@ -270,43 +358,67 @@ static NSString * const str_type_xml = @"xml";
 	// Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc {
+	// in case someday this VC is not the only one in this app
+	// cancel any '-performSelector:' calls before we go away
+	[NSObject cancelPreviousPerformRequestsWithTarget:self];
+}
+
 // ----------------------------------------------------------------------
 #pragma mark - UITableViewDataSource
 // ----------------------------------------------------------------------
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 2;
+	return self.sectionTitles.count;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	return (section == 0 ? @"Requests" : @"Files");
+	if (section < self.sectionTitles.count)
+		return self.sectionTitles[section];
+	return nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//	return [self.strs count];
-	return (section == 0 ? self.requestNames.count : self.xmlNames.count);
+	NSInteger result = 0;
+	
+	switch (section) {
+		case Section_Request:
+			result = self.requestNames.count;
+			break;
+		case Section_Parse:
+			result = self.xmlNames.count;
+			break;
+		default:
+			break;
+	}
+	return result;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID forIndexPath:indexPath];
 	
 //	if (indexPath.row < [self.strs count])
 //		cell.textLabel.text = self.strs[indexPath.row];
 
 	switch (indexPath.section) {
-		case 0:
+		case Section_Request: {
 			if (indexPath.row < self.requestNames.count)
 				cell.textLabel.text = self.requestNames[indexPath.row];
-			break;
-		case 1:
+			cell.detailTextLabel.text = self.sectionCellSubtitles[indexPath.section];
+			
+			UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+			spinner.hidesWhenStopped = YES;
+			[cell setAccessoryView:spinner];
+		}	break;
+		
+		case Section_Parse:
 			if (indexPath.row < self.xmlNames.count)
 				cell.textLabel.text = self.xmlNames[indexPath.row];
+			cell.detailTextLabel.text = self.sectionCellSubtitles[indexPath.section];
 			break;
 		default:
 			break;
 	}
-	
-	cell.detailTextLabel.text = nil;
 	
 	return cell;
 }
@@ -320,34 +432,37 @@ static NSString * const str_type_xml = @"xml";
 	[cell setSelected:NO animated:YES];
 
 	switch (indexPath.section) {
-		case 0:
-			switch (indexPath.row) {
-				case 0:
-					[self request_alerts];
-					break;
-				case 1:
-					[self request_routes];
-					break;
-				case 2:
-					[self request_routeConfig];
-					break;
-				case 3:
-					[self request_predictions];
-					break;
-				case 4:
-					[self request_vehicleLocations];
-					break;
-				default:
-					break;
+		case Section_Request:
+			if (indexPath.row < self.requestMethods.count) {
+				SEL selector = NSSelectorFromString(self.requestMethods[indexPath.row]);
+				if (selector && [self respondsToSelector:selector]) {
+					
+					UIView *accessoryView = cell.accessoryView;
+					if ([accessoryView isKindOfClass:[UIActivityIndicatorView class]]) {
+						UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)accessoryView;
+						[spinner startAnimating];
+					}
+					cell.detailTextLabel.text = @"requesting ...";
+#if 0
+					[self performSelector:selector]; // gets warning: 'may cause leak because selector is unknown'
+#else
+// cf. http://stackoverflow.com/questions/7017281/performselector-may-cause-a-leak-because-its-selector-is-unknown
+					IMP imp = [self methodForSelector:selector];
+					void (*func)(id, SEL) = (void*)imp;
+					func(self, selector);			// no warning
+#endif
+				}
 			}
 			break;
-		case 1:
+		case Section_Parse:
 			if (indexPath.row < [self.xmlNames count]) {
 				NSString *xmlName = self.xmlNames[indexPath.row];
 				NSString *xmlPath = [[NSBundle mainBundle] pathForResource:xmlName ofType:str_type_xml];
 				if ([xmlPath length]) {
 					BOOL success = [self parseXML:xmlPath];
 					cell.detailTextLabel.text = (success ? @"Success!" : @"Failed!");
+					// now post new 'reset' for this row: after X seconds, reset to its original state
+					[self performSelector:@selector(resetForIndexPath:) withObject:indexPath afterDelay:resetDelay];
 				}
 			}
 			break;
