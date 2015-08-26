@@ -14,10 +14,13 @@
 #import "TAlertsRequestService.h"
 
 #import "AppDelegate.h"
+#import "Categories.h"
 
 // ----------------------------------------------------------------------
 
 static NSString * const key_talerts = @"talerts";
+
+static NSString * const key_staleAges = @"staleAges";
 
 // set each time we read a new TAlerts response
 static double last_ttl;
@@ -28,7 +31,8 @@ static double last_ttl;
 
 @property (strong, nonatomic) TAlertsList *data;
 
-+ (id)cachedAlertsForTTL:(double)ttl;
+//+ (id)cachedAlertsForTTL:(double)ttl;
++ (double)timeToLive;
 
 @end
 
@@ -36,11 +40,22 @@ static double last_ttl;
 
 @implementation TAlertsRequest
 
++ (double)timeToLive {
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		NSDictionary *appData = [AppDelegate appData];
+		NSDictionary *staleAges = appData[key_staleAges];
+		// always 'get' here but 'set' current value in static var above
+		NSNumber *default_timeToLive = staleAges[key_talerts];		// in days
+		if (default_timeToLive == nil)
+			default_timeToLive = [NSNumber numberWithDouble:0.1];	// double-default value: ~15 minutes
+		last_ttl = [default_timeToLive doubleValue] * 24.0 * 3600;	// in seconds
+	});
+	return last_ttl;
+}
+
 + (id)cachedAlertsForTTL:(double)ttl {
 	id result = nil;
-	
-	if (ttl <= 0.0)
-		ttl = 15 * 3600; // default: 15 minutes
 	
 	NSString *path = [AppDelegate responseFileForKey:key_talerts];
 	if (path.length) {
@@ -65,10 +80,7 @@ static double last_ttl;
 - (void)refresh_success:(void(^)(TAlertsRequest *request))success
 				failure:(void(^)(NSError *error))failure {
 	
-	if (last_ttl <= 0.0)
-		last_ttl = 15 * 3600; // default: 15 minutes
-	
-	id cachedObject = [self.class cachedAlertsForTTL:last_ttl];
+	id cachedObject = [self.class cachedAlertsForTTL:[self.class timeToLive]];
 	
 	if (cachedObject) {
 		self.data = cachedObject;
@@ -78,6 +90,9 @@ static double last_ttl;
 	else {
 		[TAlertsRequestService request_success:^(id data) {
 			self.data = data;
+			TAlertsList *list = [TAlertsList cast:data];
+			if (list)
+				last_ttl = [list.timeToLive doubleValue];
 			if (success)
 				success(self);
 		} failure:^(NSError *error) {

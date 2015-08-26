@@ -9,6 +9,9 @@
 #import "Categories.h"
 
 // ----------------------------------------------------------------------
+// thanks to Pyry Jahkola's for his GitHub Gist
+// "Safe" casting in Objective-C using `instancetype`
+// https://gist.github.com/pyrtsa/5151517
 
 @implementation NSObject (Cast)
 

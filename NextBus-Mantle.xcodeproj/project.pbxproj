@@ -47,7 +47,7 @@
 		8EBD7B3C1B3A137D00BA02BD /* 5-vehicleLocations&a=mbta&r=71&t=0.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8EBD7B311B3A137D00BA02BD /* 5-vehicleLocations&a=mbta&r=71&t=0.xml */; };
 		8EBF1E5A1B3A54F500CF38C4 /* 0-error.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF1E591B3A54F500CF38C4 /* 0-error.xml */; };
 		8EC0803C1B82769F00BFE99E /* TAlerts.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC0803B1B82769F00BFE99E /* TAlerts.m */; };
-		8EC0803F1B82778100BFE99E /* talerts.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0803E1B82778100BFE99E /* talerts.xml */; };
+		8EC0803F1B82778100BFE99E /*  -talerts.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0803E1B82778100BFE99E /*  -talerts.xml */; };
 		8EC62EFA1B8A5FC0008B546A /* NBRequestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC62EF91B8A5FC0008B546A /* NBRequestClient.m */; };
 		8EC62EFE1B8A6117008B546A /* NBRequestTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC62EFD1B8A6117008B546A /* NBRequestTypes.m */; };
 		8EC62F011B8A6127008B546A /* NBRequestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC62F001B8A6127008B546A /* NBRequestService.m */; };
@@ -150,7 +150,7 @@
 		8EBF1E5C1B3A5CEC00CF38C4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8EC0803A1B82769F00BFE99E /* TAlerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TAlerts.h; path = "TAlerts-Data/TAlerts.h"; sourceTree = "<group>"; };
 		8EC0803B1B82769F00BFE99E /* TAlerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TAlerts.m; path = "TAlerts-Data/TAlerts.m"; sourceTree = "<group>"; };
-		8EC0803E1B82778100BFE99E /* talerts.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = talerts.xml; sourceTree = "<group>"; };
+		8EC0803E1B82778100BFE99E /*  -talerts.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = " -talerts.xml"; sourceTree = "<group>"; };
 		8EC62EF81B8A5FC0008B546A /* NBRequestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRequestClient.h; path = "NextBus-Requests/utils/NBRequestClient.h"; sourceTree = SOURCE_ROOT; };
 		8EC62EF91B8A5FC0008B546A /* NBRequestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBRequestClient.m; path = "NextBus-Requests/utils/NBRequestClient.m"; sourceTree = SOURCE_ROOT; };
 		8EC62EFC1B8A6117008B546A /* NBRequestTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBRequestTypes.h; path = "NextBus-Requests/utils/NBRequestTypes.h"; sourceTree = SOURCE_ROOT; };
@@ -378,7 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				8E2959381B83A7D9004DE0A5 /* appData.plist */,
-				8EC0803E1B82778100BFE99E /* talerts.xml */,
+				8EC0803E1B82778100BFE99E /*  -talerts.xml */,
 				8EBF1E591B3A54F500CF38C4 /* 0-error.xml */,
 				8EBD7B2D1B3A137D00BA02BD /* 1-agencyList.xml */,
 				8EBD7B2E1B3A137D00BA02BD /* 2-routeList&a=mbta.xml */,
@@ -566,7 +566,7 @@
 				8EBD7B391B3A137D00BA02BD /* 2-routeList&a=mbta.xml in Resources */,
 				8EBF1E5A1B3A54F500CF38C4 /* 0-error.xml in Resources */,
 				8EBD7B3C1B3A137D00BA02BD /* 5-vehicleLocations&a=mbta&r=71&t=0.xml in Resources */,
-				8EC0803F1B82778100BFE99E /* talerts.xml in Resources */,
+				8EC0803F1B82778100BFE99E /*  -talerts.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

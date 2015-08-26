@@ -99,8 +99,16 @@ static NSString * const elem_pubDate = @"pubDate";
 }
 
 - (NSString *)description {
-	NSMutableString *result = [NSMutableString stringWithFormat:@"<%@ %p> ", NSStringFromClass(self.class), self];
-	[result appendFormat:@"date = '%@', direction = '%@', title = '%@', desc = '%@'", self.pubDate, self.direction, self.title, self.desc];
+	NSMutableString *result = [NSMutableString stringWithFormat:@"<%@ %p>", NSStringFromClass(self.class), self];
+	
+	[result appendFormat:@" date = '%@'", self.pubDate];
+	
+	// any of these may be empty/nil
+	if (self.direction.length)
+		[result appendFormat:@", direction = '%@'", self.direction];
+	if (self.title.length)
+		[result appendFormat:@", title = '%@'", self.title];
+	
 	NSString *mode = nil;
 	switch (self.alertMode) {
 		case AlertMode_Access:
@@ -122,7 +130,11 @@ static NSString * const elem_pubDate = @"pubDate";
 			break;
 	}
 	if (mode.length)
-		[result appendFormat:@"mode='%@'", mode];
+		[result appendFormat:@", mode='%@'", mode];
+
+	if (self.desc.length)
+		[result appendFormat:@", desc = '%@'", self.desc];
+	
 	return result;
 }
 
@@ -148,7 +160,8 @@ static NSString * const elem_pubDate = @"pubDate";
 
 + (NSDictionary *)XMLKeyPathsByPropertyKey {
 	return @{
-			 @"alerts"	: @"item"
+			 @"alerts"		: @"item",
+			 @"timeToLive"	: @"ttl"
 			 };
 }
 
@@ -161,10 +174,11 @@ static NSString * const elem_pubDate = @"pubDate";
 }
 
 - (NSString *)description {
-	NSMutableString *result = [NSMutableString stringWithFormat:@"<%@ %p> ", NSStringFromClass(self.class), self];
+	NSMutableString *result = [NSMutableString stringWithFormat:@"<%@ %p>", NSStringFromClass(self.class), self];
+	[result appendFormat:@", ttl = '%@'", self.timeToLive];
 	int index = 0;
 	for (TAlert *alert in self.alerts) {
-		[result appendFormat:@"\n%2i: %@", index++, alert];
+		[result appendFormat:@"\n\n%2i: %@", index++, alert];
 	}
 	return result;
 }
