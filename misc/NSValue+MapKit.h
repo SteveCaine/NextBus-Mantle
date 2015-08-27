@@ -1,9 +1,12 @@
 //
 //  NSValue+MapKit.h
-//  Marinalife-oceanalert
+//	NextBus-Mantle
 //
 //  Created by Steve Caine on 05/13/15.
-//  Copyright (c) 2015 EarthNC, Inc. All rights reserved.
+//
+//	This code is distributed under the terms of the MIT license.
+//
+//	Copyright (c) 2015 Steve Caine.
 //
 
 #import <Foundation/Foundation.h>

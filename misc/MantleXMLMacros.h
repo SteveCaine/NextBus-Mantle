@@ -7,7 +7,10 @@
 //	where the property name matches the XML elem/attribute name
 //
 //  Created by Steve Caine on 06/21/15.
-//  Copyright (c) 2015 Steve Caine. All rights reserved.
+//
+//	This code is distributed under the terms of the MIT license.
+//
+//	Copyright (c) 2015 Steve Caine.
 //
 
 #ifndef NextBus_Mantle_MantleXMLMacros_h
