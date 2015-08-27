@@ -44,7 +44,6 @@ typedef enum AlertModes {
 @property (strong, nonatomic, readonly) NSArray		*alerts;
 @property (assign, nonatomic, readonly) NSNumber	*timeToLive; // <ttl>
 // language-region?
-- (NSDictionary *)plist;
 @end
 
 // ----------------------------------------------------------------------

@@ -15,6 +15,7 @@
 static NSString * const type_plist			= @"plist";
 static NSString * const plist_appData		= @"appData";
 static NSString * const xml_file_extension	= @"xml";
+static NSString * const xml_dir_name		= @"XMLs";
 
 // ----------------------------------------------------------------------
 
@@ -104,7 +105,7 @@ static NSString * const xml_file_extension	= @"xml";
 + (NSString *)xmlsDirectory {
 	NSString *result = nil;
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    result = [[paths firstObject] stringByAppendingPathComponent:@"XMLs"];
+    result = [[paths firstObject] stringByAppendingPathComponent:xml_dir_name];
 	return result;
 }
 
@@ -114,8 +115,8 @@ static NSString * const xml_file_extension	= @"xml";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
-	NSLog(@" docs dir = '%@'", str_DocumentsPath());
-	NSLog(@" xmls dir = '%@'", [self.class xmlsDirectory]);
+	MyLog(@" docs dir = '%@'", str_DocumentsPath());
+	MyLog(@" xmls dir = '%@'", [self.class xmlsDirectory]);
 	
 	// if XMLs folder doesn't already exist, create it
 	NSString *xmlsDir = [AppDelegate xmlsDirectory];

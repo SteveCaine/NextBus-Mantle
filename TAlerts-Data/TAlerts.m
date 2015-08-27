@@ -138,18 +138,6 @@ static NSString * const elem_pubDate = @"pubDate";
 	return result;
 }
 
-- (NSDictionary *)plist {
-	NSMutableDictionary *result = [NSMutableDictionary dictionary];
-	
-	if (self.messageid)	result[@"messageid"] = self.messageid;
-	if (self.title)		result[@"title"] = self.title;
-	if (self.desc)		result[@"desc"]  = self.desc;
-	if (self.mode)		result[@"mode"]  = self.mode;
-	if (self.guid)		result[@"guid"]  = self.guid;
-	
-	return result;
-}
-
 @end
 
 // ----------------------------------------------------------------------
@@ -180,20 +168,6 @@ static NSString * const elem_pubDate = @"pubDate";
 	for (TAlert *alert in self.alerts) {
 		[result appendFormat:@"\n\n%2i: %@", index++, alert];
 	}
-	return result;
-}
-
-- (NSDictionary *)plist {
-	NSMutableDictionary *result = [NSMutableDictionary dictionary];
-	
-	NSMutableArray *alerts = [NSMutableArray arrayWithCapacity:self.alerts.count];
-	for (TAlert *alert in self.alerts) {
-		NSDictionary *plist = [alert plist];
-		if (plist.count)
-			[alerts addObject:plist];
-	}
-	result[@"TAlerts"] = alerts;
-
 	return result;
 }
 

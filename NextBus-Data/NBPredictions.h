@@ -52,7 +52,6 @@
 @interface NBPredictionsResponse : MTLModel <MTLXMLSerializing>
 // children
 @property (strong, nonatomic, readonly) NSArray *predictions;
-- (NSDictionary *)plist;
 @end
 
 // ----------------------------------------------------------------------

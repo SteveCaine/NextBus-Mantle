@@ -183,34 +183,6 @@ static const NSTimeInterval resetDelay = 1.5;
 #pragma mark -
 // ----------------------------------------------------------------------
 
-- (BOOL)write_plist:(id)obj name:(NSString *)name {
-	BOOL result = NO;
-	
-	if ([obj respondsToSelector:@selector(plist)] && name.length) {
-		id plist_obj = [obj plist];
-		
-		if ([plist_obj isKindOfClass:NSDictionary.class] || [plist_obj isKindOfClass:NSArray.class]) {
-			NSError *error = nil;
-			NSData *plist_xml = [NSPropertyListSerialization dataWithPropertyList:plist_obj format:NSPropertyListXMLFormat_v1_0 options:0 error:&error];
-			
-			if (plist_xml.length) {
-				NSString *plist_str = [[NSString alloc] initWithData:plist_xml encoding:NSUTF8StringEncoding];
-				
-				NSString *str_plist = @"plist";
-				name = [name stringByDeletingPathExtension];
-				name = [name stringByAppendingPathExtension:str_plist];
-				
-				NSString *path = [FilesUtil writeString:plist_str toDocFile:name];
-				result = (path.length > 0);
-			}
-		}
-	}
-	
-	return result;
-}
-
-// ----------------------------------------------------------------------
-
 - (BOOL)parseXML:(NSString *)xmlPath {
 	BOOL result = NO;
 	
@@ -259,7 +231,6 @@ static const NSTimeInterval resetDelay = 1.5;
 							break;
 						case NBRequest_predictions:
 							obj = [MTLXMLAdapter modelOfClass:[NBPredictionsResponse class] fromXMLNode:doc error:&error];
-							[self write_plist:obj name:@"predictions"];
 							break;
 						case NBRequest_vehicleLocations:
 							obj = [MTLXMLAdapter modelOfClass:[NBVehicleLocations class] fromXMLNode:doc error:&error];

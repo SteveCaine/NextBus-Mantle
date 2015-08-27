@@ -35,7 +35,6 @@
 		8E76F6621B3A056B00E03F55 /* NextBus_MantleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E76F6611B3A056B00E03F55 /* NextBus_MantleTests.m */; };
 		8EBD7AF61B3A0E9C00BA02BD /* Debug_iOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD7AAD1B3A0E9B00BA02BD /* Debug_iOS.cpp */; };
 		8EBD7AF71B3A0E9C00BA02BD /* Debug_iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD7AAF1B3A0E9B00BA02BD /* Debug_iOS.m */; };
-		8EBD7AF81B3A0E9C00BA02BD /* Debug_JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD7AB11B3A0E9B00BA02BD /* Debug_JSON.m */; };
 		8EBD7B151B3A0E9C00BA02BD /* FilesUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD7AEF1B3A0E9C00BA02BD /* FilesUtil.m */; };
 		8EBD7B161B3A0E9C00BA02BD /* FolderWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD7AF11B3A0E9C00BA02BD /* FolderWatcher.m */; };
 		8EBD7B2A1B3A0FCB00BA02BD /* MTLXMLAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD7B271B3A0FCB00BA02BD /* MTLXMLAdapter.m */; };
@@ -126,8 +125,6 @@
 		8EBD7AAD1B3A0E9B00BA02BD /* Debug_iOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Debug_iOS.cpp; sourceTree = "<group>"; };
 		8EBD7AAE1B3A0E9B00BA02BD /* Debug_iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug_iOS.h; sourceTree = "<group>"; };
 		8EBD7AAF1B3A0E9B00BA02BD /* Debug_iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Debug_iOS.m; sourceTree = "<group>"; };
-		8EBD7AB01B3A0E9B00BA02BD /* Debug_JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug_JSON.h; sourceTree = "<group>"; };
-		8EBD7AB11B3A0E9B00BA02BD /* Debug_JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Debug_JSON.m; sourceTree = "<group>"; };
 		8EBD7AEA1B3A0E9C00BA02BD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		8EBD7AEB1B3A0E9C00BA02BD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		8EBD7AEE1B3A0E9C00BA02BD /* FilesUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilesUtil.h; sourceTree = "<group>"; };
@@ -336,8 +333,6 @@
 				8EBD7AAD1B3A0E9B00BA02BD /* Debug_iOS.cpp */,
 				8EBD7AAE1B3A0E9B00BA02BD /* Debug_iOS.h */,
 				8EBD7AAF1B3A0E9B00BA02BD /* Debug_iOS.m */,
-				8EBD7AB01B3A0E9B00BA02BD /* Debug_JSON.h */,
-				8EBD7AB11B3A0E9B00BA02BD /* Debug_JSON.m */,
 				8E7254C11B54A814007937FB /* Debug_KissXML.h */,
 				8E7254C21B54A814007937FB /* Debug_KissXML.m */,
 				8EBD7AEA1B3A0E9C00BA02BD /* LICENSE */,
@@ -645,7 +640,6 @@
 				8E76F64A1B3A056B00E03F55 /* MasterViewController.m in Sources */,
 				8E76F6401B3A056B00E03F55 /* main.m in Sources */,
 				8E76F64D1B3A056B00E03F55 /* DetailViewController.m in Sources */,
-				8EBD7AF81B3A0E9C00BA02BD /* Debug_JSON.m in Sources */,
 				8EC62EFE1B8A6117008B546A /* NBRequestTypes.m in Sources */,
 				8ECBE78A1B8BBDBA002F8365 /* NBVehiclesRequest.m in Sources */,
 				8E2C08B91B3A45AB0020E2BE /* NSDate+NextBus.m in Sources */,
