@@ -191,10 +191,10 @@ static NSString * const attr_lon			= @"lon";
 			 PROPERTY_FROM_XML_ATTRIBUTE( tag		),
 			 PROPERTY_FROM_XML_ATTRIBUTE( title		),
 			 PROPERTY_FROM_XML_ATTRIBUTE( name		),
-			 @"useForUI"	: @"@useForUI_",
-//			 PROPERTY_FROM_XML_ATTRIBUTE( useForUI	),
+			 @"useForUI_"				: @"@useForUI",
+
 			 // children
-			 @"stops"		: @"stop" // just stop tags
+			 @"stops"					: @"stop" // just stop tags
 			 };
 }
 

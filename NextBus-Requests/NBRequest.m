@@ -115,12 +115,6 @@ static NSString * const key_staleAges = @"staleAges";
 
 // ----------------------------------------------------------------------
 
-- (id)response {
-	return self.data;
-}
-
-// ----------------------------------------------------------------------
-
 - (NSDictionary *)params {
 	NSAssert(false, @"Abstract class 'NBRequest' should never be instantiated.");
 	return nil;

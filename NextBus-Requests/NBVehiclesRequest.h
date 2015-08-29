@@ -11,7 +11,11 @@
 
 #import "NBRequest.h"
 
+@class NBVehicleLocations;
+
 @interface NBVehiclesRequest : NBRequest
+
+- (NBVehicleLocations *)vehicles;
 
 // we default to epoch=0 - last 15 minutes
 - (instancetype)initWithRoute:(NSString *)routeTag /*sinceWhen:(NSDate *)epoch*/;

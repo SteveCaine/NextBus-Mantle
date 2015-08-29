@@ -13,7 +13,11 @@
 
 // ----------------------------------------------------------------------
 
+@class NBPredictionsResponse;
+
 @interface NBPredictionsRequest : NBRequest
+
+- (NBPredictionsResponse *)predictionsResponse;
 
 - (instancetype)initWithStopID:(NSString *)stopID;
 

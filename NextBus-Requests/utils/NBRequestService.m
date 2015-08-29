@@ -44,8 +44,8 @@ static NSString * const xml_file_extension = @"xml";
 			// TODO: create/return error here
 		}
 		else {
-			NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-			MyLog(@" response = '%@'", str);
+//			NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+//			MyLog(@" response = '%@'", str);
 			
 			id data = [NBData dataForXML:responseObject type:type error:&error];
 			if (error == noErr) {

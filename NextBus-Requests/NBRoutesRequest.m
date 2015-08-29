@@ -10,10 +10,11 @@
 //
 
 #import "NBRoutesRequest.h"
-
 #import "NBRequest_private.h"
 
-#import "NBRequestTypes.h"
+#import "NBRoutes.h"
+
+#import "Categories.h"
 
 // ----------------------------------------------------------------------
 
@@ -22,6 +23,10 @@ static NSString * const str_key = @"routeList&a=mbta";
 // ----------------------------------------------------------------------
 
 @implementation NBRoutesRequest
+
+- (NBRouteList *)routeList {
+	return [NBRouteList cast:self.data];
+}
 
 - (NBRequestType)type {
 	return NBRequest_routeList;

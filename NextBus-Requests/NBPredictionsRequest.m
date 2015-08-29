@@ -12,6 +12,10 @@
 #import "NBPredictionsRequest.h"
 #import "NBRequest_private.h"
 
+#import "NBPredictions.h"
+
+#import "Categories.h"
+
 // ----------------------------------------------------------------------
 /** /
 typedef enum NBPredictionsOptions {
@@ -40,6 +44,10 @@ static NSString * const key_routeTag2	= @"r";
 // ----------------------------------------------------------------------
 
 @implementation NBPredictionsRequest
+
+- (NBPredictionsResponse *)predictionsResponse {
+	return [NBPredictionsResponse cast:self.data];
+}
 
 // TODO: handle invalid input params
 

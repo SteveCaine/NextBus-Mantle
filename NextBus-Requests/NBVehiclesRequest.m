@@ -12,6 +12,10 @@
 #import "NBVehiclesRequest.h"
 #import "NBRequest_private.h"
 
+#import "NBVehicleLocations.h"
+
+#import "Categories.h"
+
 // ----------------------------------------------------------------------
 
 static NSString * const request_key		= @"vehicleLocations&a=mbta";
@@ -27,6 +31,10 @@ static NSString * const key_sinceWhen	= @"t";
 // ----------------------------------------------------------------------
 
 @implementation NBVehiclesRequest
+
+- (NBVehicleLocations *)vehicles {
+	return [NBVehicleLocations cast:self.data];
+}
 
 - (instancetype)initWithRoute:(NSString *)routeTag /*sinceWhen:(NSDate *)epoch*/ {
 	self = [super init];

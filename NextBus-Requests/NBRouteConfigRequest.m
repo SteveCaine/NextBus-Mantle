@@ -12,6 +12,10 @@
 #import "NBRouteConfigRequest.h"
 #import "NBRequest_private.h"
 
+#import "NBRouteConfig.h"
+
+#import "Categories.h"
+
 // ----------------------------------------------------------------------
 
 static NSString * const request_key		= @"routeConfig&a=mbta";
@@ -32,6 +36,18 @@ static NSString * const option_verbose	= @"verbose";
 // ----------------------------------------------------------------------
 
 @implementation NBRouteConfigRequest
+
+- (NBRouteConfig *)routeConfig {
+	return [NBRouteConfig cast:self.data];
+}
+
+- (instancetype)init {
+	self = [super init];
+	if (self) {
+		NSAssert(false, @"Route Config requests must specify a route.");
+	}
+	return self;
+}
 
 - (instancetype)initWithRoute:(NSString *)routeTag option:(NBRouteConfigOption)option {
 	self = [super init];

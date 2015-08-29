@@ -111,8 +111,9 @@ static const NSTimeInterval resetDelay = 1.5;
 	@weakify(self)
 	
 	[self.routesRequest refresh_success:^(NBRequest *request) {
-		NBRouteList *routeList = [NBRouteList cast:[request response]];
-		MyLog(@" => routeList = %@", routeList);
+		NSAssert(request == self.routesRequest, @"request returns itself"); // just double-check
+//		NBRouteList *routeList = [NBRouteList cast:[request response]];
+		MyLog(@" => routeList = %@", [self.routesRequest routeList]);
 		@strongify(self)
 		[self reportSuccess:YES forRequest:__FUNCTION__];
 	} failure:^(NSError *error) {
@@ -130,8 +131,9 @@ static const NSTimeInterval resetDelay = 1.5;
 	@weakify(self)
 	
 	[self.routeConfigRequest refresh_success:^(NBRequest *request) {
-		NBRouteConfig *routeConfig = [NBRouteConfig cast:[request response]];
-		MyLog(@" => routeList = %@", routeConfig);
+		NSAssert(request == self.routeConfigRequest, @"request returns itself"); // just double-check
+//		NBRouteConfig *routeConfig = [NBRouteConfig cast:[request response]];
+		MyLog(@" => routeConfig = %@", [self.routeConfigRequest routeConfig]);
 		@strongify(self)
 		[self reportSuccess:YES forRequest:__FUNCTION__];
 	} failure:^(NSError *error) {
@@ -152,8 +154,9 @@ static const NSTimeInterval resetDelay = 1.5;
 	@weakify(self)
 	
 	[self.predictionsRequest refresh_success:^(NBRequest *request) {
-		NBPredictions *predictions = [NBPredictions cast:[request response]];
-		MyLog(@" => predictions = %@", predictions);
+		NSAssert(request == self.routesRequest, @"request returns itself"); // just double-check
+//		NBPredictions *predictions = [NBPredictions cast:[request response]];
+		MyLog(@" => predictions = %@", [self.predictionsRequest predictionsResponse]);
 		@strongify(self)
 		[self reportSuccess:YES forRequest:__FUNCTION__];
 	} failure:^(NSError *error) {
@@ -171,8 +174,9 @@ static const NSTimeInterval resetDelay = 1.5;
 	@weakify(self)
 	
 	[self.vehiclesRequest refresh_success:^(NBRequest *request) {
-		NBVehicleLocations *vehicles = [NBVehicleLocations cast:[request response]];
-		MyLog(@" => vehicleLocations = %@", vehicles);
+		NSAssert(request == self.routesRequest, @"request returns itself"); // just double-check
+//		NBVehicleLocations *vehicles = [NBVehicleLocations cast:[request response]];
+		MyLog(@" => vehicleLocations = %@", [self.vehiclesRequest vehicles]);
 		@strongify(self)
 		[self reportSuccess:YES forRequest:__FUNCTION__];
 	} failure:^(NSError *error) {

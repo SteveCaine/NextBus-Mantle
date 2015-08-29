@@ -21,7 +21,11 @@ typedef enum NBRouteConfigOptions {
 
 // ----------------------------------------------------------------------
 
+@class NBRouteConfig;
+
 @interface NBRouteConfigRequest : NBRequest
+
+- (NBRouteConfig *)routeConfig;
 
 - (instancetype)initWithRoute:(NSString *)routeTag option:(NBRouteConfigOption)option;
 

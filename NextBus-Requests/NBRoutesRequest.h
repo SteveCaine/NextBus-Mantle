@@ -11,6 +11,10 @@
 
 #import "NBRequest.h"
 
+@class NBRouteList;
+
 @interface NBRoutesRequest : NBRequest
+
+- (NBRouteList *)routeList;
 
 @end
