@@ -13,6 +13,8 @@
 #import "NBRequest_private.h"
 
 #import "AppDelegate.h"
+#import "FilesUtil.h"
+
 #import "NBData.h"
 #import "NBRequestService.h"
 
@@ -32,7 +34,7 @@ static NSString * const key_staleAges = @"staleAges";
 		if (path.length) {
 			NSString *name = [path lastPathComponent];
 			NSError *error = nil;
-			double age = [AppDelegate ageOfFile:path error:&error];
+			double age = [FilesUtil ageOfFile:path error:&error];
 			if (error && error.code != NSFileReadNoSuchFileError) {
 				NSLog(@"Error checking age of cached file '%@': %@", name, [error localizedDescription]);
 			}

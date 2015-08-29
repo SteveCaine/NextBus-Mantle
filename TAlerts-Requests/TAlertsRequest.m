@@ -18,6 +18,7 @@
 
 #import "AppDelegate.h"
 #import "Categories.h"
+#import "FilesUtil.h"
 
 // ----------------------------------------------------------------------
 
@@ -64,7 +65,7 @@ static double last_ttl;
 	if (path.length) {
 		NSString *name = [path lastPathComponent];
 		NSError *error = nil;
-		double age = [AppDelegate ageOfFile:path error:&error];
+		double age = [FilesUtil ageOfFile:path error:&error];
 		if (error && error.code != NSFileReadNoSuchFileError) {
 			NSLog(@"Error checking age of cached file '%@': %@", name, [error localizedDescription]);
 		}
