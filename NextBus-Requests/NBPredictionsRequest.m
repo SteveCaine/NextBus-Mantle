@@ -27,7 +27,6 @@ typedef enum NBPredictionsOptions {
 / **/
 // ----------------------------------------------------------------------
 
-static NSString * const request_key		= @"predictions&a=mbta";
 static NSString * const key_stopID		= @"stopId";
 static NSString * const key_routeTag	= @"routeTag";
 
@@ -93,22 +92,6 @@ static NSString * const key_routeTag2	= @"r";
 	return self.params_;
 }
 
-// ----------------------------------------------------------------------
-/** /
-- (NSString *)key {
-	NSMutableString *result = [request_key mutableCopy];
-	NSDictionary *params = [self params];
-	NSArray *allKeys = [params allKeys];
-	for (NSString *key in allKeys) {
-		NSString *val = params[key];
-		if (val.length)
-			[result appendFormat:@"&%@=%@", key, val];
-		else
-			[result appendFormat:@"&%@", key];
-	}
-	return result;
-}
-/ **/
 // ----------------------------------------------------------------------
 
 @end

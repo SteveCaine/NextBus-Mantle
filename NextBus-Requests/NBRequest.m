@@ -78,6 +78,23 @@ static NSString * const key_staleAges = @"staleAges";
 	return result;
 }
 
+- (BOOL)isDataStale {
+	BOOL result = YES;
+	
+	if (self.data && [self staleAge] > 0) {
+		NSString *path = [AppDelegate responseFileForKey:[self key]];
+		if (path.length) {
+			NSError *error = nil;
+			double age = [FilesUtil ageOfFile:path error:&error];
+			if (error == nil && age < [self staleAge]) {
+				result = NO;
+			}
+		}
+	}
+	
+	return result;
+}
+
 // ----------------------------------------------------------------------
 
 - (void)refresh_success:(void(^)(NBRequest *request))success

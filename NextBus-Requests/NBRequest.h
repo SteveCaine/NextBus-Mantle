@@ -18,6 +18,8 @@
 - (void)refresh_success:(void(^)(NBRequest *request))success
 				failure:(void(^)(NSError *error))failure;
 
+- (BOOL)isDataStale; // will calling -refresh_ create new data object?
+					 // (for callers that post-process response)
 @end
 
 // ----------------------------------------------------------------------
