@@ -45,7 +45,6 @@ static NSString * const attr_lon			= @"lon";
 
 @interface NBRouteDirection ()
 @property (assign, nonatomic, readonly) NSNumber *useForUI_; // external property is BOOL
-- (void)finish;
 @end
 
 // ----------------------------------------------------------------------
@@ -223,12 +222,6 @@ static NSString * const attr_lon			= @"lon";
 
 // ----------------------------------------------------------------------
 
-- (void)finish {
-	
-}
-
-// ----------------------------------------------------------------------
-
 - (NSString *)description {
 	NSMutableString *result = [NSMutableString stringWithFormat:@"<%@ %p> ", NSStringFromClass(self.class), self];
 	[result appendFormat:@"tag='%@', title='%@', name='%@', useForUI=%s", self.tag, self.title, self.name, (self. useForUI ? "YES" : "NO")];
@@ -316,8 +309,18 @@ static NSString * const attr_lon			= @"lon";
 	return result;
 }
 
-- (void)finish {
-	// TODO: create dictionaries to speed access to data we've received
+- (NSDictionary *)stops {
+	static NSMutableDictionary *stops_; // by stopTag
+	
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		stops_ = [NSMutableDictionary dictionary];
+		for (NBRouteStop *stop in self.a_stops) {
+			stops_[stop.tag] = stop;
+		}
+	});
+	
+	return stops_;
 }
 
 // ----------------------------------------------------------------------

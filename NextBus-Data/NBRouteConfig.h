@@ -61,7 +61,6 @@
 // calculated
 @property (strong, nonatomic)			NSDictionary *stops; // by tag
 @property (assign, nonatomic, readonly) MapBounds	  bounds;
-- (void)finish;
 @end
 
 // ----------------------------------------------------------------------
