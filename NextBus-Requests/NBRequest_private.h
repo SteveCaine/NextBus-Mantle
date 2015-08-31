@@ -18,8 +18,6 @@
 
 @property (strong, nonatomic) id data;
 
-+ (id)cachedObjectForKey:(NSString *)key staleAge:(double)staleAge;
-
 + (double)staleAgeForType:(NBRequestType)type;
 
 - (NBRequestType)type;

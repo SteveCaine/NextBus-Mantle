@@ -168,6 +168,20 @@ static NSString * const attr_epochTime	= @"epochTime";
 	return result;
 }
 
+- (NBPredictions *)predictionsForRoute:(NSString *)routeTag {
+	NBPredictions *result = nil;
+	
+	if (routeTag.length) {
+		for (NBPredictions *p in self.predictions) {
+			if ([p.routeTag isEqualToString:routeTag]) {
+				result = p;
+				break;
+			}
+		}
+	}
+	return result;
+}
+
 @end
 
 // ----------------------------------------------------------------------

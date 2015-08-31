@@ -18,6 +18,8 @@
 #import "NBData.h"
 #import "NBRequestService.h"
 
+#import "Debug_iOS.h"
+
 // ----------------------------------------------------------------------
 
 static NSString * const key_staleAges = @"staleAges";
@@ -26,7 +28,138 @@ static NSString * const key_staleAges = @"staleAges";
 
 @implementation NBRequest
 
+// ----------------------------------------------------------------------
+#pragma mark - public
+// ----------------------------------------------------------------------
+
+- (void)refresh_success:(void(^)(NBRequest *request))success
+				failure:(void(^)(NSError *error))failure {
+	MyLog(@"%s", __FUNCTION__);
+	if (![self isDataStale]) {
+		if (success)
+			success(self);
+		return;
+	}
+	else {
+		id cachedObject = nil;
+		// if we cache these requests, check for existing response file in cache
+		double staleAge = [self staleAge];
+		if (staleAge > 0.0)
+			cachedObject = [self.class cachedObjectForKey:[self key] staleAge:[self staleAge]];
+		
+		if (cachedObject) {
+			self.timestamp = [NSDate date]; // now
+			self.data = cachedObject;
+			if (success)
+				success(self);
+		}
+		else {
+			// only cache now if we cache such requests
+			NSString *cache_key = (staleAge > 0 ? [self key] : nil);
+			
+			// make request to web service
+			[NBRequestService request:[self type] params:[self params] key:cache_key success:^(id data) {
+				MyLog(@"SUCCESS");
+				self.timestamp = [NSDate date]; // now
+				self.data = data;
+				if (success) {
+					success(self);
+				}
+			} failure:^(NSError *error) {
+				MyLog(@"FAILED");
+				self.timestamp = nil;
+				self.data = nil; // clear any previous result
+				if (failure)
+					failure(error);
+				else
+					NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
+			}];
+		}
+	}
+}
+
+// ----------------------------------------------------------------------
+
+- (BOOL)isDataStale {
+	BOOL result = YES;
+	
+	if (self.data && [self staleAge] > 0) {
+		NSString *path = [AppDelegate responseFileForKey:[self key]];
+		if (path.length) {
+			NSError *error = nil;
+			double age = [FilesUtil ageOfFile:path error:&error];
+			if (error == nil && age < [self staleAge]) {
+				result = NO;
+			}
+		}
+	}
+	
+	return result;
+}
+
+// ----------------------------------------------------------------------
+#pragma mark - 'protected'
+// ----------------------------------------------------------------------
+
++ (double)staleAgeForType:(NBRequestType)type  {
+	double result = 0.0;
+	
+	NSDictionary *appData = [AppDelegate appData];
+	if (appData) {
+		NSDictionary *staleAges = appData[key_staleAges];
+		if (staleAges) {
+			NSString *name = [NBRequestTypes nameOfRequest:type];
+			if (name.length) {
+				NSNumber *staleAge = staleAges[name];		 // in days
+				result = [staleAge doubleValue] * 24 * 3600; // seconds
+			}
+		}
+	}
+	return result;
+}
+
+// ----------------------------------------------------------------------
+
+- (NSDictionary *)params {
+	NSAssert(false, @"Abstract class 'NBRequest' should never be instantiated.");
+	return nil;
+}
+
+- (NBRequestType)type {
+	NSAssert(false, @"Abstract class 'NBRequest' should never be instantiated.");
+	return NBRequest_invalid;
+}
+
+- (NSString *)key {
+	NSString *str = [NBRequestTypes nameOfRequest:[self type]];
+	NSString *request_key = [str stringByAppendingString:@"&a=mbta"];
+	
+	NSMutableString *result = [request_key mutableCopy];
+	NSDictionary *params = [self params];
+	NSArray *allKeys = [params allKeys];
+	for (NSString *key in allKeys) {
+		NSString *val = params[key];
+		if (val.length)
+			[result appendFormat:@"&%@=%@", key, val];
+		else
+			[result appendFormat:@"&%@", key];
+	}
+	return result;
+}
+
+// ----------------------------------------------------------------------
+
+- (double)staleAge {
+	// default is to never use cache
+	return 0.0;
+}
+
+// ----------------------------------------------------------------------
+#pragma mark - private
+// ----------------------------------------------------------------------
+
 + (id)cachedObjectForKey:(NSString *)key staleAge:(double)staleAge {
+	MyLog(@"%s '%@' < %f secs. old", __FUNCTION__, key, staleAge);
 	id result = nil;
 	
 	if (key.length && staleAge > 0) {
@@ -57,114 +190,6 @@ static NSString * const key_staleAges = @"staleAges";
 	}
 	
 	return result;
-}
-
-// ----------------------------------------------------------------------
-
-+ (double)staleAgeForType:(NBRequestType)type  {
-	double result = 0.0;
-	
-	NSDictionary *appData = [AppDelegate appData];
-	if (appData) {
-		NSDictionary *staleAges = appData[key_staleAges];
-		if (staleAges) {
-			NSString *name = [NBRequestTypes nameOfRequest:type];
-			if (name.length) {
-				NSNumber *staleAge = staleAges[name];		 // in days
-				result = [staleAge doubleValue] * 24 * 3600; // seconds
-			}
-		}
-	}
-	return result;
-}
-
-- (BOOL)isDataStale {
-	BOOL result = YES;
-	
-	if (self.data && [self staleAge] > 0) {
-		NSString *path = [AppDelegate responseFileForKey:[self key]];
-		if (path.length) {
-			NSError *error = nil;
-			double age = [FilesUtil ageOfFile:path error:&error];
-			if (error == nil && age < [self staleAge]) {
-				result = NO;
-			}
-		}
-	}
-	
-	return result;
-}
-
-// ----------------------------------------------------------------------
-
-- (void)refresh_success:(void(^)(NBRequest *request))success
-				failure:(void(^)(NSError *error))failure {
-	
-	id cachedObject = nil;
-	// if we cache these requests, check for existing response file in cache
-	double staleAge = [self staleAge];
-	if (staleAge > 0.0)
-		cachedObject = [self.class cachedObjectForKey:[self key] staleAge:[self staleAge]];
-	
-	if (cachedObject) {
-		self.data = cachedObject;
-		if (success)
-			success(self);
-	}
-	else {
-		// only cache now if we cache such requests
-		NSString *cache_key = (staleAge > 0 ? [self key] : nil);
-		
-		// make request to web service
-		[NBRequestService request:[self type] params:[self params] key:cache_key success:^(id data) {
-			self.data = data;
-			if (success) {
-				success(self);
-			}
-		} failure:^(NSError *error) {
-			if (failure)
-				failure(error);
-			else
-				NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
-		}];
-	}
-}
-
-// ----------------------------------------------------------------------
-
-- (NSDictionary *)params {
-	NSAssert(false, @"Abstract class 'NBRequest' should never be instantiated.");
-	return nil;
-}
-
-- (NBRequestType)type {
-	NSAssert(false, @"Abstract class 'NBRequest' should never be instantiated.");
-	return NBRequest_invalid;
-}
-
-- (NSString *)key {
-//	NSAssert(false, @"Abstract class 'NBRequest' should never be instantiated.");
-//	return nil;
-	NSString *str = [NBRequestTypes nameOfRequest:[self type]];
-	NSString *request_key = [str stringByAppendingString:@"&a=mbta"];
-	
-	NSMutableString *result = [request_key mutableCopy];
-	NSDictionary *params = [self params];
-	NSArray *allKeys = [params allKeys];
-	for (NSString *key in allKeys) {
-		NSString *val = params[key];
-		if (val.length)
-			[result appendFormat:@"&%@=%@", key, val];
-		else
-			[result appendFormat:@"&%@", key];
-	}
-	return result;
-}
-
-- (double)staleAge {
-//	NSAssert(false, @"Abstract class 'NBRequest' should never be instantiated.");
-	// default is to never use cache
-	return 0.0;
 }
 
 @end

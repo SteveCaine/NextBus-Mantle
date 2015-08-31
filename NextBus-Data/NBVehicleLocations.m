@@ -29,7 +29,7 @@ static NSString * const attr_time	  = @"time";
 + (NSDictionary *)XMLKeyPathsByPropertyKey {
 	return @{
 			 // attributes
-			 @"ID"	: @"@id",
+			 @"ID"						: @"@id",
 			 PROPERTY_FROM_XML_ATTRIBUTE( routeTag	),
 			 PROPERTY_FROM_XML_ATTRIBUTE( dirTag	),
 			 PROPERTY_FROM_XML_ATTRIBUTE( lat		),
@@ -50,7 +50,7 @@ static NSString * const attr_time	  = @"time";
 
 - (NSString *)description {
 	NSMutableString *result = [NSMutableString stringWithFormat:@"<%@ %p> ", NSStringFromClass(self.class), self];
-	[result appendFormat:@"route='%@', dir='%@'", self.routeTag, self.dirTag];
+	[result appendFormat:@"id=%@, route='%@', dir='%@'", self.ID, self.routeTag, self.dirTag];
 	CLLocationCoordinate2D coord = self.coordinate;
 	[result appendFormat:@", coordinate = { %f, %f } (lat/lon)", coord.latitude, coord.longitude];
 	return result;
@@ -108,6 +108,22 @@ static NSString * const attr_time	  = @"time";
 	int index = 0;
 	for (NBVehicle *vehicle in self.vehicles) {
 		[result appendFormat:@"\n%2i: %@", index++, vehicle];
+	}
+	return result;
+}
+
+// ----------------------------------------------------------------------
+
+- (NBVehicle *)vehicleForID:(NSString *)vehicleID {
+	NBVehicle *result = nil;
+	
+	if (vehicleID.length) {
+		for (NBVehicle *vehicle in self.vehicles) {
+			if ([vehicle.ID isEqualToString:vehicleID]) {
+				result = vehicle;
+				break;
+			}
+		}
 	}
 	return result;
 }

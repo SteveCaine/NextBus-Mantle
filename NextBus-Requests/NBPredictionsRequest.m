@@ -17,15 +17,6 @@
 #import "Categories.h"
 
 // ----------------------------------------------------------------------
-/** /
-typedef enum NBPredictionsOptions {
-	NBPredictionsOption_Unknown,
-	NBPredictionsOption_StopID,
-	NBPredictionsOption_StopIDandRoute,
-	NBPredictionsOption_StopTagAndRoute
-} NBPredictionsOption;
-/ **/
-// ----------------------------------------------------------------------
 
 static NSString * const key_stopID		= @"stopId";
 static NSString * const key_routeTag	= @"routeTag";
