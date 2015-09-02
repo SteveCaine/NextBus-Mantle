@@ -168,6 +168,18 @@ static NSString * const attr_epochTime	= @"epochTime";
 	return result;
 }
 
+- (NSString *)stopTitle {
+	NSString *result = nil;
+	for (NBPredictions *p in self.predictions) {
+		if (p.stopTitle.length) {
+			if (result.length && ![result isEqualToString:p.stopTitle])
+				NSLog(@"WARNING: mismatch in NBPredictions stopTitles: '%@' != '%@'", result, p.stopTitle);
+			result = p.stopTitle;
+		}
+	}
+	return result;
+}
+
 - (NBPredictions *)predictionsForRoute:(NSString *)routeTag {
 	NBPredictions *result = nil;
 	

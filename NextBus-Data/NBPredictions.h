@@ -56,6 +56,8 @@
 // children
 @property (strong, nonatomic, readonly) NSArray *predictions;
 
+- (NSString *)stopTitle;
+
 - (NBPredictions *)predictionsForRoute:(NSString *)routeTag;
 @end
 
