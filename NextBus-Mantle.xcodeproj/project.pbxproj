@@ -16,6 +16,7 @@
 		8E2C08B71B3A45AB0020E2BE /* NBVehicleLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08AB1B3A45AB0020E2BE /* NBVehicleLocations.m */; };
 		8E2C08B91B3A45AB0020E2BE /* NSDate+NextBus.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08AF1B3A45AB0020E2BE /* NSDate+NextBus.m */; };
 		8E2C08BA1B3A45AB0020E2BE /* NSString+NextBus.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08B11B3A45AB0020E2BE /* NSString+NextBus.m */; };
+		8E67AC931B98DCED008E811E /* MapBounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E67AC921B98DCED008E811E /* MapBounds.m */; };
 		8E76F6341B3A056B00E03F55 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E76F6331B3A056B00E03F55 /* Foundation.framework */; };
 		8E76F6361B3A056B00E03F55 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E76F6351B3A056B00E03F55 /* CoreGraphics.framework */; };
 		8E76F6381B3A056B00E03F55 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E76F6371B3A056B00E03F55 /* UIKit.framework */; };
@@ -95,6 +96,8 @@
 		8E2C08AF1B3A45AB0020E2BE /* NSDate+NextBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+NextBus.m"; path = "utils/NSDate+NextBus.m"; sourceTree = "<group>"; };
 		8E2C08B01B3A45AB0020E2BE /* NSString+NextBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+NextBus.h"; path = "utils/NSString+NextBus.h"; sourceTree = "<group>"; };
 		8E2C08B11B3A45AB0020E2BE /* NSString+NextBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+NextBus.m"; path = "utils/NSString+NextBus.m"; sourceTree = "<group>"; };
+		8E67AC911B98DCED008E811E /* MapBounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapBounds.h; sourceTree = "<group>"; };
+		8E67AC921B98DCED008E811E /* MapBounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapBounds.m; sourceTree = "<group>"; };
 		8E76F6301B3A056B00E03F55 /* NextBus-Mantle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NextBus-Mantle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E76F6331B3A056B00E03F55 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8E76F6351B3A056B00E03F55 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -342,6 +345,8 @@
 				8EBD7AAD1B3A0E9B00BA02BD /* Debug_iOS.cpp */,
 				8EBD7AAE1B3A0E9B00BA02BD /* Debug_iOS.h */,
 				8EBD7AAF1B3A0E9B00BA02BD /* Debug_iOS.m */,
+				8E67AC911B98DCED008E811E /* MapBounds.h */,
+				8E67AC921B98DCED008E811E /* MapBounds.m */,
 				8EBD7AEA1B3A0E9C00BA02BD /* LICENSE */,
 				8EBD7AEB1B3A0E9C00BA02BD /* README.md */,
 			);
@@ -626,6 +631,7 @@
 				8EC62F061B8A6CDB008B546A /* NBRequest.m in Sources */,
 				8E2C08B21B3A45AB0020E2BE /* NBAgencies.m in Sources */,
 				8E2C08BA1B3A45AB0020E2BE /* NSString+NextBus.m in Sources */,
+				8E67AC931B98DCED008E811E /* MapBounds.m in Sources */,
 				8E2C08B41B3A45AB0020E2BE /* NBPredictions.m in Sources */,
 				8EFA25E41B8F6EB10094CE56 /* EXTScope.m in Sources */,
 				8ECBE7911B8BC939002F8365 /* TAlertsRequest.m in Sources */,

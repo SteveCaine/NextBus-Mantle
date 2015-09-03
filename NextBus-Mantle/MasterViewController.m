@@ -436,14 +436,11 @@ static const NSTimeInterval resetDelay = 1.5;
 						[spinner startAnimating];
 					}
 					cell.detailTextLabel.text = @"requesting ...";
-#if 0
-					[self performSelector:selector]; // gets warning: 'may cause leak because selector is unknown'
-#else
-// cf. http://stackoverflow.com/questions/7017281/performselector-may-cause-a-leak-because-its-selector-is-unknown
-					IMP imp = [self methodForSelector:selector];
-					void (*func)(id, SEL) = (void*)imp;
-					func(self, selector);			// no warning
-#endif
+// silence warning: 'may cause leak because selector is unknown'
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+					[self performSelector:selector];
+#pragma clang diagnostic pop
 				}
 			}
 			break;

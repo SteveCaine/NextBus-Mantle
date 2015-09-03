@@ -12,6 +12,7 @@
 #ifndef MantleXMLTester_MapKitStructs_h
 #define MantleXMLTester_MapKitStructs_h
 
+#ifndef __CORELOCATION__
 
 // until we include CoreLocation and MapKit headers
 typedef double CLLocationDegrees;
@@ -33,14 +34,6 @@ typedef struct {
 	MKCoordinateSpan span;
 } MKCoordinateRegion;
 
-
-// until we include 'MapUtil'
-typedef struct MapBounds {
-	CLLocationDegrees north;
-	CLLocationDegrees south;
-	CLLocationDegrees east;
-	CLLocationDegrees west;
-} MapBounds;
-
+#endif // #ifndef __CORELOCATION__
 
 #endif

@@ -13,6 +13,7 @@
 #import "MTLXMLAdapter.h"
 
 #import "MapKitStructs.h"
+#import "MapBounds.h"
 
 // ----------------------------------------------------------------------
 

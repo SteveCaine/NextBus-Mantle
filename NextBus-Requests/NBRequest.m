@@ -159,7 +159,7 @@ static NSString * const key_staleAges = @"staleAges";
 // ----------------------------------------------------------------------
 
 + (id)cachedObjectForKey:(NSString *)key staleAge:(double)staleAge {
-	MyLog(@"%s '%@' < %f secs. old", __FUNCTION__, key, staleAge);
+//	MyLog(@"%s '%@' < %f secs. old", __FUNCTION__, key, staleAge);
 	id result = nil;
 	
 	if (key.length && staleAge > 0) {
