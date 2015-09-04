@@ -111,7 +111,7 @@ static const NSTimeInterval resetDelay = 1.5;
 	@weakify(self)
 	
 	[self.routesRequest refresh_success:^(NBRequest *request) {
-		NSAssert(request == self.routesRequest, @"request returns itself"); // just double-check
+		NSAssert(request == self.routesRequest, @"request returns itself");
 //		NBRouteList *routeList = [NBRouteList cast:[request response]];
 		MyLog(@" => routeList = %@", [self.routesRequest routeList]);
 		@strongify(self)
@@ -131,7 +131,7 @@ static const NSTimeInterval resetDelay = 1.5;
 	@weakify(self)
 	
 	[self.routeConfigRequest refresh_success:^(NBRequest *request) {
-		NSAssert(request == self.routeConfigRequest, @"request returns itself"); // just double-check
+		NSAssert(request == self.routeConfigRequest, @"request returns itself");
 //		NBRouteConfig *routeConfig = [NBRouteConfig cast:[request response]];
 		MyLog(@" => routeConfig = %@", [self.routeConfigRequest routeConfig]);
 		@strongify(self)
@@ -154,7 +154,7 @@ static const NSTimeInterval resetDelay = 1.5;
 	@weakify(self)
 	
 	[self.predictionsRequest refresh_success:^(NBRequest *request) {
-		NSAssert(request == self.routesRequest, @"request returns itself"); // just double-check
+		NSAssert(request == self.predictionsRequest, @"request returns itself");
 //		NBPredictions *predictions = [NBPredictions cast:[request response]];
 		MyLog(@" => predictions = %@", [self.predictionsRequest predictionsResponse]);
 		@strongify(self)
@@ -174,7 +174,7 @@ static const NSTimeInterval resetDelay = 1.5;
 	@weakify(self)
 	
 	[self.vehiclesRequest refresh_success:^(NBRequest *request) {
-		NSAssert(request == self.routesRequest, @"request returns itself"); // just double-check
+		NSAssert(request == self.vehiclesRequest, @"request returns itself");
 //		NBVehicleLocations *vehicles = [NBVehicleLocations cast:[request response]];
 		MyLog(@" => vehicleLocations = %@", [self.vehiclesRequest vehicles]);
 		@strongify(self)
