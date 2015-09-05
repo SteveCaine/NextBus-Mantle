@@ -69,6 +69,8 @@
 
 - (NSArray *)visibleDirectionsForStopTag:(NSString *)stopTag;
 
+- (NSArray *)stopsForDirectionTag:(NSString *)directionTag;
+
 - (NSArray *)pathsForDirectionTag:(NSString *)directionTag;
 @end
 

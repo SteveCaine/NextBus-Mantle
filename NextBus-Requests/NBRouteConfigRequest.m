@@ -65,40 +65,11 @@ static NSString * const option_verbose	= @"verbose";
 }
 
 // ----------------------------------------------------------------------
-/** /
-- (NSString *)key {
-#if 1
-	NSMutableString *result = [request_key mutableCopy];
-	NSDictionary *params = [self params];
-	NSArray *allKeys = [params allKeys];
-	for (NSString *key in allKeys) {
-		NSString *val = params[key];
-		if (val.length)
-			[result appendFormat:@"&%@=%@", key, val];
-		else
-			[result appendFormat:@"&%@", key];
-	}
-	return result;
-#else
-	NSString *result = [NSString stringWithFormat:@"%@&r=%@", request_key, self.routeTag];
-	switch (self.option) {
-		case NBRouteConfigOption_Terse:
-			result = [result stringByAppendingFormat:@"&%@", option_terse];
-			break;
-		case NBRouteConfigOption_Verbose:
-			result = [result stringByAppendingFormat:@"&%@", option_verbose];
-			break;
-		case NBRouteConfigOption_Default:
-		default:
-			break;
-	}
-	return result;
-#endif
-}
-/ **/
-// ----------------------------------------------------------------------
 
 - (double)staleAge {
+#if DEBUG_cacheAllResponses
+	return [[NSDate distantFuture] timeIntervalSinceNow];
+#endif
 	double staleAge = [super.class staleAgeForType:NBRequest_routeList];
 	if (staleAge <= 0)
 		staleAge = 30.0 * 24 * 3600; // default: 30 days

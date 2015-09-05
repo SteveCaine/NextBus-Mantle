@@ -78,6 +78,11 @@ static NSString * const key_routeTag2	= @"r";
 }
 
 //-staleAge is 0 - never cache response
+#if DEBUG_cacheAllResponses
+- (double)staleAge {
+	return [[NSDate distantFuture] timeIntervalSinceNow];
+}
+#endif
 
 - (NSDictionary *)params {
 	return self.params_;

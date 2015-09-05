@@ -342,6 +342,31 @@ static NSString * const attr_lon			= @"lon";
 			}
 		}
 	}
+	MyLog(@"%s (%@) returns %i directions", __FUNCTION__, self.tag, result.count);
+	return result;
+}
+
+// ----------------------------------------------------------------------
+
+- (NSArray *)stopsForDirectionTag:(NSString *)directionTag {
+	NSMutableArray *result = nil;
+	
+	if (directionTag.length) {
+		for (NBRouteDirection *direction in self.directions) {
+			if ([direction.tag isEqualToString:directionTag]) {
+				for (NSString *stopTag in direction.stops) {
+					NBRouteStop *stop = self.stops[stopTag];
+					if (stop) {
+						if (result == nil)
+							result = [NSMutableArray array];
+						[result addObject:stop];
+					}
+				}
+				break;
+			}
+		}
+	}
+	MyLog(@"%s (%@) returns %i stops", __FUNCTION__, self.tag, result.count);
 	return result;
 }
 
@@ -363,7 +388,7 @@ static NSString * const attr_lon			= @"lon";
 			}
 		}
 	}
-	
+	MyLog(@"%s (%@) returns %i paths", __FUNCTION__, self.tag, result.count);
 	return result;
 }
 

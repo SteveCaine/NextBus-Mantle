@@ -50,6 +50,11 @@ static NSString * const key_sinceWhen	= @"t";
 }
 
 //-staleAge is 0 - never cache response
+#if DEBUG_cacheAllResponses
+- (double)staleAge {
+	return [[NSDate distantFuture] timeIntervalSinceNow];
+}
+#endif
 
 - (NSDictionary *)params {
 	return self.params_;

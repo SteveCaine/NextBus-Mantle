@@ -29,6 +29,9 @@
 }
 
 - (double)staleAge {
+#if DEBUG_cacheAllResponses
+	return [[NSDate distantFuture] timeIntervalSinceNow];
+#endif
 	double staleAge = [super.class staleAgeForType:NBRequest_routeList];
 	if (staleAge <= 0)
 		staleAge = 30.0 * 24 * 3600; // default: 30 days
