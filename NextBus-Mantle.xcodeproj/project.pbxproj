@@ -172,8 +172,8 @@
 		8ECBE7951B8BCC77002F8365 /* TAlertsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TAlertsData.m; path = "TAlerts-Data/TAlertsData.m"; sourceTree = "<group>"; };
 		8ECBE7971B8BD225002F8365 /* TAlertsRequestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TAlertsRequestService.h; path = "TAlerts-Requests/TAlertsRequestService.h"; sourceTree = "<group>"; };
 		8ECBE7981B8BD225002F8365 /* TAlertsRequestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TAlertsRequestService.m; path = "TAlerts-Requests/TAlertsRequestService.m"; sourceTree = "<group>"; };
-		8ECBE79B1B8BDAF0002F8365 /* Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Categories.h; sourceTree = "<group>"; };
-		8ECBE79C1B8BDAF0002F8365 /* Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Categories.m; sourceTree = "<group>"; };
+		8ECBE79B1B8BDAF0002F8365 /* Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Categories.h; path = "NextBus-Mantle/Categories/Categories.h"; sourceTree = SOURCE_ROOT; };
+		8ECBE79C1B8BDAF0002F8365 /* Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Categories.m; path = "NextBus-Mantle/Categories/Categories.m"; sourceTree = SOURCE_ROOT; };
 		8EE0EE8D1B8F78DB000410A6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		8EE0EE8E1B8F78DB000410A6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8EFA25DB1B8F6EB10094CE56 /* Debug_KissXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Debug_KissXML.h; path = misc/Debug_KissXML.h; sourceTree = SOURCE_ROOT; };
@@ -257,7 +257,6 @@
 				8EE0EE8D1B8F78DB000410A6 /* LICENSE */,
 				8EBD7AA91B3A0E9B00BA02BD /* DebugUtil */,
 				8EBD7AEC1B3A0E9C00BA02BD /* FilesUtil */,
-				8ECBE79A1B8BDAF0002F8365 /* Categories */,
 				8EBD7B251B3A0FCB00BA02BD /* MantleXMLAdapter */,
 				8E2C08BB1B3A477B0020E2BE /* misc */,
 				8EC0803D1B8276B700BFE99E /* TAlerts-Data */,
@@ -304,6 +303,7 @@
 				8E76F64B1B3A056B00E03F55 /* DetailViewController.h */,
 				8E76F64C1B3A056B00E03F55 /* DetailViewController.m */,
 				8E76F64E1B3A056B00E03F55 /* Images.xcassets */,
+				8ECBE79A1B8BDAF0002F8365 /* Categories */,
 				8EBD7B2C1B3A137D00BA02BD /* Resources */,
 				8E76F63A1B3A056B00E03F55 /* Supporting Files */,
 			);
@@ -470,7 +470,8 @@
 				8ECBE79B1B8BDAF0002F8365 /* Categories.h */,
 				8ECBE79C1B8BDAF0002F8365 /* Categories.m */,
 			);
-			path = Categories;
+			name = Categories;
+			path = ../Categories;
 			sourceTree = "<group>";
 		};
 		F060843066F1FD87EE75FB6C /* Pods */ = {
