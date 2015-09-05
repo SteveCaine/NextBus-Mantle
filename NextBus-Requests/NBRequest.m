@@ -119,6 +119,7 @@ static NSString * const key_staleAges = @"staleAges";
 }
 
 // ----------------------------------------------------------------------
+// OVERRIDES
 
 - (NSDictionary *)params {
 	NSAssert(false, @"Abstract class 'NBRequest' should never be instantiated.");
@@ -129,6 +130,13 @@ static NSString * const key_staleAges = @"staleAges";
 	NSAssert(false, @"Abstract class 'NBRequest' should never be instantiated.");
 	return NBRequest_invalid;
 }
+
+- (double)staleAge {
+	// default is to never use cache
+	return 0.0;
+}
+
+// ----------------------------------------------------------------------
 
 - (NSString *)key {
 	NSString *str = [NBRequestTypes nameOfRequest:[self type]];
@@ -145,13 +153,6 @@ static NSString * const key_staleAges = @"staleAges";
 			[result appendFormat:@"&%@", key];
 	}
 	return result;
-}
-
-// ----------------------------------------------------------------------
-
-- (double)staleAge {
-	// default is to never use cache
-	return 0.0;
 }
 
 // ----------------------------------------------------------------------

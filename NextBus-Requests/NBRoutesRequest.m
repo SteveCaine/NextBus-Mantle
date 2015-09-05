@@ -18,10 +18,6 @@
 
 // ----------------------------------------------------------------------
 
-static NSString * const str_key = @"routeList&a=mbta";
-
-// ----------------------------------------------------------------------
-
 @implementation NBRoutesRequest
 
 - (NBRouteList *)routeList {
@@ -30,10 +26,6 @@ static NSString * const str_key = @"routeList&a=mbta";
 
 - (NBRequestType)type {
 	return NBRequest_routeList;
-}
-
-- (NSString *)key {
-	return str_key;
 }
 
 - (double)staleAge {

@@ -62,6 +62,14 @@
 // calculated
 @property (strong, nonatomic)			NSDictionary *stops; // by tag
 @property (assign, nonatomic, readonly) MapBounds	  bounds;
+// when object was created
+@property (strong, nonatomic)			NSDate		 *timestamp;
+
+//- (NSArray *)visibleDirectionsForStopId:(NSString *)stopId;
+
+- (NSArray *)visibleDirectionsForStopTag:(NSString *)stopTag;
+
+- (NSArray *)pathsForDirectionTag:(NSString *)directionTag;
 @end
 
 // ----------------------------------------------------------------------

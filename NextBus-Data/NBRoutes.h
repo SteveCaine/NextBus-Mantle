@@ -23,6 +23,7 @@
 
 @interface NBRouteList : MTLModel <MTLXMLSerializing>
 @property (strong, nonatomic, readonly) NSArray *routes;
+@property (strong, nonatomic)			NSDate  *timestamp;
 @end
 
 // ----------------------------------------------------------------------

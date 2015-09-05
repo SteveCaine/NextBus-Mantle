@@ -22,6 +22,7 @@
 @property (  copy, nonatomic, readonly) NSString *message;
 // NOTE: for 32-bit compatibility, BOOL properties must be implemented as NSNumber internally
 @property (assign, nonatomic, readonly) BOOL shouldRetry;
+@property (strong, nonatomic)			NSDate  *timestamp;
 @end
 
 // ----------------------------------------------------------------------

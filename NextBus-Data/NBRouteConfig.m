@@ -325,6 +325,50 @@ static NSString * const attr_lon			= @"lon";
 
 // ----------------------------------------------------------------------
 
+- (NSArray *)visibleDirectionsForStopTag:(NSString *)stopTag {
+	NSMutableArray *result = nil;
+	
+	if (stopTag.length) {
+		for (NBRouteDirection *direction in self.directions) {
+			if (direction.useForUI) {
+				for (NSString *stop in direction.stops) {
+					if ([stop isEqualToString:stopTag]) {
+						if (result == nil)
+							result = [NSMutableArray array];
+						[result addObject:direction];
+						break;
+					}
+				}
+			}
+		}
+	}
+	return result;
+}
+
+// ----------------------------------------------------------------------
+// path tags begin with a direction tag; each path can have multiple tags
+
+- (NSArray *)pathsForDirectionTag:(NSString *)directionTag {
+	NSMutableArray *result = nil;
+	
+	if (directionTag.length) {
+		for (NBRoutePath *path in self.a_paths) {
+			for (NSString *tag in path.tags) {
+				if ([tag hasPrefix:directionTag]) {
+					if (result == nil)
+						result = [NSMutableArray array];
+					[result addObject:path];
+					break;
+				}
+			}
+		}
+	}
+	
+	return result;
+}
+
+// ----------------------------------------------------------------------
+
 - (NSString *)description {
 	NSMutableString *result = [NSMutableString stringWithFormat:@"<%@ %p> ", NSStringFromClass(self.class), self];
 	[result appendFormat:@"tag='%@', title='%@'", self.tag, self.title];

@@ -23,6 +23,8 @@
 
 #import "NBRequestTypes.h"
 
+#import "Categories.h"
+
 #import "Debug_iOS.h"
 
 // ----------------------------------------------------------------------
@@ -90,6 +92,8 @@
 				else
 					result = obj;
 			}
+			if ([obj respondsToSelector:@selector(setTimestamp:)])
+				[obj setTimestamp:[NSDate date]];
 		}
 	}
 	return result;

@@ -49,6 +49,7 @@ static NSString * const xml_file_extension = @"xml";
 			
 			id data = [NBData dataForXML:responseObject type:type error:&error];
 			if (error == noErr) {
+				// only if we cache such requests
 				if (key.length) {
 					NSString *file = [key stringByAppendingPathExtension:xml_file_extension];
 					[AppDelegate cacheResponse:responseObject asFile:file];
