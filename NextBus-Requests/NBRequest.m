@@ -34,7 +34,7 @@ static NSString * const key_staleAges = @"staleAges";
 
 - (void)refresh_success:(void(^)(NBRequest *request))success
 				failure:(void(^)(NSError *error))failure {
-	MyLog(@"%s", __FUNCTION__);
+//	MyLog(@"%s", __FUNCTION__);
 	if (![self isDataStale]) {
 		if (success)
 			success(self);

@@ -92,8 +92,8 @@
 				else
 					result = obj;
 			}
-			if ([obj respondsToSelector:@selector(setTimestamp:)])
-				[obj setTimestamp:[NSDate date]];
+			if ([obj respondsToSelector:@selector(finish)])
+				[obj finish];
 		}
 	}
 	return result;

@@ -36,7 +36,7 @@ static NSString * const xml_file_extension = @"xml";
 		failure:(void(^)(NSError *error))failure {
 	NBRequestClient *client = [NBRequestClient sharedInstance];
 	
-	NSString *url =
+//	NSString *url =
 	[client request:type params:params success:^(NSURLSessionDataTask *task, id responseObject) {
 		NSError *error = nil; // for several possible error states
 		
@@ -71,7 +71,7 @@ static NSString * const xml_file_extension = @"xml";
 		else
 			NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
 	}];
-	MyLog(@" REQUEST = '%@'", url);
+//	MyLog(@" REQUEST = '%@'", url);
 }
 
 // ----------------------------------------------------------------------

@@ -57,6 +57,7 @@ static NSString * const attr_lon			= @"lon";
 @property (strong, nonatomic, readonly ) NSArray	*a_paths;
 // calculated
 @property (assign, nonatomic, readwrite) MapBounds	bounds;
+@property (strong, nonatomic, readwrite) NSDate		*timestamp;
 @end
 
 // ----------------------------------------------------------------------
@@ -302,25 +303,19 @@ static NSString * const attr_lon			= @"lon";
 
 // ----------------------------------------------------------------------
 
-- (MapBounds)bounds {
-	MapBounds result = {
+- (void)finish {
+	self.timestamp = [NSDate date];
+
+	NSMutableDictionary *stops = [NSMutableDictionary dictionary];
+	for (NBRouteStop *stop in self.a_stops) {
+		stops[stop.tag] = stop;
+	}
+	self.stops = [stops copy];
+	
+	MapBounds bounds = {
 		self.latMax, self.latMin, self.lonMax, self.lonMin
 	};
-	return result;
-}
-
-- (NSDictionary *)stops {
-	static NSMutableDictionary *stops_; // by stopTag
-	
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-		stops_ = [NSMutableDictionary dictionary];
-		for (NBRouteStop *stop in self.a_stops) {
-			stops_[stop.tag] = stop;
-		}
-	});
-	
-	return stops_;
+	self.bounds = bounds;
 }
 
 // ----------------------------------------------------------------------
@@ -342,7 +337,7 @@ static NSString * const attr_lon			= @"lon";
 			}
 		}
 	}
-	MyLog(@"%s (%@ : %@) returns %i directions", __FUNCTION__, self.tag, stopTag, result.count);
+//	MyLog(@"%s (%@ : %@) returns %i directions", __FUNCTION__, self.tag, stopTag, result.count);
 	return result;
 }
 
@@ -366,7 +361,7 @@ static NSString * const attr_lon			= @"lon";
 			}
 		}
 	}
-	MyLog(@"%s (%@ : %@) returns %i stops", __FUNCTION__, self.tag, directionTag, result.count);
+//	MyLog(@"%s (%@ : %@) returns %i stops", __FUNCTION__, self.tag, directionTag, result.count);
 	return result;
 }
 
@@ -388,7 +383,7 @@ static NSString * const attr_lon			= @"lon";
 			}
 		}
 	}
-	MyLog(@"%s (%@ : %@) returns %i paths", __FUNCTION__, self.tag, directionTag, result.count);
+//	MyLog(@"%s (%@ : %@) returns %i paths", __FUNCTION__, self.tag, directionTag, result.count);
 	return result;
 }
 

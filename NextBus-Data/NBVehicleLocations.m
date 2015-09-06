@@ -18,9 +18,17 @@
 
 #import "Debug_iOS.h"
 
+// ----------------------------------------------------------------------
+
 static NSString * const elem_lastTime = @"lastTime";
 
 static NSString * const attr_time	  = @"time";
+
+// ----------------------------------------------------------------------
+
+@interface NBVehicleLocations ()
+@property (strong, nonatomic, readwrite) NSDate *timestamp;
+@end
 
 // ----------------------------------------------------------------------
 
@@ -101,15 +109,8 @@ static NSString * const attr_time	  = @"time";
 	}];
 }
 
-- (NSString *)description {
-	NSMutableString *result = [NSMutableString stringWithFormat:@"<%@ %p> ", NSStringFromClass(self.class), self];
-	NSString *lastTime = [self.lastTime predictionString_short];
-	[result appendFormat:@"lastTime='%@'", lastTime];
-	int index = 0;
-	for (NBVehicle *vehicle in self.vehicles) {
-		[result appendFormat:@"\n%2i: %@", index++, vehicle];
-	}
-	return result;
+- (void)finish {
+	self.timestamp = [NSDate date];
 }
 
 // ----------------------------------------------------------------------
@@ -124,6 +125,19 @@ static NSString * const attr_time	  = @"time";
 				break;
 			}
 		}
+	}
+	return result;
+}
+
+// ----------------------------------------------------------------------
+
+- (NSString *)description {
+	NSMutableString *result = [NSMutableString stringWithFormat:@"<%@ %p> ", NSStringFromClass(self.class), self];
+	NSString *lastTime = [self.lastTime predictionString_short];
+	[result appendFormat:@"lastTime='%@'", lastTime];
+	int index = 0;
+	for (NBVehicle *vehicle in self.vehicles) {
+		[result appendFormat:@"\n%2i: %@", index++, vehicle];
 	}
 	return result;
 }

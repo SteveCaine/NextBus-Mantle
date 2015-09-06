@@ -25,7 +25,8 @@
 
 @interface NBAgencyList : MTLModel <MTLXMLSerializing>
 @property (strong, nonatomic, readonly) NSArray *agencies;
-@property (strong, nonatomic)			NSDate  *timestamp;
+@property (strong, nonatomic, readonly)	NSDate  *timestamp;
+- (void)finish;
 @end
 
 // ----------------------------------------------------------------------

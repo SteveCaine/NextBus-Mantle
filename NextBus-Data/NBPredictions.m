@@ -23,6 +23,12 @@ static NSString * const attr_epochTime	= @"epochTime";
 
 // ----------------------------------------------------------------------
 
+@interface NBPredictionsResponse ()
+@property (strong, nonatomic, readwrite) NSDate *timestamp;
+@end
+
+// ----------------------------------------------------------------------
+
 @implementation NBPrediction
 
 + (NSDictionary *)XMLKeyPathsByPropertyKey {
@@ -157,6 +163,10 @@ static NSString * const attr_epochTime	= @"epochTime";
 
 + (NSValueTransformer *)predictionsXMLTransformer {
 	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:[NBPredictions class]];
+}
+
+- (void)finish {
+	self.timestamp = [NSDate date];
 }
 
 - (NSString *)description {

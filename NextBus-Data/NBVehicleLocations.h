@@ -37,7 +37,9 @@
 // children
 @property (strong, nonatomic, readonly) NSArray *vehicles;
 // when object was created
-@property (strong, nonatomic)			NSDate  *timestamp;
+@property (strong, nonatomic, readonly)	NSDate  *timestamp;
+
+- (void)finish;
 
 - (NBVehicle *)vehicleForID:(NSString *)vehicleID;
 @end

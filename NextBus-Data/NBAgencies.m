@@ -17,6 +17,12 @@
 
 // ----------------------------------------------------------------------
 
+@interface NBAgencyList ()
+@property (strong, nonatomic, readwrite) NSDate *timestamp;
+@end
+
+// ----------------------------------------------------------------------
+
 @implementation NBAgency
 
 + (NSDictionary *)XMLKeyPathsByPropertyKey {
@@ -59,6 +65,10 @@
 
 + (NSValueTransformer *)agenciesXMLTransformer {
 	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:[NBAgency class]];
+}
+
+- (void)finish {
+	self.timestamp = [NSDate date];
 }
 
 - (NSString *)description {

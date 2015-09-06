@@ -19,6 +19,12 @@
 
 // ----------------------------------------------------------------------
 
+@interface NBRouteList ()
+@property (strong, nonatomic, readwrite) NSDate *timestamp;
+@end
+
+// ----------------------------------------------------------------------
+
 @implementation NBRoute
 
 + (NSDictionary *)XMLKeyPathsByPropertyKey {
@@ -56,6 +62,10 @@
 
 + (NSValueTransformer *)routesXMLTransformer {
 	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:[NBRoute class]];
+}
+
+- (void)finish {
+	self.timestamp = [NSDate date];
 }
 
 - (NSString *)description {

@@ -56,7 +56,9 @@
 // children
 @property (strong, nonatomic, readonly) NSArray *predictions;
 // when object was created
-@property (strong, nonatomic)			NSDate  *timestamp;
+@property (strong, nonatomic, readonly)	NSDate  *timestamp;
+
+- (void)finish;
 
 - (NSString *)stopTitle;
 
