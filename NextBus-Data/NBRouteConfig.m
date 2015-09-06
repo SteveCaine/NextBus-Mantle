@@ -342,7 +342,7 @@ static NSString * const attr_lon			= @"lon";
 			}
 		}
 	}
-	MyLog(@"%s (%@) returns %i directions", __FUNCTION__, self.tag, result.count);
+	MyLog(@"%s (%@ : %@) returns %i directions", __FUNCTION__, self.tag, stopTag, result.count);
 	return result;
 }
 
@@ -366,7 +366,7 @@ static NSString * const attr_lon			= @"lon";
 			}
 		}
 	}
-	MyLog(@"%s (%@) returns %i stops", __FUNCTION__, self.tag, result.count);
+	MyLog(@"%s (%@ : %@) returns %i stops", __FUNCTION__, self.tag, directionTag, result.count);
 	return result;
 }
 
@@ -388,7 +388,7 @@ static NSString * const attr_lon			= @"lon";
 			}
 		}
 	}
-	MyLog(@"%s (%@) returns %i paths", __FUNCTION__, self.tag, result.count);
+	MyLog(@"%s (%@ : %@) returns %i paths", __FUNCTION__, self.tag, directionTag, result.count);
 	return result;
 }
 
