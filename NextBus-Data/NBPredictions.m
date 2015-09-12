@@ -111,6 +111,32 @@ static NSString * const attr_epochTime	= @"epochTime";
 #pragma mark -
 // ----------------------------------------------------------------------
 
+@implementation NBPredictionsMessage
+
++ (NSDictionary *)XMLKeyPathsByPropertyKey {
+	return @{
+			 PROPERTY_FROM_XML_ATTRIBUTE( text )
+			 };
+}
+
++ (NSString*)XPathPrefix {
+	return @"./";
+}
+
+- (NSString *)description {
+	NSMutableString *result = [NSMutableString stringWithFormat:@"<%@ %p> ", NSStringFromClass(self.class), self];
+	[result appendFormat:@"text='%@'", self.text];
+	return result;
+}
+
+@end
+
+
+
+// ----------------------------------------------------------------------
+#pragma mark -
+// ----------------------------------------------------------------------
+
 @implementation NBPredictions
 
 + (NSDictionary *)XMLKeyPathsByPropertyKey {
@@ -119,8 +145,10 @@ static NSString * const attr_epochTime	= @"epochTime";
 			 PROPERTY_FROM_XML_ATTRIBUTE( routeTitle	),
 			 PROPERTY_FROM_XML_ATTRIBUTE( stopTag		),
 			 PROPERTY_FROM_XML_ATTRIBUTE( stopTitle	),
+			 PROPERTY_FROM_XML_ATTRIBUTE( dirTitleBecauseNoPredictions ),
 			 // children
-			 @"directions" : @"direction"
+			 @"directions"				: @"direction",
+			 @"messages"				: @"message"
 			 };
 }
 
@@ -132,13 +160,22 @@ static NSString * const attr_epochTime	= @"epochTime";
 	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:[NBPredictionsDirection class]];
 }
 
++ (NSValueTransformer *)messagesXMLTransformer {
+	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:[NBPredictionsMessage class]];
+}
+
 - (NSString *)description {
 	NSMutableString *result = [NSMutableString stringWithFormat:@"<%@ %p> ", NSStringFromClass(self.class), self];
 	[result appendFormat:@"route: tag = '%@', title='%@'", self.routeTag, self.routeTitle];
 	[result appendFormat:@", stop: tag = '%@', title='%@'", self.stopTag, self.stopTitle];
+	if (self.dirTitleBecauseNoPredictions.length)
+		[result appendFormat:@", dirTitleBecauseNoPredictions='%@'", self.dirTitleBecauseNoPredictions];
 	int index = 0;
 	for (NBPredictionsDirection *direction in self.directions) {
 		[result appendFormat:@"\n%2i: %@", index++, direction];
+	}
+	for (NBPredictionsMessage *message in self.messages) {
+		[result appendFormat:@"\n%2i: %@", index++, message];
 	}
 	return result;
 }

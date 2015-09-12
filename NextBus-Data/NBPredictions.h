@@ -39,6 +39,12 @@
 
 // ----------------------------------------------------------------------
 
+@interface NBPredictionsMessage : MTLModel <MTLXMLSerializing>
+@property (  copy, nonatomic, readonly) NSString *text;
+@end
+
+// ----------------------------------------------------------------------
+
 @interface NBPredictions : MTLModel <MTLXMLSerializing>
 // attributes
 // (ignore 'agencyTitle')
@@ -46,8 +52,10 @@
 @property (  copy, nonatomic, readonly) NSString *routeTitle;
 @property (  copy, nonatomic, readonly) NSString *stopTag;
 @property (  copy, nonatomic, readonly) NSString *stopTitle;
+@property (  copy, nonatomic, readonly) NSString *dirTitleBecauseNoPredictions;
 // children
 @property (strong, nonatomic, readonly) NSArray  *directions;
+@property (strong, nonatomic, readonly) NSArray	 *messages;
 @end
 
 // ----------------------------------------------------------------------

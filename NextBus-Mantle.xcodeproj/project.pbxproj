@@ -63,6 +63,7 @@
 		8EFA25E31B8F6EB10094CE56 /* Debug_KissXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA25DC1B8F6EB10094CE56 /* Debug_KissXML.m */; };
 		8EFA25E41B8F6EB10094CE56 /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA25DE1B8F6EB10094CE56 /* EXTScope.m */; };
 		8EFA25E51B8F6EB10094CE56 /* NSValue+MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA25E21B8F6EB10094CE56 /* NSValue+MapKit.m */; };
+		8EFDDD851BA3A4F900ABC7F3 /* 4d-predictions&a=mit&stopId=03&routeTag=boston.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8EFDDD841BA3A4F900ABC7F3 /* 4d-predictions&a=mit&stopId=03&routeTag=boston.xml */; };
 		F1B5BB87C571687776217C19 /* libPods-NextBus-Mantle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74534276BE41B141E9D792FE /* libPods-NextBus-Mantle.a */; };
 /* End PBXBuildFile section */
 
@@ -184,6 +185,7 @@
 		8EFA25E01B8F6EB10094CE56 /* MapKitStructs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapKitStructs.h; path = misc/MapKitStructs.h; sourceTree = SOURCE_ROOT; };
 		8EFA25E11B8F6EB10094CE56 /* NSValue+MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSValue+MapKit.h"; path = "misc/NSValue+MapKit.h"; sourceTree = SOURCE_ROOT; };
 		8EFA25E21B8F6EB10094CE56 /* NSValue+MapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSValue+MapKit.m"; path = "misc/NSValue+MapKit.m"; sourceTree = SOURCE_ROOT; };
+		8EFDDD841BA3A4F900ABC7F3 /* 4d-predictions&a=mit&stopId=03&routeTag=boston.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "4d-predictions&a=mit&stopId=03&routeTag=boston.xml"; sourceTree = "<group>"; };
 		F8C9A1D29E2CEE130AAF020A /* Pods-NextBus-Mantle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextBus-Mantle.release.xcconfig"; path = "Pods/Target Support Files/Pods-NextBus-Mantle/Pods-NextBus-Mantle.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -384,6 +386,7 @@
 		8EBD7B2C1B3A137D00BA02BD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8EFDDD841BA3A4F900ABC7F3 /* 4d-predictions&a=mit&stopId=03&routeTag=boston.xml */,
 				8E2959381B83A7D9004DE0A5 /* appData.plist */,
 				8EC0803E1B82778100BFE99E /*  -talerts.xml */,
 				8EBF1E591B3A54F500CF38C4 /* 0-error.xml */,
@@ -561,6 +564,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EFDDD851BA3A4F900ABC7F3 /* 4d-predictions&a=mit&stopId=03&routeTag=boston.xml in Resources */,
 				8EBD7B381B3A137D00BA02BD /* 1-agencyList.xml in Resources */,
 				8E2959391B83A7D9004DE0A5 /* appData.plist in Resources */,
 				8E76F64F1B3A056B00E03F55 /* Images.xcassets in Resources */,
