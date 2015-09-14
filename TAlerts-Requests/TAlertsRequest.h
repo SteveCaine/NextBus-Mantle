@@ -12,14 +12,18 @@
 #import <Foundation/Foundation.h>
 
 // ----------------------------------------------------------------------
+@class TAlertsList;
+// ----------------------------------------------------------------------
 
 @interface TAlertsRequest : NSObject
 
 - (void)refresh_success:(void(^)(TAlertsRequest *request))success
 				failure:(void(^)(NSError *error))failure;
 
-- (id)response;
+- (TAlertsList *)alertsList;
 
+- (BOOL)isDataStale; // will calling -refresh_ create new data object?
+					 // (for callers that post-process response)
 @end
 
 // ----------------------------------------------------------------------

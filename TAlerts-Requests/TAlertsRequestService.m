@@ -40,8 +40,8 @@ static NSString * const talerts_file = @"talerts.xml";
 			// TODO: create/return error here
 		}
 		else {
-			NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-			MyLog(@" response = '%@'", str);
+//			NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+//			MyLog(@" response = '%@'", str);
 			
 			id alerts = [TAlertsData alertsForXML:responseObject error:&error];
 			if (error == noErr) {
@@ -54,14 +54,14 @@ static NSString * const talerts_file = @"talerts.xml";
 			if (failure)
 				failure(error);
 			else
-				MyLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
+				NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
 		}
 		
 	} failure:^(NSURLSessionDataTask *task, NSError *error) {
 		if (failure)
 			failure(error);
 		else
-			MyLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
+			NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
 	}];
 }
 

@@ -15,8 +15,6 @@
 
 @interface NBRequest : NSObject
 
-@property (strong, nonatomic) NSDate *timestamp;
-
 - (void)refresh_success:(void(^)(NBRequest *request))success
 				failure:(void(^)(NSError *error))failure;
 

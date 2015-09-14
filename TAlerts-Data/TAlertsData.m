@@ -57,6 +57,8 @@
 			}
 			else
 				result = obj;
+			if ([obj respondsToSelector:@selector(finish)])
+				[obj finish];
 		}
 	}
 	return result;

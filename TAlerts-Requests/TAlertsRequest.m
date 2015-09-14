@@ -108,8 +108,27 @@ static double last_ttl;
 	}
 }
 
-- (id)response {
+- (TAlertsList *)alertsList {
 	return self.data;
+}
+
+// ----------------------------------------------------------------------
+
+- (BOOL)isDataStale {
+	BOOL result = YES;
+	
+	if (self.data && [self.class timeToLive] > 0) {
+		NSString *path = [AppDelegate responseFileForKey:key_talerts];
+		if (path.length) {
+			NSError *error = nil;
+			double age = [FilesUtil ageOfFile:path error:&error];
+			if (error == nil && age < [self.class timeToLive]) {
+				result = NO;
+			}
+		}
+	}
+	
+	return result;
 }
 
 @end

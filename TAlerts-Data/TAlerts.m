@@ -33,6 +33,12 @@ static NSString * const elem_pubDate = @"pubDate";
 @end
 
 // ----------------------------------------------------------------------
+
+@interface TAlertsList ()
+@property (strong, nonatomic, readwrite) NSDate *timestamp;
+@end
+
+// ----------------------------------------------------------------------
 #pragma mark -
 // ----------------------------------------------------------------------
 
@@ -162,6 +168,10 @@ static NSString * const elem_pubDate = @"pubDate";
 
 + (NSValueTransformer *)alertsXMLTransformer {
 	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:[TAlert class]];
+}
+
+- (void)finish {
+	self.timestamp = [NSDate date];
 }
 
 - (NSString *)description {

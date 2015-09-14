@@ -48,7 +48,6 @@ static NSString * const key_staleAges = @"staleAges";
 			cachedObject = [self.class cachedObjectForKey:[self key] staleAge:[self staleAge]];
 		
 		if (cachedObject) {
-			self.timestamp = [NSDate date]; // now
 			self.data = cachedObject;
 			if (success)
 				success(self);
@@ -60,14 +59,12 @@ static NSString * const key_staleAges = @"staleAges";
 			// make request to web service
 			[NBRequestService request:[self type] params:[self params] key:cache_key success:^(id data) {
 				MyLog(@"SUCCESS");
-				self.timestamp = [NSDate date]; // now
 				self.data = data;
 				if (success) {
 					success(self);
 				}
 			} failure:^(NSError *error) {
 				MyLog(@"FAILED");
-				self.timestamp = nil;
 				self.data = nil; // clear any previous result
 				if (failure)
 					failure(error);
