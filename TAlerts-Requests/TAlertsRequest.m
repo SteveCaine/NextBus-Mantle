@@ -69,7 +69,11 @@ static double last_ttl;
 		if (error && error.code != NSFileReadNoSuchFileError) {
 			NSLog(@"Error checking age of cached file '%@': %@", name, [error localizedDescription]);
 		}
-		else if (age > 0 && age < ttl) {
+		else if (age > 0
+#if !DEBUG_cacheAllResponses
+				 && age < ttl
+#endif
+				 ) {
 			id obj = [TAlertsData alertsForFile:path error:&error];
 			if (error) {
 				NSLog(@"Error parsing cached file: %@", [error localizedDescription]);

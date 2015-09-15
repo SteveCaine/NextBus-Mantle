@@ -32,6 +32,7 @@
 		8E76F6581B3A056B00E03F55 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E76F6371B3A056B00E03F55 /* UIKit.framework */; };
 		8E76F6601B3A056B00E03F55 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8E76F65E1B3A056B00E03F55 /* InfoPlist.strings */; };
 		8E76F6621B3A056B00E03F55 /* NextBus_MantleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E76F6611B3A056B00E03F55 /* NextBus_MantleTests.m */; };
+		8E888F151BA7795D00CBE58E /*  -talerts3.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8E888F141BA7795D00CBE58E /*  -talerts3.xml */; };
 		8EBD7AF61B3A0E9C00BA02BD /* Debug_iOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD7AAD1B3A0E9B00BA02BD /* Debug_iOS.cpp */; };
 		8EBD7AF71B3A0E9C00BA02BD /* Debug_iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD7AAF1B3A0E9B00BA02BD /* Debug_iOS.m */; };
 		8EBD7B151B3A0E9C00BA02BD /* FilesUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD7AEF1B3A0E9C00BA02BD /* FilesUtil.m */; };
@@ -120,6 +121,7 @@
 		8E76F65D1B3A056B00E03F55 /* NextBus-MantleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NextBus-MantleTests-Info.plist"; sourceTree = "<group>"; };
 		8E76F65F1B3A056B00E03F55 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8E76F6611B3A056B00E03F55 /* NextBus_MantleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NextBus_MantleTests.m; sourceTree = "<group>"; };
+		8E888F141BA7795D00CBE58E /*  -talerts3.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = " -talerts3.xml"; sourceTree = "<group>"; };
 		8EBD7AAD1B3A0E9B00BA02BD /* Debug_iOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Debug_iOS.cpp; sourceTree = "<group>"; };
 		8EBD7AAE1B3A0E9B00BA02BD /* Debug_iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug_iOS.h; sourceTree = "<group>"; };
 		8EBD7AAF1B3A0E9B00BA02BD /* Debug_iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Debug_iOS.m; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 		8EBD7B2C1B3A137D00BA02BD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8E888F141BA7795D00CBE58E /*  -talerts3.xml */,
 				8EFDDD841BA3A4F900ABC7F3 /* 4d-predictions&a=mit&stopId=03&routeTag=boston.xml */,
 				8E2959381B83A7D9004DE0A5 /* appData.plist */,
 				8EC0803E1B82778100BFE99E /*  -talerts.xml */,
@@ -564,6 +567,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E888F151BA7795D00CBE58E /*  -talerts3.xml in Resources */,
 				8EFDDD851BA3A4F900ABC7F3 /* 4d-predictions&a=mit&stopId=03&routeTag=boston.xml in Resources */,
 				8EBD7B381B3A137D00BA02BD /* 1-agencyList.xml in Resources */,
 				8E2959391B83A7D9004DE0A5 /* appData.plist in Resources */,

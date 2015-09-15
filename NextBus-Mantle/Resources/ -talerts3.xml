@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss  version="2.0">
+  <channel>
+    <ttl>10</ttl>
+    <item>
+      <title>10, 5, 7, 9</title>
+      <link>http://www.mbta.com/rider_tools/transit_updates/</link>
+      <description>Routes 5, 7, 9, and 10 detour will continue until further notice. No service on East 4th Street. Connect at East Broadway and N St or East Broadway and M St. Stops Omitted:
+East 4th at O St 
+East 4th at N St 
+East 4th at M St 08/21/2015 10:39 AM</description>
+      <metadata messageid="64251" mode="Bus" line="10, 5, 7, 9" name="" direction="Both Directions" timing="All" delayTime="Severe" delayCategory="" />
+      <pubDate>Fri, 21 Aug 2015 14:39:37 GMT</pubDate>
+      <guid isPermaLink="false">talerts64251</guid>
+    </item>
+  </channel>
+</rss>
