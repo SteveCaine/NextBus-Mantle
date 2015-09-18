@@ -74,28 +74,6 @@ static NSString * const xml_file_extension = @"xml";
 //	MyLog(@" REQUEST = '%@'", url);
 }
 
-// ----------------------------------------------------------------------
-
-+ (void)log_task:(NSURLSessionDataTask *)task {
-#ifdef DEBUG
-	NSURLRequest *request = [task originalRequest];
-	NSURL *url = request.URL;
-	NSString *requestStr = [url absoluteString];
-	MyLog(@" request = '%@'", requestStr);
-	
-#if DEBUG_logHeadersHTTP
-	// log HTTP headers in request and response
-	MyLog(@"\n requestHeaders = %@\n", [request allHTTPHeaderFields]);
-	
-	NSURLResponse *response = [task response];
-	if ([response respondsToSelector:@selector(allHeaderFields)]) {
-		NSDictionary *headers = [(NSHTTPURLResponse *)response allHeaderFields];
-		MyLog(@" responseHeaders = %@", headers);
-	}
-#endif
-#endif
-}
-
 @end
 
 // ----------------------------------------------------------------------

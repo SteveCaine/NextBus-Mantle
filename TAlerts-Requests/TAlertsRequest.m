@@ -52,8 +52,8 @@ static double last_ttl;
 		// always 'get' here but 'set' current value in static var above
 		NSNumber *default_timeToLive = staleAges[key_talerts];		// in days
 		if (default_timeToLive == nil)
-			default_timeToLive = [NSNumber numberWithDouble:0.1];	// double-default value: ~15 minutes
-		last_ttl = [default_timeToLive doubleValue] * 24.0 * 3600;	// in seconds
+			default_timeToLive = [NSNumber numberWithDouble:0.007];	// double-default value: ~10 minutes
+		last_ttl = [default_timeToLive doubleValue] * 24.0 * 3600;	// days => seconds
 	});
 	return last_ttl;
 }
@@ -70,7 +70,11 @@ static double last_ttl;
 			NSLog(@"Error checking age of cached file '%@': %@", name, [error localizedDescription]);
 		}
 		else if (age > 0
-#if !DEBUG_cacheAllResponses
+#if DEBUG_alwaysUseCache
+				 && YES
+#elif DEBUG_neverUseCache
+				 && NO
+#else
 				 && age < ttl
 #endif
 				 ) {
@@ -100,7 +104,7 @@ static double last_ttl;
 			self.data = data;
 			TAlertsList *list = [TAlertsList cast:data];
 			if (list)
-				last_ttl = [list.timeToLive doubleValue];
+				last_ttl = [list.timeToLive doubleValue] * 60; // minutes => seconds
 			if (success)
 				success(self);
 		} failure:^(NSError *error) {

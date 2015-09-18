@@ -35,17 +35,25 @@ static NSString * const key_staleAges = @"staleAges";
 - (void)refresh_success:(void(^)(NBRequest *request))success
 				failure:(void(^)(NSError *error))failure {
 //	MyLog(@"%s", __FUNCTION__);
-	if (![self isDataStale]) {
+	if (![self isDataStale]) { // -isDataStale adheres to our neverUseCache flag
 		if (success)
 			success(self);
 		return;
 	}
 	else {
-		id cachedObject = nil;
 		// if we cache these requests, check for existing response file in cache
+		id cachedObject = nil;
 		double staleAge = [self staleAge];
+		
+#if DEBUG_alwaysUseCache
+		// always check cache
+		staleAge = [[NSDate distantFuture] timeIntervalSinceNow];
+#elif DEBUG_neverUseCache
+		// never check cache
+		staleAge = 0;
+#endif
 		if (staleAge > 0.0)
-			cachedObject = [self.class cachedObjectForKey:[self key] staleAge:[self staleAge]];
+			cachedObject = [self.class cachedObjectForKey:[self key] staleAge:staleAge];
 		
 		if (cachedObject) {
 			self.data = cachedObject;
@@ -53,8 +61,13 @@ static NSString * const key_staleAges = @"staleAges";
 				success(self);
 		}
 		else {
-			// only cache now if we cache such requests
-			NSString *cache_key = (staleAge > 0 ? [self key] : nil);
+			// only cache response if we normally cache such requests
+			NSString *cache_key = ([self staleAge] > 0 ? [self key] : nil);
+
+#if DEBUG_cacheAllResponses || DEBUG_alwaysUseCache
+			// always cache, even if we don't reuse cached files
+			cache_key = [self key]
+#endif
 			
 			// make request to web service
 			[NBRequestService request:[self type] params:[self params] key:cache_key success:^(id data) {
@@ -78,8 +91,10 @@ static NSString * const key_staleAges = @"staleAges";
 // ----------------------------------------------------------------------
 
 - (BOOL)isDataStale {
+#if DEBUG_neverUseCache
+	return YES;
+#else
 	BOOL result = YES;
-	
 	if (self.data && [self staleAge] > 0) {
 		NSString *path = [AppDelegate responseFileForKey:[self key]];
 		if (path.length) {
@@ -90,8 +105,8 @@ static NSString * const key_staleAges = @"staleAges";
 			}
 		}
 	}
-	
 	return result;
+#endif
 }
 
 // ----------------------------------------------------------------------

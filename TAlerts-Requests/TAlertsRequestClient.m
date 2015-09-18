@@ -11,13 +11,14 @@
 
 #import "TAlertsRequestClient.h"
 
+#import "Debug_iOS.h"
+
 // ----------------------------------------------------------------------
-// new format
+
 static NSString * const str_BaseURL = @"http://realtime.mbta.com/alertsrss/";
 
-static NSString * const str_path = @"rssfeed4";
-
-// @"http://realtime.mbta.com/alertsrss/rssfeed2"; // backward compatible
+//static NSString * const str_path = @"rssfeed4";	// new format
+static NSString * const str_path = @"rssfeed2";		// old format, backward compatible
 
 // ----------------------------------------------------------------------
 
@@ -41,16 +42,23 @@ static NSString * const str_path = @"rssfeed4";
 	
 	[self GET:str_path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
 		if (success) {
+			[self.class log_task:task];
 			success(task, responseObject);
 		}
 	} failure:^(NSURLSessionDataTask *task, NSError *error) {
+		[self.class log_task:task];
 		if (failure)
 			failure(task, error);
 		else
 			NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
 	}];
 	
-	return str_BaseURL;
+	NSString *result = str_BaseURL;
+	if (str_path.length)
+		result = [result stringByAppendingString:str_path];
+	// and no params
+	
+	return result;
 }
 
 // ----------------------------------------------------------------------
@@ -64,6 +72,26 @@ static NSString * const str_path = @"rssfeed4";
 }
 
 // ----------------------------------------------------------------------
+
++ (void)log_task:(NSURLSessionDataTask *)task {
+#ifdef DEBUG_logResponses
+	NSURLRequest *request = [task originalRequest];
+	NSURL *url = request.URL;
+	NSString *requestStr = [url absoluteString];
+	MyLog(@" request = '%@'", requestStr);
+	
+#if DEBUG_logHeadersHTTP
+	// log HTTP headers in request and response
+	MyLog(@"\n requestHeaders = %@\n", [request allHTTPHeaderFields]);
+	
+	NSURLResponse *response = [task response];
+	if ([response respondsToSelector:@selector(allHeaderFields)]) {
+		NSDictionary *headers = [(NSHTTPURLResponse *)response allHeaderFields];
+		MyLog(@" responseHeaders = %@", headers);
+	}
+#endif
+#endif
+}
 
 @end
 

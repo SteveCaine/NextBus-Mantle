@@ -14,3 +14,23 @@
 	#import <UIKit/UIKit.h>
 	#import <Foundation/Foundation.h>
 #endif
+
+// ----------------------------------------------------------------------
+#if DEBUG
+// ----------------------------------------------------------------------
+
+#define DEBUG_logResponses		1
+#define DEBUG_logHeadersHTTP	1
+
+// always cache response
+// (even if flags below mean we never use it)
+#define DEBUG_cacheAllResponses 0
+
+// never both ON but can both be OFF
+// (meaning use 'staleAge' to control caching)
+#define DEBUG_alwaysUseCache	0
+#define DEBUG_neverUseCache		0
+
+#endif
+
+// ----------------------------------------------------------------------

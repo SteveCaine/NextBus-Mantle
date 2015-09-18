@@ -118,8 +118,8 @@ static NSString * const xml_dir_name		= @"XMLs";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
-	MyLog(@" docs dir = '%@'", str_DocumentsPath());
-	MyLog(@" xmls dir = '%@'", [self.class xmlsDirectory]);
+//	MyLog(@" docs dir = '%@'", str_DocumentsPath());
+//	MyLog(@" xmls dir = '%@'", [self.class xmlsDirectory]);
 	
 	// if XMLs folder doesn't already exist, create it
 	NSString *xmlsDir = [AppDelegate xmlsDirectory];

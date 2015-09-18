@@ -32,6 +32,7 @@ static NSString * const talerts_file = @"talerts.xml";
 	
 	TAlertsRequestClient *client = [TAlertsRequestClient sharedInstance];
 	
+//	NSString *url =
 	[client request_success:^(NSURLSessionDataTask *task, id responseObject) {
 		NSError *error = nil;
 		
@@ -63,6 +64,7 @@ static NSString * const talerts_file = @"talerts.xml";
 		else
 			NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
 	}];
+//	MyLog(@" REQUEST = '%@'", url);
 }
 
 @end
