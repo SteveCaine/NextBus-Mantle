@@ -19,8 +19,8 @@
 #if DEBUG
 // ----------------------------------------------------------------------
 
-#define DEBUG_logResponses		1
-#define DEBUG_logHeadersHTTP	1
+#define DEBUG_logResponses		0
+#define DEBUG_logHeadersHTTP	0
 
 // always cache response
 // (even if flags below mean we never use it)
