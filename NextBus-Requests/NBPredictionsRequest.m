@@ -18,7 +18,7 @@
 
 // ----------------------------------------------------------------------
 
-static NSString * const key_stopID		= @"stopId";
+static NSString * const key_stopId		= @"stopId";
 static NSString * const key_routeTag	= @"routeTag";
 
 static NSString * const key_stopTag		= @"s";
@@ -46,7 +46,7 @@ static NSString * const key_routeTag2	= @"r";
 	if (self) {
 		// predictions&a=mbta&stopId=02021
 		if (stopID.length)
-			_params_ = @{ key_stopID : stopID };
+			_params_ = @{ key_stopId : stopID };
 	}
 	return self;
 }
@@ -56,7 +56,7 @@ static NSString * const key_routeTag2	= @"r";
 	if (self) {
 		// predictions&a=mbta&stopId=02021&routeTag=71
 		if (stopID.length && routeTag.length)
-			_params_ = @{ key_stopID : stopID, key_routeTag : routeTag };
+			_params_ = @{ key_stopId : stopID, key_routeTag : routeTag };
 	}
 	return self;
 }
@@ -66,7 +66,7 @@ static NSString * const key_routeTag2	= @"r";
 	if (self) {
 		// predictions&a=mbta&r=71&s=2021
 		if (stopTag.length && routeTag.length)
-			_params_ = @{ key_routeTag2 : routeTag, key_stopID : stopTag };
+			_params_ = @{ key_routeTag2 : routeTag, key_stopTag : stopTag };
 	}
 	return self;
 }
