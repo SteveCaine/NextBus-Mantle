@@ -61,12 +61,12 @@ static NSString * const key_staleAges = @"staleAges";
 				success(self);
 		}
 		else {
-			// only cache response if we normally cache such requests
-			NSString *cache_key = ([self staleAge] > 0 ? [self key] : nil);
-
 #if DEBUG_cacheAllResponses || DEBUG_alwaysUseCache
 			// always cache, even if we don't reuse cached files
-			cache_key = [self key];
+			NSString *cache_key = [self key];
+#else
+			// only cache response if we normally cache such requests
+			NSString *cache_key = ([self staleAge] > 0 ? [self key] : nil);
 #endif
 			
 			// make request to web service

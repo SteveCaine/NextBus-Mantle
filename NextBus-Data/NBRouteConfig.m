@@ -44,7 +44,7 @@ static NSString * const attr_lon			= @"lon";
 // ----------------------------------------------------------------------
 
 @interface NBRouteDirection ()
-@property (assign, nonatomic, readonly) NSNumber *useForUI_; // external property is BOOL
+@property (strong, nonatomic, readonly) NSNumber *useForUI_; // external property is BOOL
 @end
 
 // ----------------------------------------------------------------------
@@ -301,6 +301,8 @@ static NSString * const attr_lon			= @"lon";
 	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:[NBRoutePath class]];
 }
 
+// ----------------------------------------------------------------------
+#pragma mark -
 // ----------------------------------------------------------------------
 
 - (void)finish {
