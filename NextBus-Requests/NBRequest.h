@@ -21,6 +21,8 @@
 - (BOOL)isDataStale; // will calling -refresh_ create new data object?
 					 // (for callers that post-process response)
 
+- (BOOL)isCacheStale; // will calling -refresh_ make request to web service?
+
 @end
 
 // ----------------------------------------------------------------------

@@ -125,7 +125,19 @@ static double last_ttl;
 - (BOOL)isDataStale {
 	BOOL result = YES;
 	
-	if (self.data && [self.class timeToLive] > 0) {
+	if (self.data && ![self isCacheStale]) {
+		result = NO;
+	}
+	
+	return result;
+}
+
+// ----------------------------------------------------------------------
+
+- (BOOL)isCacheStale {
+	BOOL result = YES;
+	
+	if ([self.class timeToLive] > 0) {
 		NSString *path = [AppDelegate responseFileForKey:key_talerts];
 		if (path.length) {
 			NSError *error = nil;
@@ -135,7 +147,6 @@ static double last_ttl;
 			}
 		}
 	}
-	
 	return result;
 }
 

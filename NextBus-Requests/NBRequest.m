@@ -95,7 +95,21 @@ static NSString * const key_staleAges = @"staleAges";
 	return YES;
 #else
 	BOOL result = YES;
-	if (self.data && [self staleAge] > 0) {
+	if (self.data && ![self isCacheStale]) {
+		result = NO;
+	}
+	return result;
+#endif
+}
+
+// ----------------------------------------------------------------------
+
+- (BOOL)isCacheStale {
+#if DEBUG_neverUseCache
+	return YES;
+#else
+	BOOL result = YES;
+	if ([self staleAge] > 0) {
 		NSString *path = [AppDelegate responseFileForKey:[self key]];
 		if (path.length) {
 			NSError *error = nil;
