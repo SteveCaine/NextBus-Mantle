@@ -20,6 +20,9 @@
 - (void)refresh_success:(void(^)(TAlertsRequest *request))success
 				failure:(void(^)(NSError *error))failure;
 
+- (void)forcedRefresh_success:(void(^)(TAlertsRequest *request))success
+					  failure:(void(^)(NSError *error))failure;
+
 - (TAlertsList *)alertsList;
 
 - (BOOL)isDataStale; // will calling -refresh_ create new data object?

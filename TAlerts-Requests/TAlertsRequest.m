@@ -99,21 +99,26 @@ static double last_ttl;
 		if (success)
 			success(self);
 	}
-	else {
-		[TAlertsRequestService request_success:^(id data) {
-			self.data = data;
-			TAlertsList *list = [TAlertsList cast:data];
-			if (list)
-				last_ttl = [list.timeToLive doubleValue] * 60; // minutes => seconds
-			if (success)
-				success(self);
-		} failure:^(NSError *error) {
-			if (failure)
-				failure(error);
-			else
-				NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
-		}];
-	}
+	else
+		[self forcedRefresh_success:success failure:failure];
+}
+
+- (void)forcedRefresh_success:(void(^)(TAlertsRequest *request))success
+					  failure:(void(^)(NSError *error))failure {
+	[TAlertsRequestService request_success:^(id data) {
+		self.data = data;
+		TAlertsList *list = [TAlertsList cast:data];
+		if (list)
+			last_ttl = [list.timeToLive doubleValue] * 60; // minutes => seconds
+		if (success)
+			success(self);
+	} failure:^(NSError *error) {
+		if (failure)
+			failure(error);
+		else
+			NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
+	}];
+	
 }
 
 - (TAlertsList *)alertsList {
