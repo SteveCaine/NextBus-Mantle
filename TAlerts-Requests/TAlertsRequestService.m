@@ -40,7 +40,7 @@ static void do_success(NSURLSessionDataTask *task, id responseObject, NSString *
 					   block_success success, block_failure failure) {
 	NSError *error = nil;
 	
-	log_NSURLSessionDataTask(task, NO);
+//	log_NSURLSessionDataTask(task, NO);
 	
 	if (![responseObject isKindOfClass:[NSData class]]) {
 		NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : @"Response object is not JSON data." };
@@ -61,18 +61,9 @@ static void do_success(NSURLSessionDataTask *task, id responseObject, NSString *
 		if (failure)
 			failure(error);
 		else
-			MyLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
+			NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
 	}
 }
-
-/** /
-static void do_failure(NSURLSessionDataTask *task, NSError *error, block_failure failure) {
-	if (failure)
-		failure(error);
-	else
-		MyLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
-}
-/ **/
 
 // ----------------------------------------------------------------------
 #pragma mark -
@@ -90,11 +81,11 @@ static void do_failure(NSURLSessionDataTask *task, NSError *error, block_failure
 			do_success(task, responseObject, talertsV2_file, success, failure);
 			
 		} failure:^(NSURLSessionDataTask *task, NSError *error) {
-//			do_failure(task, error, failure);
+			log_NSURLSessionDataTask(task, YES);
 			if (failure)
 				failure(error);
 			else
-				MyLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
+				NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
 		}];
 	}
 }
@@ -111,11 +102,11 @@ static void do_failure(NSURLSessionDataTask *task, NSError *error, block_failure
 			do_success(task, responseObject, talertsV4_file, success, failure);
 			
 		} failure:^(NSURLSessionDataTask *task, NSError *error) {
-//			do_failure(task, error, failure);
+			log_NSURLSessionDataTask(task, YES);
 			if (failure)
 				failure(error);
 			else
-				MyLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
+				NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
 		}];
 	}
 }

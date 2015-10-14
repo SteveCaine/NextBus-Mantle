@@ -249,14 +249,36 @@ static TAlertsList* do_success(id data, TAlertFeed feed) {
 // ----------------------------------------------------------------------
 
 - (BOOL)isCacheStale {
+#if DEBUG_neverUseCache
+	return YES;
+#else
 	BOOL result = YES;
+#endif
 	
-	if ([self.class timeToLiveForFeed:self.feed] > 0) {
-		NSString *path = [AppDelegate responseFileForKey:key_talerts];
+	double ttl = [self.class timeToLiveForFeed:self.feed];
+#if DEBUG_alwaysUseCache
+	ttl = [[NSDate distantFuture] timeIntervalSinceNow];
+#endif
+	
+	if (ttl > 0) {
+		NSString *key = nil;
+		switch (self.feed) {
+			case talerts_rss2:
+				key = key_talertsV2;
+				break;
+			case talerts_rss4:
+				key = key_talertsV4;
+				break;
+			default:
+				key = key_talerts;
+				break;
+		}
+		
+		NSString *path = [AppDelegate responseFileForKey:key];
 		if (path.length) {
 			NSError *error = nil;
 			double age = [FilesUtil ageOfFile:path error:&error];
-			if (error == nil && age < [self.class timeToLiveForFeed:self.feed]) {
+			if (error == nil && age < ttl) {
 				result = NO;
 			}
 		}

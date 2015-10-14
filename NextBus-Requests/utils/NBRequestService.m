@@ -42,7 +42,7 @@ static NSString * const xml_file_extension = @"xml";
 	
 //	NSString *url =
 	[client request:type params:params success:^(NSURLSessionDataTask *task, id responseObject) {
-		log_NSURLSessionDataTask(task, NO);
+//		log_NSURLSessionDataTask(task, NO);
 		NSError *error = nil; // for several possible error states
 		
 		if (![responseObject isKindOfClass:[NSData class]]) {
