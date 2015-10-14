@@ -23,6 +23,10 @@
 
 // ----------------------------------------------------------------------
 
+NSString * const NextBusErrorDomain = @"NextBusErrorDomain";
+
+// ----------------------------------------------------------------------
+
 static NSString * const xml_file_extension = @"xml";
 
 // ----------------------------------------------------------------------
@@ -38,11 +42,13 @@ static NSString * const xml_file_extension = @"xml";
 	
 //	NSString *url =
 	[client request:type params:params success:^(NSURLSessionDataTask *task, id responseObject) {
+		log_NSURLSessionDataTask(task, NO);
 		NSError *error = nil; // for several possible error states
 		
 		if (![responseObject isKindOfClass:[NSData class]]) {
 			NSLog(@"Response is not NSData");
-			// TODO: create/return error here
+			NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : @"Response object is not JSON data." };
+			error = [NSError errorWithDomain:NextBusErrorDomain code:NextBusInvalidResponse userInfo:userInfo];
 		}
 		else {
 //			NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -71,7 +77,6 @@ static NSString * const xml_file_extension = @"xml";
 		else
 			NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
 	}];
-//	MyLog(@" REQUEST = '%@'", url);
 }
 
 @end

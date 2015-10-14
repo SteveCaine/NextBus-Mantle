@@ -13,10 +13,22 @@
 
 // ----------------------------------------------------------------------
 
+extern NSString * const TAlertsErrorDomain;
+
+typedef NS_ENUM(NSInteger, TAlertsErrorCode) {
+	TAlertsInvalidParams = 1,
+	TAlertsInvalidResponse
+};
+
+// ----------------------------------------------------------------------
+
 @interface TAlertsRequestService : NSObject
 
-+ (void)request_success:(void(^)(id data))success
-				failure:(void(^)(NSError *error))failure;
++ (void)requestV2_success:(void(^)(id data))success
+				  failure:(void(^)(NSError *error))failure;
+
++ (void)requestV4_success:(void(^)(id data))success
+				  failure:(void(^)(NSError *error))failure;
 
 @end
 

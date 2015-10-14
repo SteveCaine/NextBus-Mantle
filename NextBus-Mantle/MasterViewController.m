@@ -69,7 +69,8 @@ static const NSTimeInterval resetDelay = 1.5;
 @property (strong, nonatomic) NSArray				*sectionCellSubtitles;
 
 // MBTA T-Alerts request
-@property (strong, nonatomic) TAlertsRequest		*alertsRequest;
+@property (strong, nonatomic) TAlertsRequest		*alertsV2Request;
+@property (strong, nonatomic) TAlertsRequest		*alertsV4Request;
 
 // NextBus, Inc. requests
 @property (strong, nonatomic) NBRoutesRequest		*routesRequest;
@@ -86,13 +87,32 @@ static const NSTimeInterval resetDelay = 1.5;
 
 // ----------------------------------------------------------------------
 
-- (void)request_alerts {
-	if (self.alertsRequest == nil)
-		self.alertsRequest = [[TAlertsRequest alloc] init];
+- (void)request_alertsV2 {
+	if (self.alertsV2Request == nil)
+		self.alertsV2Request = [[TAlertsRequest alloc] initWithFeed:talerts_rss2];
 	@weakify(self)
 	
-	[self.alertsRequest refresh_success:^(TAlertsRequest *request) {
-		TAlertsList *alertsList = [request alertsList];
+	[self.alertsV2Request refresh_success:^(TAlertsRequest *request) {
+		TAlertsList *alertsList = [TAlertsList cast:[request response]];
+		MyLog(@" => alertsList = %@", alertsList);
+		@strongify(self)
+		[self reportSuccess:YES forRequest:__FUNCTION__];
+	} failure:^(NSError *error) {
+		NSLog(@"Error: %@", [error localizedDescription]);
+		@strongify(self)
+		[self reportSuccess:NO forRequest:__FUNCTION__];
+	}];
+}
+
+// ----------------------------------------------------------------------
+
+- (void)request_alertsV4 {
+	if (self.alertsV4Request == nil)
+		self.alertsV4Request = [[TAlertsRequest alloc] initWithFeed:talerts_rss4];
+	@weakify(self)
+	
+	[self.alertsV4Request refresh_success:^(TAlertsRequest *request) {
+		TAlertsList *alertsList = [TAlertsList cast:[request response]];
 		MyLog(@" => alertsList = %@", alertsList);
 		@strongify(self)
 		[self reportSuccess:YES forRequest:__FUNCTION__];
@@ -318,13 +338,15 @@ static const NSTimeInterval resetDelay = 1.5;
 	
 	self.xmlNames = [FilesUtil namesFromPaths:xmlPaths stripExtensions:YES];
 	
-	self.requestNames = @[@"t-alerts",
+	self.requestNames = @[@"t-alerts-rss2",
+						  @"t-alerts-rss4",
 						  @"routeList",
 						  @"routeConfig",
 						  @"predictions",
 						  @"vehicleLocations" ];
 	
-	self.requestMethods = @[NSStringFromSelector(@selector(request_alerts)),
+	self.requestMethods = @[NSStringFromSelector(@selector(request_alertsV2)),
+							NSStringFromSelector(@selector(request_alertsV4)),
 							NSStringFromSelector(@selector(request_routes)),
 							NSStringFromSelector(@selector(request_routeConfig)),
 							NSStringFromSelector(@selector(request_predictions)),
@@ -436,7 +458,7 @@ static const NSTimeInterval resetDelay = 1.5;
 						[spinner startAnimating];
 					}
 					cell.detailTextLabel.text = @"requesting ...";
-// silence warning: 'may cause leak because selector is unknown'
+// MARK: silence warning: 'may cause leak because selector is unknown'
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 					[self performSelector:selector];

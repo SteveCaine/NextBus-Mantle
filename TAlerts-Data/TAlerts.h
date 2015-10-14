@@ -13,7 +13,7 @@
 #import "MTLXMLAdapter.h"
 
 // ----------------------------------------------------------------------
-// this will move to a new MBTA class
+
 typedef enum AlertModes {
 	AlertMode_other = -1,
 	AlertMode_Access,
@@ -26,30 +26,45 @@ typedef enum AlertModes {
 // ----------------------------------------------------------------------
 
 @interface TAlert : MTLModel <MTLXMLSerializing>
-@property (assign, nonatomic, readonly) NSNumber	*messageid;
-@property (  copy, nonatomic, readonly) NSString	*guid;
 
+// CALCULATED
+// from guid (both) & messageid (RSS2)
+@property (assign, nonatomic, readonly) NSNumber	*ID;
+// from metadata:mode (rss2) and category (RSS4)
+@property (assign, nonatomic, readonly) AlertMode	alertMode;
+
+// RSS2 & RSS4 BOTH
+//@property (  copy, nonatomic, readonly) NSString	*guid;
 @property (  copy, nonatomic, readonly) NSString	*title;
 @property (  copy, nonatomic, readonly) NSString	*desc; // <description>
-/**/
-@property (assign, nonatomic, readonly) AlertMode	alertMode;
+@property (strong, nonatomic, readonly) NSDate		*pubDate;
+
+// RSS2 ONLY - metadata
+//@property (assign, nonatomic, readonly) NSNumber	*messageid;
 @property (  copy, nonatomic, readonly) NSString	*line;
 @property (  copy, nonatomic, readonly) NSString	*name;
-/**/
 @property (  copy, nonatomic, readonly) NSString	*direction;
-@property (strong, nonatomic, readonly) NSDate		*pubDate;
-// enum: timing, delayTime, delayCategory?
+//   enum: timing, delayTime, delayCategory?
+// string: mode => alertMode
+
+// RSS4 ONLY
+// string: category => alertMode
+
 @end
 
 // ----------------------------------------------------------------------
 
 @interface TAlertsList : MTLModel <MTLXMLSerializing>
+
 @property (strong, nonatomic, readonly) NSArray		*alerts;
 @property (assign, nonatomic, readonly) NSNumber	*timeToLive; // <ttl>
 // language-region?
 @property (strong, nonatomic, readonly)	NSDate  *timestamp;
 
 - (void)finish;
+
+- (TAlert *)alertByID:(NSNumber *)inID;
+
 @end
 
 // ----------------------------------------------------------------------

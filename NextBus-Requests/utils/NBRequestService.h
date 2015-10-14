@@ -15,6 +15,15 @@
 
 // ----------------------------------------------------------------------
 
+extern NSString * const NextBusErrorDomain;
+
+typedef NS_ENUM(NSInteger, NBErrorCode) {
+	NextBusInvalidParams = 1,
+	NextBusInvalidResponse
+};
+
+// ----------------------------------------------------------------------
+
 @interface NBRequestService : NSObject
 
 + (void)request:(NBRequestType)type

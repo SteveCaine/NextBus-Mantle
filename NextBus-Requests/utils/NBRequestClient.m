@@ -61,12 +61,12 @@ static NSString * const format_path = @"publicXMLFeed?command=%@&a=mbta%@";
 	result = [NSString stringWithFormat:@"%@%@", str_BaseURL, path];
 
 	[self GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-		[self.class log_task:task];
+		log_NSURLSessionDataTask(task, NO);
 		if (success) {
 			success(task, responseObject);
 		}
 	} failure:^(NSURLSessionDataTask *task, NSError *error) {
-		[self.class log_task:task];
+		log_NSURLSessionDataTask(task, NO);
 		if (failure)
 			failure(task, error);
 		else
@@ -84,28 +84,6 @@ static NSString * const format_path = @"publicXMLFeed?command=%@&a=mbta%@";
 		self.responseSerializer = [AFHTTPResponseSerializer serializer];
 	}
 	return self;
-}
-
-// ----------------------------------------------------------------------
-
-+ (void)log_task:(NSURLSessionDataTask *)task {
-#ifdef DEBUG_logResponses
-	NSURLRequest *request = [task originalRequest];
-	NSURL *url = request.URL;
-	NSString *requestStr = [url absoluteString];
-	MyLog(@" request = '%@'", requestStr);
-	
-#if DEBUG_logHeadersHTTP
-	// log HTTP headers in request and response
-	MyLog(@"\n requestHeaders = %@\n", [request allHTTPHeaderFields]);
-	
-	NSURLResponse *response = [task response];
-	if ([response respondsToSelector:@selector(allHeaderFields)]) {
-		NSDictionary *headers = [(NSHTTPURLResponse *)response allHeaderFields];
-		MyLog(@" responseHeaders = %@", headers);
-	}
-#endif
-#endif
 }
 
 @end

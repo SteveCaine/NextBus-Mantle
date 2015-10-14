@@ -28,14 +28,21 @@ static NSString * const elem_pubDate = @"pubDate";
 // ----------------------------------------------------------------------
 
 @interface TAlert ()
-@property (copy, nonatomic) NSString *mode;
+
+@property (strong, nonatomic) NSNumber	*messageid;
+@property (  copy, nonatomic) NSString	*guid;
+@property (  copy, nonatomic) NSString	*mode;
+@property (  copy, nonatomic) NSString	*category;
+
 + (AlertMode)modeForString:(NSString *)name;
+
 @end
 
 // ----------------------------------------------------------------------
 
 @interface TAlertsList ()
 @property (strong, nonatomic, readwrite) NSDate *timestamp;
+@property (strong, nonatomic)			 NSDictionary *alertsByID;
 @end
 
 // ----------------------------------------------------------------------
@@ -65,19 +72,21 @@ static NSString * const elem_pubDate = @"pubDate";
 
 + (NSDictionary *)XMLKeyPathsByPropertyKey {
 	return @{
-			 PROPERTY_FROM_XML_CHILD_ATTRIBUTE( messageid,	metadata ),
+			 // for calculated values
 			 PROPERTY_FROM_XML_CONTENT(			guid ),
-			 
-			 PROPERTY_FROM_XML_CONTENT(			title ),
-			 
-			 @"desc"						: @"description/text()",
-			 
+			 PROPERTY_FROM_XML_CHILD_ATTRIBUTE( messageid,	metadata ),
 			 PROPERTY_FROM_XML_CHILD_ATTRIBUTE( mode,		metadata ),
+			 
+			 // RSS2 & RSS4
+			 PROPERTY_FROM_XML_CONTENT(			title ),
+			 @"desc"						: @"description/text()",
+			 PROPERTY_FROM_XML_CONTENT(			pubDate ),
+			 
+			 // RSS2 ONLY
 			 PROPERTY_FROM_XML_CHILD_ATTRIBUTE( line,		metadata ),
 			 PROPERTY_FROM_XML_CHILD_ATTRIBUTE( name,		metadata ),
 			 PROPERTY_FROM_XML_CHILD_ATTRIBUTE( direction,	metadata ),
 			 
-			 PROPERTY_FROM_XML_CONTENT(			pubDate ),
 			 };
 }
 
@@ -103,14 +112,45 @@ static NSString * const elem_pubDate = @"pubDate";
 	}];
 }
 
+// ----------------------------------------------------------------------
+#pragma mark -
+// ----------------------------------------------------------------------
+
+- (NSNumber *)ID {
+	NSNumber *result = [NSNumber numberWithInteger:0];
+	
+	if (self.messageid)
+		// RSS2: <metadata messageid="70691" ...>
+		result = self.messageid;
+	else
+	if (self.guid.length) {
+		// RSS2: <guid isPermaLink="false">talerts70691</guid>
+		// RSS4: <guid isPermaLink="false">T-Alert ID 70691</guid>
+		// so we trim non-digits from ends of string, then validate what remains is just digits
+		NSCharacterSet *nondigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+		NSString *digits = [self.guid stringByTrimmingCharactersInSet:nondigits];
+		NSRange range = [digits rangeOfCharacterFromSet:nondigits];
+		if (range.location == NSNotFound) {
+			result = [NSNumber numberWithInteger:[digits integerValue]];
+		}
+	}
+	return result;
+}
+
 - (AlertMode)alertMode {
-	return [TAlert modeForString:self.mode];
+	if (self.mode.length)
+		return [TAlert modeForString:self.mode];
+	else
+	if (self.category.length)
+		return [TAlert modeForString:self.category];
+	return AlertMode_other;
 }
 
 - (NSString *)description {
 	NSMutableString *result = [NSMutableString stringWithFormat:@"<%@ %p>", NSStringFromClass(self.class), self];
 	
-	[result appendFormat:@" date = '%@'", self.pubDate];
+	[result appendFormat:@", ID = %@", self.ID];
+	[result appendFormat:@", date = '%@'", self.pubDate];
 	
 	// any of these may be empty/nil
 	if (self.direction.length)
@@ -172,6 +212,22 @@ static NSString * const elem_pubDate = @"pubDate";
 
 - (void)finish {
 	self.timestamp = [NSDate date];
+}
+
+- (TAlert *)alertByID:(NSNumber *)inID {
+	TAlert *result = nil;
+	
+	if ([inID integerValue]) {
+		if (self.alertsByID == nil) {
+			NSMutableDictionary *alertsByID = [NSMutableDictionary dictionaryWithCapacity:self.alerts.count];
+			for (TAlert *alert in self.alerts) {
+				alertsByID[alert.ID] = alert;
+			}
+			self.alertsByID = [alertsByID copy];
+		}
+		result = self.alertsByID[inID];
+	}
+	return result;
 }
 
 - (NSString *)description {
