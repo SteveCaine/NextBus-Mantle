@@ -29,7 +29,7 @@ typedef enum AlertModes {
 
 // CALCULATED
 // from guid (both) & messageid (RSS2)
-@property (assign, nonatomic, readonly) NSNumber	*ID;
+@property (  copy, nonatomic, readonly) NSString	*ID;
 // from metadata:mode (rss2) and category (RSS4)
 @property (assign, nonatomic, readonly) AlertMode	alertMode;
 

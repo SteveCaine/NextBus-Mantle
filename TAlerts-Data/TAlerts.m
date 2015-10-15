@@ -29,7 +29,7 @@ static NSString * const elem_pubDate = @"pubDate";
 
 @interface TAlert ()
 
-@property (strong, nonatomic) NSNumber	*messageid;
+@property (  copy, nonatomic) NSString	*messageid;
 @property (  copy, nonatomic) NSString	*guid;
 @property (  copy, nonatomic) NSString	*mode;
 @property (  copy, nonatomic) NSString	*category;
@@ -116,8 +116,8 @@ static NSString * const elem_pubDate = @"pubDate";
 #pragma mark -
 // ----------------------------------------------------------------------
 
-- (NSNumber *)ID {
-	NSNumber *result = [NSNumber numberWithInteger:0];
+- (NSString *)ID {
+	NSString *result = @"0";
 	
 	if (self.messageid)
 		// RSS2: <metadata messageid="70691" ...>
@@ -131,7 +131,7 @@ static NSString * const elem_pubDate = @"pubDate";
 		NSString *digits = [self.guid stringByTrimmingCharactersInSet:nondigits];
 		NSRange range = [digits rangeOfCharacterFromSet:nondigits];
 		if (range.location == NSNotFound) {
-			result = [NSNumber numberWithInteger:[digits integerValue]];
+			result = digits;
 		}
 	}
 	return result;
@@ -150,7 +150,7 @@ static NSString * const elem_pubDate = @"pubDate";
 #if 1
 	NSMutableString *result = [NSMutableString string];
 	[result appendFormat:@"alert #%@", self.ID];
-//	[result appendFormat:@", lines = '%@'", self.line];
+//	[result appendFormat:@", line = '%@'", self.line];
 	return result;
 #else
 	NSMutableString *result = [NSMutableString stringWithFormat:@"<%@ %p>", NSStringFromClass(self.class), self];
