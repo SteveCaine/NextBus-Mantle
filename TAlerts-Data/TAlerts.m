@@ -147,6 +147,12 @@ static NSString * const elem_pubDate = @"pubDate";
 }
 
 - (NSString *)description {
+#if 1
+	NSMutableString *result = [NSMutableString string];
+	[result appendFormat:@"alert #%@", self.ID];
+//	[result appendFormat:@", lines = '%@'", self.line];
+	return result;
+#else
 	NSMutableString *result = [NSMutableString stringWithFormat:@"<%@ %p>", NSStringFromClass(self.class), self];
 	
 	[result appendFormat:@", ID = %@", self.ID];
@@ -185,6 +191,7 @@ static NSString * const elem_pubDate = @"pubDate";
 		[result appendFormat:@", desc = '%@'", self.desc];
 	
 	return result;
+#endif
 }
 
 @end
