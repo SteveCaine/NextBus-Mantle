@@ -45,7 +45,7 @@
 
 // NSValue => MKCoordinateRegion (mine)
 - (MKCoordinateRegion) MKCoordinateRegionValue {
-	MKCoordinateRegion region = {0,0,0,0};
+	MKCoordinateRegion region = {{0,0},{0,0}};
 	if (strcmp([self objCType], @encode(MKCoordinateRegion)) == 0)
 		[self getValue:&region];
 	return region;
