@@ -1,5 +1,10 @@
 # from https://github.com/github/gitignore/blob/master/Objective-C.gitignore
 # Xcode
+
+# SPC 05-29-16 added
+*.xccheckout
+*xcscmblueprint
+
 #
 build/
 *.pbxuser
@@ -11,7 +16,7 @@ build/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata
-*.xccheckout
+# *.xccheckout - this entry was being ignored!?
 *.moved-aside
 DerivedData
 *.hmap
