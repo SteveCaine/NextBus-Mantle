@@ -53,8 +53,13 @@
 	if (xml.length) {
 		NSError *error = nil;
 		DDXMLDocument *doc = [[DDXMLDocument alloc] initWithData:xml options:0 error:&error];
-		if (error)
+		if (error) {
+#if DEBUG
 			NSLog(@"Error (1): %@", [error debugDescription]);
+#else
+			NSLog(@"Error (1): %@", [error localizedDescription]);
+#endif
+		}
 		else {
 			id obj = nil;
 			// standard practice: check every NextBus response for an error;
