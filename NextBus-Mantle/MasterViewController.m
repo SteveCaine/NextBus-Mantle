@@ -93,7 +93,7 @@ static const NSTimeInterval resetDelay = 1.5;
 	@weakify(self)
 	
 	[self.alertsV2Request refresh_success:^(TAlertsRequest *request) {
-		TAlertsList *alertsList = [TAlertsList cast:[request response]];
+		TAlertsList *alertsList = [TAlertsList cast:[request alertsList]];
 		MyLog(@" => alertsList = %@", alertsList);
 		@strongify(self)
 		[self reportSuccess:YES forRequest:__FUNCTION__];
@@ -112,7 +112,7 @@ static const NSTimeInterval resetDelay = 1.5;
 	@weakify(self)
 	
 	[self.alertsV4Request refresh_success:^(TAlertsRequest *request) {
-		TAlertsList *alertsList = [TAlertsList cast:[request response]];
+		TAlertsList *alertsList = [TAlertsList cast:[request alertsList]];
 		MyLog(@" => alertsList = %@", alertsList);
 		@strongify(self)
 		[self reportSuccess:YES forRequest:__FUNCTION__];
