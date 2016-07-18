@@ -41,9 +41,7 @@
 		if ([[NSScanner scannerWithString:blueString] scanHexInt:&blueHex]) {
 			blueFloat = blueHex/255.0;
 		}
-		
-		UIColor *result = [UIColor colorWithRed:redFloat green:greenFloat blue:blueFloat alpha:1.0];
-		return result;
+		result = [UIColor colorWithRed:redFloat green:greenFloat blue:blueFloat alpha:1.0];
 	}
 	
 	return result;

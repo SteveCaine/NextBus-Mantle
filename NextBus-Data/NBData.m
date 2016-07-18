@@ -66,9 +66,9 @@
 			// if none found, move on to process response
 			obj = [MTLXMLAdapter modelOfClass:[NBError class] fromXMLNode:doc error:&error];
 			if (obj) {
-				NBError *error = (NBError *)obj;
+				NBError *error2 = (NBError *)obj;
 				// TODO: create/return NSError object here
-				NSLog(@"Error (2) - NextBus error in response: %@", error.message);
+				NSLog(@"Error (2) - NextBus error in response: %@", error2.message);
 			}
 			else {
 				switch (requestType) {

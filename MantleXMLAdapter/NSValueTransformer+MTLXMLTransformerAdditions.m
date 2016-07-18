@@ -39,8 +39,9 @@
                 NSString* locale = @"en_US_POSIX";
                 if ([node kind] == DDXMLElementKind) {
                     DDXMLElement* element = (DDXMLElement*)node;
-                    DDXMLNode* node = [element attributeForName:@"locale"];
-                    locale = [node stringValue];
+					// 2016-07-17 renamed from 'node' (which shadows same-name var in outer scope)
+                    DDXMLNode* node2 = [element attributeForName:@"locale"];
+                    locale = [node2 stringValue];
                 }
                 
                 [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:locale]];

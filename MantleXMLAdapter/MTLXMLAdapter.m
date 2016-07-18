@@ -99,17 +99,18 @@ static NSString * const MTLXMLAdapterThrownExceptionErrorKey = @"MTLXMLAdapterTh
 		if (keyPath == nil) continue;
         keyPath = [[modelClass XPathPrefix] stringByAppendingString:keyPath];
 
-		NSArray* nodes = [xmlNode nodesForXPath:keyPath error:error];
-        if (nodes == nil || [nodes count] == 0) continue;
+		// 2016-07-17 renamed from 'nodes' (which shadows same-name var in outer scope)
+		NSArray* nodes2 = [xmlNode nodesForXPath:keyPath error:error];
+        if (nodes2 == nil || [nodes2 count] == 0) continue;
         
 
         
         @try {
             id value = nil;
-            DDXMLNode* node = nodes[0];
+            DDXMLNode* node = nodes2[0];
             NSValueTransformer *transformer = [self XMLTransformerForKey:propertyKey];
             if (transformer != nil) {
-                value = [transformer transformedValue:nodes] ?: NSNull.null;
+                value = [transformer transformedValue:nodes2] ?: NSNull.null;
             } else {
                 value = [node stringValue];
             }
