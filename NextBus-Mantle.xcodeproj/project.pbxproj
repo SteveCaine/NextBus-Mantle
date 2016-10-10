@@ -123,6 +123,7 @@
 		8E76F65D1B3A056B00E03F55 /* NextBus-MantleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NextBus-MantleTests-Info.plist"; sourceTree = "<group>"; };
 		8E76F65F1B3A056B00E03F55 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8E76F6611B3A056B00E03F55 /* NextBus_MantleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NextBus_MantleTests.m; sourceTree = "<group>"; };
+		8E885A3C1DAC323200934CB4 /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = metamacros.h; path = misc/metamacros.h; sourceTree = SOURCE_ROOT; };
 		8E888F141BA7795D00CBE58E /*  -talerts3.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = " -talerts3.xml"; sourceTree = "<group>"; };
 		8EBD7AAD1B3A0E9B00BA02BD /* Debug_iOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Debug_iOS.cpp; sourceTree = "<group>"; };
 		8EBD7AAE1B3A0E9B00BA02BD /* Debug_iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug_iOS.h; sourceTree = "<group>"; };
@@ -246,6 +247,7 @@
 		8E2C08BB1B3A477B0020E2BE /* misc */ = {
 			isa = PBXGroup;
 			children = (
+				8E885A3C1DAC323200934CB4 /* metamacros.h */,
 				8EFA25DB1B8F6EB10094CE56 /* Debug_KissXML.h */,
 				8EFA25DC1B8F6EB10094CE56 /* Debug_KissXML.m */,
 				8EFA25DD1B8F6EB10094CE56 /* EXTScope.h */,
