@@ -66,6 +66,7 @@
 		8EFA25E51B8F6EB10094CE56 /* NSValue+MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA25E21B8F6EB10094CE56 /* NSValue+MapKit.m */; };
 		8EFDDD851BA3A4F900ABC7F3 /* 4d-predictions&a=mit&stopId=03&routeTag=boston.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8EFDDD841BA3A4F900ABC7F3 /* 4d-predictions&a=mit&stopId=03&routeTag=boston.xml */; };
 		F1B5BB87C571687776217C19 /* libPods-NextBus-Mantle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74534276BE41B141E9D792FE /* libPods-NextBus-Mantle.a */; };
+		FC62FBBB74F7256A1645EC96 /* libPods-NextBus-MantleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD109BCD7931E1578EC8F009 /* libPods-NextBus-MantleTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17873A94E97D42A141C85993 /* Pods-NextBus-MantleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextBus-MantleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NextBus-MantleTests/Pods-NextBus-MantleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		49158CBA4616CFDB77884202 /* Pods-NextBus-Mantle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextBus-Mantle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NextBus-Mantle/Pods-NextBus-Mantle.debug.xcconfig"; sourceTree = "<group>"; };
 		74534276BE41B141E9D792FE /* libPods-NextBus-Mantle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NextBus-Mantle.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E2959381B83A7D9004DE0A5 /* appData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = appData.plist; sourceTree = "<group>"; };
@@ -188,6 +190,8 @@
 		8EFA25E11B8F6EB10094CE56 /* NSValue+MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSValue+MapKit.h"; path = "misc/NSValue+MapKit.h"; sourceTree = SOURCE_ROOT; };
 		8EFA25E21B8F6EB10094CE56 /* NSValue+MapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSValue+MapKit.m"; path = "misc/NSValue+MapKit.m"; sourceTree = SOURCE_ROOT; };
 		8EFDDD841BA3A4F900ABC7F3 /* 4d-predictions&a=mit&stopId=03&routeTag=boston.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "4d-predictions&a=mit&stopId=03&routeTag=boston.xml"; sourceTree = "<group>"; };
+		DD109BCD7931E1578EC8F009 /* libPods-NextBus-MantleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NextBus-MantleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8C5A7E6FB3690A4BBC2713A /* Pods-NextBus-MantleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextBus-MantleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NextBus-MantleTests/Pods-NextBus-MantleTests.release.xcconfig"; sourceTree = "<group>"; };
 		F8C9A1D29E2CEE130AAF020A /* Pods-NextBus-Mantle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextBus-Mantle.release.xcconfig"; path = "Pods/Target Support Files/Pods-NextBus-Mantle/Pods-NextBus-Mantle.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -210,6 +214,7 @@
 				8E76F6561B3A056B00E03F55 /* XCTest.framework in Frameworks */,
 				8E76F6581B3A056B00E03F55 /* UIKit.framework in Frameworks */,
 				8E76F6571B3A056B00E03F55 /* Foundation.framework in Frameworks */,
+				FC62FBBB74F7256A1645EC96 /* libPods-NextBus-MantleTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +297,7 @@
 				8E76F6371B3A056B00E03F55 /* UIKit.framework */,
 				8E76F6551B3A056B00E03F55 /* XCTest.framework */,
 				74534276BE41B141E9D792FE /* libPods-NextBus-Mantle.a */,
+				DD109BCD7931E1578EC8F009 /* libPods-NextBus-MantleTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -485,6 +491,8 @@
 			children = (
 				49158CBA4616CFDB77884202 /* Pods-NextBus-Mantle.debug.xcconfig */,
 				F8C9A1D29E2CEE130AAF020A /* Pods-NextBus-Mantle.release.xcconfig */,
+				17873A94E97D42A141C85993 /* Pods-NextBus-MantleTests.debug.xcconfig */,
+				F8C5A7E6FB3690A4BBC2713A /* Pods-NextBus-MantleTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -496,11 +504,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E76F6651B3A056B00E03F55 /* Build configuration list for PBXNativeTarget "NextBus-Mantle" */;
 			buildPhases = (
-				0BAFCD7BA370400BD086C89C /* Check Pods Manifest.lock */,
+				0BAFCD7BA370400BD086C89C /* [CP] Check Pods Manifest.lock */,
 				8E76F62C1B3A056B00E03F55 /* Sources */,
 				8E76F62D1B3A056B00E03F55 /* Frameworks */,
 				8E76F62E1B3A056B00E03F55 /* Resources */,
-				DDA3890424C7F3ACB4316881 /* Copy Pods Resources */,
+				DDA3890424C7F3ACB4316881 /* [CP] Copy Pods Resources */,
+				857C2B533FF4624E31AF3A0A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -515,9 +524,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E76F6681B3A056B00E03F55 /* Build configuration list for PBXNativeTarget "NextBus-MantleTests" */;
 			buildPhases = (
+				D92B07FEE9DC490ED6E1809B /* [CP] Check Pods Manifest.lock */,
 				8E76F6501B3A056B00E03F55 /* Sources */,
 				8E76F6511B3A056B00E03F55 /* Frameworks */,
 				8E76F6521B3A056B00E03F55 /* Resources */,
+				A1E67D7F1970CF0B58A038E5 /* [CP] Embed Pods Frameworks */,
+				42BCC1898E292E4D9626A9DB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -594,14 +606,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0BAFCD7BA370400BD086C89C /* Check Pods Manifest.lock */ = {
+		0BAFCD7BA370400BD086C89C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -609,14 +621,74 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		DDA3890424C7F3ACB4316881 /* Copy Pods Resources */ = {
+		42BCC1898E292E4D9626A9DB /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NextBus-MantleTests/Pods-NextBus-MantleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		857C2B533FF4624E31AF3A0A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NextBus-Mantle/Pods-NextBus-Mantle-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A1E67D7F1970CF0B58A038E5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NextBus-MantleTests/Pods-NextBus-MantleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D92B07FEE9DC490ED6E1809B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DDA3890424C7F3ACB4316881 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -817,6 +889,7 @@
 		};
 		8E76F6691B3A056B00E03F55 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17873A94E97D42A141C85993 /* Pods-NextBus-MantleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NextBus-Mantle.app/NextBus-Mantle";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -839,6 +912,7 @@
 		};
 		8E76F66A1B3A056B00E03F55 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8C5A7E6FB3690A4BBC2713A /* Pods-NextBus-MantleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NextBus-Mantle.app/NextBus-Mantle";
 				FRAMEWORK_SEARCH_PATHS = (
