@@ -418,6 +418,11 @@ static const NSTimeInterval resetDelay = 1.5;
 			UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 			spinner.hidesWhenStopped = YES;
 			[cell setAccessoryView:spinner];
+            
+            // older MBTA realtime T-Alerts URL may have been discontinued?
+            BOOL disabled = [cell.textLabel.text containsString:@"rss2"];
+            cell.userInteractionEnabled = cell.textLabel.enabled = cell.detailTextLabel.enabled = !disabled;
+            
 		}	break;
 		
 		case Section_Parse:
@@ -429,6 +434,7 @@ static const NSTimeInterval resetDelay = 1.5;
 				cell.textLabel.text = text;
 			}
 			cell.detailTextLabel.text = self.sectionCellSubtitles[indexPath.section];
+            cell.userInteractionEnabled = cell.textLabel.enabled = cell.detailTextLabel.enabled = YES; // update any reused cells disabled above
 			break;
 		default:
 			break;

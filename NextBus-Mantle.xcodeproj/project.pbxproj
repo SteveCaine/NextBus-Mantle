@@ -870,6 +870,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NextBus-Mantle/NextBus-Mantle-Prefix.pch";
 				INFOPLIST_FILE = "NextBus-Mantle/NextBus-Mantle-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -884,6 +885,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NextBus-Mantle/NextBus-Mantle-Prefix.pch";
 				INFOPLIST_FILE = "NextBus-Mantle/NextBus-Mantle-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

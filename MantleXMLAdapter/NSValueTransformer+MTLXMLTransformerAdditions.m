@@ -5,6 +5,9 @@
 //  Created by Matthew Baranowski on 6/26/13.
 //  Copyright (c) 2013 Matthew Baranowski. All rights reserved.
 //
+//  Changes by Steve Caine on 10/06/2016 to replace
+//  deprecated Mantle method '+reversibleTransformerWithForwardBlock:reverseBlock:'
+//
 
 #import "NSValueTransformer+MTLXMLTransformerAdditions.h"
 #import "MTLModel.h"
@@ -28,10 +31,9 @@
 }
 
 + (NSValueTransformer *)mtl_XMLTransformerForDateWithFormat:(NSString*)dateFormat {
-	return [MTLValueTransformer
-            reversibleTransformerWithForwardBlock:^id(NSArray *nodes) {
-                if (nodes == nil || nodes.count == 0) return nil;
-                
+	return [MTLValueTransformer transformerUsingForwardBlock:^id(NSArray *nodes, BOOL *success, NSError **error) {
+				if (nodes == nil || nodes.count == 0) return nil;
+		
                 DDXMLNode* node = nodes[0];
                 NSDateFormatter* formatter = [NSValueTransformer dateFormatter];
                 [formatter setDateFormat:dateFormat];
@@ -39,7 +41,7 @@
                 NSString* locale = @"en_US_POSIX";
                 if ([node kind] == DDXMLElementKind) {
                     DDXMLElement* element = (DDXMLElement*)node;
-					// 2016-07-17 renamed from 'node' (which shadows same-name var in outer scope)
+                    // 2016-07-17 renamed from 'node' (which shadows same-name var in outer scope)
                     DDXMLNode* node2 = [element attributeForName:@"locale"];
                     locale = [node2 stringValue];
                 }
@@ -47,17 +49,17 @@
                 [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:locale]];
                 
                 id myDate;
-                NSError* error;
                 if (![formatter getObjectValue:&myDate
                                      forString:[node stringValue]
                                          range:nil
-                                         error:&error]) {
+                                         error:error
+					  ]) {
                     return nil;
                 }
                 
                 return myDate;
             }
-            reverseBlock:^(NSDate *date) {
+            reverseBlock:^(NSDate *date, BOOL *success, NSError **error) {
                 NSDateFormatter* formatter = [NSValueTransformer dateFormatter];
                 [formatter setDateFormat:dateFormat];
                 return [formatter stringFromDate:date];
@@ -66,8 +68,7 @@
 
 
 + (NSValueTransformer *)mtl_XMLTransformerForInteger {
-	return [MTLValueTransformer
-    reversibleTransformerWithForwardBlock:^ id (NSArray *nodes) {
+	return [MTLValueTransformer transformerUsingForwardBlock:^ id (NSArray *nodes, BOOL *success, NSError **error) {
                     if ([nodes[0] stringValue] != nil && ![[nodes[0] stringValue] isEqualToString:@""])
                     {
                         return @([nodes[0] stringValue].integerValue);
@@ -77,19 +78,18 @@
                         return nil;
                     }
            } 
-            reverseBlock:^(NSNumber* num) {
+            reverseBlock:^(NSNumber* num, BOOL *success, NSError **error) {
                 return [    num stringValue];
             }];
 }
 
 + (NSValueTransformer *)mtl_XMLTransformerForURL {
-    return [MTLValueTransformer
-            reversibleTransformerWithForwardBlock:^ id (NSArray *nodes) {
+    return [MTLValueTransformer transformerUsingForwardBlock:^ id (NSArray *nodes, BOOL *success, NSError **error) {
                 if (nodes == nil || nodes.count == 0) return nil;
                 DDXMLNode* node = nodes[0];
                 return [NSURL URLWithString:node.stringValue];
             }
-            reverseBlock:^ id (NSURL *URL) {
+            reverseBlock:^ id (NSURL *URL, BOOL *success, NSError **error) {
                 if (![URL isKindOfClass:NSURL.class]) return nil;
                 return URL.absoluteString;
             }];
@@ -99,13 +99,12 @@
 	NSParameterAssert([modelClass isSubclassOfClass:MTLModel.class]);
 	NSParameterAssert([modelClass conformsToProtocol:@protocol(MTLXMLSerializing)]);
     
-	return [MTLValueTransformer
-            reversibleTransformerWithForwardBlock:^ id (NSArray *nodes) {
+	return [MTLValueTransformer transformerUsingForwardBlock:^ id (NSArray *nodes, BOOL *success, NSError **error) {
                 if (nodes == nil || nodes.count == 0) return nil;
                 NSAssert([nodes[0] isKindOfClass:DDXMLNode.class], @"Expected a DDXMLNode, got: %@", nodes[0]);
                 return [MTLXMLAdapter modelOfClass:modelClass fromXMLNode:nodes[0] error:NULL];
             }
-            reverseBlock:^ id (MTLModel<MTLXMLSerializing> *model) {
+            reverseBlock:^ id (MTLModel<MTLXMLSerializing> *model, BOOL *success, NSError **error) {
                 if (model == nil) return nil;
                 
                 NSAssert([model isKindOfClass:MTLModel.class], @"Expected a MTLModel object, got %@", model);
@@ -118,8 +117,7 @@
 + (NSValueTransformer *)mtl_XMLArrayTransformerWithModelClass:(Class)modelClass {
 	NSValueTransformer *xmlTransformer = [self mtl_XMLTransformerWithModelClass:modelClass];
     
-	return [MTLValueTransformer
-            reversibleTransformerWithForwardBlock:^ id (NSArray *nodes) {
+	return [MTLValueTransformer transformerUsingForwardBlock:^ id (NSArray *nodes, BOOL *success, NSError **error) {
                 if (nodes == nil) return nil;
                 NSMutableArray *models = [NSMutableArray arrayWithCapacity:nodes.count];
                 for (DDXMLNode *child in nodes) {
@@ -132,7 +130,7 @@
                 
                 return models;
             }
-            reverseBlock:^ id (NSArray *models) {
+            reverseBlock:^ id (NSArray *models, BOOL *success, NSError **error) {
                 if (models == nil) return nil;
                 
                 NSAssert([models isKindOfClass:NSArray.class], @"Expected a array of MTLModels, got: %@", models);
@@ -152,8 +150,7 @@
 
 + (NSValueTransformer *)mtl_XMLNonUniformObjectArrayTransformerWithModelClass:(Class)modelClass {
     
-	return [MTLValueTransformer
-            reversibleTransformerWithForwardBlock:^ id (NSArray *nodes) {
+	return [MTLValueTransformer transformerUsingForwardBlock:^ id (NSArray *nodes, BOOL *success, NSError **error) {
                 if (nodes == nil || nodes.count == 0) return nil;
                 
                 NSMutableArray *models = [NSMutableArray arrayWithCapacity:nodes.count];
@@ -168,7 +165,7 @@
                 
                 return models;
             }
-            reverseBlock:^ id (NSArray *models) {
+            reverseBlock:^ id (NSArray *models, BOOL *success, NSError **error) {
                 if (models == nil) return nil;
                 
                 NSAssert([models isKindOfClass:NSArray.class], @"Expected a array of MTLModels, got: %@", models);

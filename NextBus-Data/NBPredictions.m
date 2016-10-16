@@ -46,7 +46,7 @@ static NSString * const attr_epochTime	= @"epochTime";
 }
 
 + (NSValueTransformer *)epochTimeXMLTransformer {
-	return [MTLValueTransformer transformerWithBlock:^id(NSArray *nodes) {
+	return [MTLValueTransformer transformerUsingForwardBlock:^id(NSArray *nodes, BOOL *success, NSError **error) {
 		NSDate *result = nil;
 		
 		DDXMLNode *aNode = [nodes firstObject];
@@ -55,10 +55,6 @@ static NSString * const attr_epochTime	= @"epochTime";
 			NSString *epochString = aNode.stringValue;
 			// moved logic into NSString+NextBus category
 			result = [epochString epochTime];
-//			if ([epochString length]) {
-//				NSTimeInterval epoch = [epochString doubleValue] / 1000.0;
-//				result = [NSDate dateWithTimeIntervalSince1970:epoch];
-//			}
 		}
 		return result;
 	}];

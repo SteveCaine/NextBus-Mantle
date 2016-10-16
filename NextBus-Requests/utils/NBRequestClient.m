@@ -60,7 +60,7 @@ static NSString * const format_path = @"publicXMLFeed?command=%@&a=mbta%@";
 	
 	result = [NSString stringWithFormat:@"%@%@", str_BaseURL, path];
 
-	[self GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+	[self GET:path parameters:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
 //		log_NSURLSessionDataTask(task, NO);
 		if (success) {
 			success(task, responseObject);

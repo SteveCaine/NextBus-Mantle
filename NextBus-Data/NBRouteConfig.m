@@ -122,7 +122,7 @@ static NSString * const attr_lon			= @"lon";
 // ----------------------------------------------------------------------
 
 + (NSValueTransformer *)tagsXMLTransformer {
-	return [MTLValueTransformer transformerWithBlock:^id(NSArray *nodes) {
+	return [MTLValueTransformer transformerUsingForwardBlock:^id(NSArray *nodes, BOOL *success, NSError **error) {
 		
 		NSMutableArray *result = [NSMutableArray arrayWithCapacity:nodes.count];
 		for (DDXMLElement *elem in nodes) {
@@ -136,7 +136,7 @@ static NSString * const attr_lon			= @"lon";
 }
 
 + (NSValueTransformer *)pointsXMLTransformer {
-	return [MTLValueTransformer transformerWithBlock:^id(NSArray *nodes) {
+	return [MTLValueTransformer transformerUsingForwardBlock:^id(NSArray *nodes, BOOL *success, NSError **error) {
 		
 		NSMutableArray *result = [NSMutableArray arrayWithCapacity:nodes.count];
 		for (DDXMLElement *elem in nodes) {
@@ -205,7 +205,7 @@ static NSString * const attr_lon			= @"lon";
 // ----------------------------------------------------------------------
 
 + (NSValueTransformer *)stopsXMLTransformer {
-	return [MTLValueTransformer transformerWithBlock:^id(NSArray *nodes) {
+	return [MTLValueTransformer transformerUsingForwardBlock:^id(NSArray *nodes, BOOL *success, NSError **error) {
 		
 		NSMutableArray *result = [NSMutableArray arrayWithCapacity:nodes.count];
 		for (DDXMLElement *elem in nodes) {
@@ -268,7 +268,7 @@ static NSString * const attr_lon			= @"lon";
 // ----------------------------------------------------------------------
 
 + (NSValueTransformer *)colorXMLTransformer {
-	return [MTLValueTransformer transformerWithBlock:^id(NSArray *nodes) {
+	return [MTLValueTransformer transformerUsingForwardBlock:^id(NSArray *nodes, BOOL *success, NSError **error) {
 		NSString *colorString = nil;
 		
 		DDXMLNode *aNode = [nodes firstObject];
@@ -279,7 +279,7 @@ static NSString * const attr_lon			= @"lon";
 }
 
 + (NSValueTransformer *)oppositeColorXMLTransformer {
-	return [MTLValueTransformer transformerWithBlock:^id(NSArray *nodes) {
+	return [MTLValueTransformer transformerUsingForwardBlock:^id(NSArray *nodes, BOOL *success, NSError **error) {
 		NSString *colorString = nil;
 		
 		DDXMLNode *aNode = [nodes firstObject];

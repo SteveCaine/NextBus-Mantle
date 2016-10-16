@@ -87,7 +87,7 @@ static NSString * const attr_time	  = @"time";
 }
 
 + (NSValueTransformer *)lastTimeXMLTransformer {
-	return [MTLValueTransformer transformerWithBlock:^id(NSArray *nodes) {
+	return [MTLValueTransformer transformerUsingForwardBlock:^id(NSArray *nodes, BOOL *success, NSError **error) {
 		NSDate *result = nil;
 		
 		DDXMLNode *aNode = [nodes firstObject];
