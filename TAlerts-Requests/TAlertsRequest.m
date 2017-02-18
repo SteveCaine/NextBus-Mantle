@@ -22,16 +22,15 @@
 
 // ----------------------------------------------------------------------
 
+// AppData keys
 static NSString * const key_talerts	  = @"talerts";
-
-static NSString * const key_talertsV2 = @"talerts-rss2";
-static NSString * const key_talertsV4 = @"talerts-rss4";
-
 static NSString * const key_staleAges = @"staleAges";
 
+// cached file key (== name of cached file)
+static NSString * const key_talertsV4 = @"talerts-rss4";
+
 // set each time we read a new TAlerts response
-static double last_ttl_rss2;
-static double last_ttl_rss4;
+static double last_ttl_NOW;
 
 // ----------------------------------------------------------------------
 
@@ -43,11 +42,10 @@ typedef void (^block_failure)(NSError *error);
 
 @interface TAlertsRequest ()
 
-@property (assign, nonatomic) TAlertFeed   feed;
 @property (strong, nonatomic) TAlertsList *data;
 
-+ (double)timeToLiveForFeed:(TAlertFeed)feed;
-+ (void)setTimeToLive:(double)ttl forFeed:(TAlertFeed)feed;
++ (double)timeToLive;
++ (void)setTimeToLive:(double)ttl;
 
 @end
 
@@ -55,10 +53,10 @@ typedef void (^block_failure)(NSError *error);
 #pragma mark -
 // ----------------------------------------------------------------------
 
-static TAlertsList* do_success(id data, TAlertFeed feed) {
+static TAlertsList* do_success(id data) {
 	TAlertsList *result = [TAlertsList cast:data];
 	if (result) {
-		[TAlertsRequest setTimeToLive:[result.timeToLive doubleValue] * 24.0 * 3600 forFeed:feed];
+		[TAlertsRequest setTimeToLive:[result.timeToLive doubleValue] * 24.0 * 3600];
 	}
 	return result;
 }
@@ -72,30 +70,13 @@ static TAlertsList* do_success(id data, TAlertFeed feed) {
 
 @implementation TAlertsRequest
 
-- (instancetype)init {
-	self = [super init];
-	if (self) {
-		NSAssert(false, @"TAlertsRequest must -init with choice of RSS feed.");
-	}
-	return self;
-}
-
-- (instancetype)initWithFeed:(TAlertFeed)feed {
-	self = [super init];
-	if (self) {
-		_feed = feed;
-	}
-	return self;
-}
-
-// ----------------------------------------------------------------------
-
-+ (double)timeToLiveForFeed:(TAlertFeed)feed {
++ (double)timeToLive {
 	static dispatch_once_t onceToken;
 	
+	// set each time we read a new TAlerts response
 	static double last_ttl_default;
 	
-	// always 'get' here but 'set' current value in static vars above
+	// always 'get' here but 'set' current value in static var above
 	dispatch_once(&onceToken, ^{
 		NSDictionary *appData = [AppDelegate appData];
 		NSDictionary *staleAges = appData[key_staleAges];
@@ -103,60 +84,26 @@ static TAlertsList* do_success(id data, TAlertFeed feed) {
 		if (default_timeToLive == nil)
 			default_timeToLive = [NSNumber numberWithDouble:0.1];	// double-default value: ~15 minutes
 		last_ttl_default = [default_timeToLive doubleValue] * 24.0 * 3600;	// in seconds
-		last_ttl_rss2 = last_ttl_rss4 = last_ttl_default;
 	});
-	
-	switch (feed) {
-		case talerts_rss2:
-			return last_ttl_rss2;
-			break;
-		case talerts_rss4:
-			return last_ttl_rss4;
-			break;
-		default:
-			return last_ttl_default;
-			break;
-	}
+	return last_ttl_default;
 }
 
-+ (void)setTimeToLive:(double)ttl forFeed:(TAlertFeed)feed {
-	switch (feed) {
-		case talerts_rss2:
-			last_ttl_rss2 = ttl;
-			break;
-		case talerts_rss4:
-			last_ttl_rss4 = ttl;
-			break;
-		default:
-			break;
-	}
++ (void)setTimeToLive:(double)ttl {
+	last_ttl_NOW = ttl;
 }
 
 // ----------------------------------------------------------------------
 
-+ (id)cachedAlertsForFeed:(TAlertFeed)feed { //TTL:(double)ttl
++ (id)cachedAlertsForTTL:(double)ttl {
 	id result = nil;
 	
-	NSString *key = nil;
-	switch (feed) {
-		case talerts_rss2:
-			key = key_talertsV2;
-			break;
-		case talerts_rss4:
-			key = key_talertsV4;
-			break;
-		default:
-			break;
-	}
-	double ttl = [TAlertsRequest timeToLiveForFeed:feed];
-	
-	if (key.length && ttl > 0.0) {
-		NSString *path = [AppDelegate responseFileForKey:key];
+	if (ttl > 0.0) {
+		NSString *path = [AppDelegate responseFileForKey:key_talertsV4];
 		if (path.length) {
-			NSString *name = [path lastPathComponent];
 			NSError *error = nil;
 			double age = [FilesUtil ageOfFile:path error:&error];
 			if (error && error.code != NSFileReadNoSuchFileError) {
+				NSString *name = [path lastPathComponent];
 				NSLog(@"Error checking age of cached file '%@': %@", name, [error localizedDescription]);
 			}
 			else if (age > 0
@@ -185,7 +132,7 @@ static TAlertsList* do_success(id data, TAlertFeed feed) {
 - (void)refresh_success:(void(^)(TAlertsRequest *request))success
 				failure:(void(^)(NSError *error))failure {
 	
-	id cachedObject = [self.class cachedAlertsForFeed:self.feed];
+	id cachedObject = [self.class cachedAlertsForTTL:last_ttl_NOW];
 	
 	if (cachedObject) {
 		self.data = cachedObject;
@@ -198,36 +145,16 @@ static TAlertsList* do_success(id data, TAlertFeed feed) {
 
 - (void)forcedRefresh_success:(void(^)(TAlertsRequest *request))success
 					  failure:(void(^)(NSError *error))failure {
-	switch (self.feed) {
-		
-		case talerts_rss2: {
-			[TAlertsRequestService requestV2_success:^(id data) {
-				self.data = do_success(data, self.feed);
-				if (success)
-					success(self);
-			} failure:^(NSError *error) {
-				if (failure)
-					failure(error);
-				else
-					NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
-			}];
-		}	break;
-		
-		case talerts_rss4: {
-			[TAlertsRequestService requestV4_success:^(id data) {
-				self.data = do_success(data, self.feed);
-				if (success)
-					success(self);
-			} failure:^(NSError *error) {
-				if (failure)
-					failure(error);
-				else
-					NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
-			}];
-		}	break;
-		default:
-			break;
-	}
+	[TAlertsRequestService requestV4_success:^(id data) {
+		self.data = do_success(data);
+		if (success)
+			success(self);
+	} failure:^(NSError *error) {
+		if (failure)
+			failure(error);
+		else
+			NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
+	}];
 }
 
 - (TAlertsList *)alertsList {
@@ -255,26 +182,13 @@ static TAlertsList* do_success(id data, TAlertFeed feed) {
 	BOOL result = YES;
 #endif
 	
-	double ttl = [self.class timeToLiveForFeed:self.feed];
+	double ttl = last_ttl_NOW;
 #if DEBUG_alwaysUseCache
 	ttl = [[NSDate distantFuture] timeIntervalSinceNow];
 #endif
 	
 	if (ttl > 0) {
-		NSString *key = nil;
-		switch (self.feed) {
-			case talerts_rss2:
-				key = key_talertsV2;
-				break;
-			case talerts_rss4:
-				key = key_talertsV4;
-				break;
-			default:
-				key = key_talerts;
-				break;
-		}
-		
-		NSString *path = [AppDelegate responseFileForKey:key];
+		NSString *path = [AppDelegate responseFileForKey:key_talertsV4];
 		if (path.length) {
 			NSError *error = nil;
 			double age = [FilesUtil ageOfFile:path error:&error];

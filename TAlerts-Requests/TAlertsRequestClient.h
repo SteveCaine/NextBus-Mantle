@@ -15,9 +15,6 @@
 
 + (TAlertsRequestClient *)sharedInstance;
 
-- (NSString *)requestV2_success:(void(^)(NSURLSessionDataTask *task, id responseObject))success
-					  failure:(void(^)(NSURLSessionDataTask *task, NSError *error))failure;
-
 - (NSString *)requestV4_success:(void(^)(NSURLSessionDataTask *task, id responseObject))success
 					  failure:(void(^)(NSURLSessionDataTask *task, NSError *error))failure;
 

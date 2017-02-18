@@ -25,7 +25,6 @@ NSString * const TAlertsErrorDomain = @"TAlertsErrorDomain";
 
 // ----------------------------------------------------------------------
 
-static NSString * const talertsV2_file = @"talerts-rss2.xml";
 static NSString * const talertsV4_file = @"talerts-rss4.xml";
 
 // ----------------------------------------------------------------------
@@ -71,26 +70,8 @@ static void do_success(NSURLSessionDataTask *task, id responseObject, NSString *
 
 @implementation TAlertsRequestService
 
-+ (void)requestV2_success:(void(^)(id data))success
-				  failure:(void(^)(NSError *error))failure {
-	
-	if (success) { // but failure can be nil
-		TAlertsRequestClient *client = [TAlertsRequestClient sharedInstance];
-		
-		[client requestV2_success:^(NSURLSessionDataTask *task, id responseObject) {
-			do_success(task, responseObject, talertsV2_file, success, failure);
-			
-		} failure:^(NSURLSessionDataTask *task, NSError *error) {
-			log_NSURLSessionDataTask(task, YES);
-			if (failure)
-				failure(error);
-			else
-				NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
-		}];
-	}
-}
-
-// ----------------------------------------------------------------------
+#warning are we failing to close the XML file? 
+// we get errors in Finder trying to rename/remove it from cache folder
 
 + (void)requestV4_success:(void(^)(id data))success
 				  failure:(void(^)(NSError *error))failure {

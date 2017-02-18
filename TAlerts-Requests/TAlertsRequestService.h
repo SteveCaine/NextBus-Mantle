@@ -24,9 +24,6 @@ typedef NS_ENUM(NSInteger, TAlertsErrorCode) {
 
 @interface TAlertsRequestService : NSObject
 
-+ (void)requestV2_success:(void(^)(id data))success
-				  failure:(void(^)(NSError *error))failure;
-
 + (void)requestV4_success:(void(^)(id data))success
 				  failure:(void(^)(NSError *error))failure;
 

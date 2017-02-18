@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss  version="2.0">
+  <channel>
+    <title>T-Alerts</title>
+    <link>http://www.mbta.com/rider_tools/transit_updates/</link>
+    <description>MBTA Service Alerts</description>
+    <pubDate>Sat, 18 Feb 2017 20:47:03 GMT</pubDate>
+    <language>en-us</language>
+    <generator>MBTA-realtime http://realtime.mbta.com</generator>
+    <webMaster>developer@mbta.com</webMaster>
+    <ttl>10</ttl>
+    <item>
+      <title>Routes 86, 89, 90, 91, 92, 93, 95, 101, 104, &amp; 109: Sullivan Station - Upper Busway moving to Lower Busway every day beginning at approximately 9 p.m. through the end of service due to construction</title>
+      <description>Affected routes:
+86
+89
+90
+91
+92
+93
+95
+101
+104
+109</description>
+      <category>Bus</category>
+      <guid isPermaLink="false">T-Alert ID 148669</guid>
+      <pubDate>Fri, 07 Oct 2016 18:21:28 GMT</pubDate>
+    </item>
+    <item>
+      <title>Routes 15, 41 and 45 detoured on weekdays until further notice. No service on Adams Street at Dudley Street.</title>
+      <description>Service will be detoured on weekdays only. Regular service will resume on weekends. 
+
+Connections: 
+Dudley Street and Hampden Street
+Dudley Street and Dearborn Street</description>
+      <category>Bus</category>
+      <guid isPermaLink="false">T-Alert ID 148979</guid>
+      <pubDate>Mon, 03 Oct 2016 19:06:22 GMT</pubDate>
+    </item>
+    <item>
+      <title>Please board inbound Worcester Line trains on the outbound platforms at Framingham through Wellesley Farms stations weekdays from 2:30 pm until 7:30 pm.</title>
+      <description>Please follow these boarding instructions Monday - Friday unless noted otherwise or if operating on a holiday schedule. 
+
+Affected direction: Inbound
+
+Affected trips:
+518 (2:15 pm from Worcester)
+522 (3:45 pm from Worcester)
+588 (4:47 pm from Framingham)
+524 (5:20 pm from Worcester)
+590 (5:40 pm from Framingham)
+526 (6:05 pm from Worcester)
+592 (7:05 pm from Framingham)</description>
+      <category>Commuter Rail</category>
+      <guid isPermaLink="false">T-Alert ID 160926</guid>
+      <pubDate>Mon, 12 Dec 2016 19:27:33 GMT</pubDate>
+    </item>
+    <item>
+      <title>Please board outbound Worcester Line trains on the inbound platforms at Wellesley Farms through Framingham stations weekdays from 2:30 pm until 7:30 pm.</title>
+      <description>Please follow these boarding instructions Monday - Friday unless noted otherwise or if operating on a holiday schedule.
+
+Affected direction: Outbound
+
+Affected stops:
+Wellesley Farms
+Wellesley Hills
+Wellesley Square
+Natick Center
+West Natick
+Framingham
+
+Affected trips:
+515 (2:00 pm from South Station)
+517 (3:30 pm from South Station)
+589 (3:40 pm from South Station)
+519 (4:25 pm from South Station)
+591 (4:35 pm from South Station)
+521 (5:05 pm from South Station)
+593 (5:15 pm from South Station)
+523 (5:40 pm from South Station)
+525 (5:50 pm from South Station)
+527 (6:20 pm from South Station)
+529 (6:45 pm from South Station)</description>
+      <category>Commuter Rail</category>
+      <guid isPermaLink="false">T-Alert ID 160927</guid>
+      <pubDate>Mon, 12 Dec 2016 19:27:02 GMT</pubDate>
+    </item>
+    <item>
+      <title>Due to construction, Cambridge Street @ Berkshire Street (inbound) moved approximately one block to the far side of Berkshire Street until July 2017.</title>
+      <description>Affected routes:
+69</description>
+      <category>Bus</category>
+      <guid isPermaLink="false">T-Alert ID 137774</guid>
+      <pubDate>Tue, 04 Oct 2016 10:06:37 GMT</pubDate>
+    </item>
+    <item>
+      <title>Escalator 331 DOWNTOWN XING - Red Line Southbound Platform to Orange Line Northbound Plat unavailable from Mon Feb 20 through Fri Mar 10 due to maintenance</title>
+      <description />
+      <category>Access</category>
+      <guid isPermaLink="false">T-Alert ID 170035</guid>
+      <pubDate>Fri, 17 Feb 2017 16:29:37 GMT</pubDate>
+    </item>
+    <item>
+      <title>Escalator 315 HYNES CONVENTION CTR - Outbound Platform to Mass Ave unavailable from Mon Feb 20 through Fri Mar 10 due to maintenance</title>
+      <description />
+      <category>Access</category>
+      <guid isPermaLink="false">T-Alert ID 170036</guid>
+      <pubDate>Fri, 17 Feb 2017 16:30:06 GMT</pubDate>
+    </item>
+    <item>
+      <title>All clear (was: Silver Line - SL5 experiencing moderate delays)</title>
+      <category>Bus</category>
+      <guid isPermaLink="false">T-Alert ID 170249</guid>
+      <pubDate>Sat, 18 Feb 2017 20:35:43 GMT</pubDate>
+    </item>
+    <item>
+      <title>Route 15 experiencing minor delays due to traffic</title>
+      <description />
+      <category>Bus</category>
+      <guid isPermaLink="false">T-Alert ID 170255</guid>
+      <pubDate>Sat, 18 Feb 2017 17:48:11 GMT</pubDate>
+    </item>
+    <item>
+      <title>Route 100 experiencing moderate delays due to traffic</title>
+      <description />
+      <category>Bus</category>
+      <guid isPermaLink="false">T-Alert ID 170262</guid>
+      <pubDate>Sat, 18 Feb 2017 18:29:22 GMT</pubDate>
+    </item>
+    <item>
+      <title>Route 101 experiencing minor delays due to traffic</title>
+      <description />
+      <category>Bus</category>
+      <guid isPermaLink="false">T-Alert ID 170263</guid>
+      <pubDate>Sat, 18 Feb 2017 18:42:20 GMT</pubDate>
+    </item>
+    <item>
+      <title>Routes 104, 105 and 109 detoured due to construction. Connect at Broadway @ Gladstone St and Broadway opp Beacham St.</title>
+      <description>Affected direction: Inbound
+
+Bypassed stops:
+Broadway @ Bowdoin St
+
+Connections:
+Broadway @ Gladstone St
+Broadway opp Beacham St</description>
+      <category>Bus</category>
+      <guid isPermaLink="false">T-Alert ID 170265</guid>
+      <pubDate>Sat, 18 Feb 2017 18:58:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Route 14 experiencing moderate delays due to traffic</title>
+      <description />
+      <category>Bus</category>
+      <guid isPermaLink="false">T-Alert ID 170266</guid>
+      <pubDate>Sat, 18 Feb 2017 20:03:47 GMT</pubDate>
+    </item>
+    <item>
+      <title>Route 16 experiencing moderate delays</title>
+      <description />
+      <category>Bus</category>
+      <guid isPermaLink="false">T-Alert ID 170269</guid>
+      <pubDate>Sat, 18 Feb 2017 19:27:24 GMT</pubDate>
+    </item>
+    <item>
+      <title>Route 106 experiencing moderate delays due to traffic</title>
+      <description />
+      <category>Bus</category>
+      <guid isPermaLink="false">T-Alert ID 170270</guid>
+      <pubDate>Sat, 18 Feb 2017 19:48:23 GMT</pubDate>
+    </item>
+    <item>
+      <title>Route 7 experiencing minor delays due to traffic</title>
+      <description />
+      <category>Bus</category>
+      <guid isPermaLink="false">T-Alert ID 170271</guid>
+      <pubDate>Sat, 18 Feb 2017 19:48:41 GMT</pubDate>
+    </item>
+    <item>
+      <title>Route 9 experiencing minor delays due to traffic</title>
+      <description />
+      <category>Bus</category>
+      <guid isPermaLink="false">T-Alert ID 170272</guid>
+      <pubDate>Sat, 18 Feb 2017 19:48:57 GMT</pubDate>
+    </item>
+    <item>
+      <title>Route 23 experiencing minor delays due to traffic</title>
+      <description />
+      <category>Bus</category>
+      <guid isPermaLink="false">T-Alert ID 170273</guid>
+      <pubDate>Sat, 18 Feb 2017 19:58:36 GMT</pubDate>
+    </item>
+    <item>
+      <title>Route 83 experiencing moderate delays due to disabled bus</title>
+      <description />
+      <category>Bus</category>
+      <guid isPermaLink="false">T-Alert ID 170274</guid>
+      <pubDate>Sat, 18 Feb 2017 20:37:33 GMT</pubDate>
+    </item>
+    <item>
+      <title>Pedestrian access to North Station will be through Legends Way beginning Saturday, October 22, through February 2017, due to the Hub on Causeway Project</title>
+      <link>http://www.mbta.com/uploadedfiles/Schedules_and_Maps/Bus/161021_North%20Station%20Boston%20Garden%20Advisory.pdf</link>
+      <description>The new path of travel will be along a protected path along Legends Way and across Causeway Street to the station entrances along Haverhill Street. The path will include a barrier and kick-plate for blind and low vision passengers.</description>
+      <category>Subway</category>
+      <guid isPermaLink="false">T-Alert ID 152290</guid>
+      <pubDate>Fri, 21 Oct 2016 19:31:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Pedestrian access to North Station will be through Legends Way beginning Saturday, October 22, through February 2017, due to the Hub on Causeway Project</title>
+      <link>http://www.mbta.com/uploadedfiles/Schedules_and_Maps/Bus/161021_North%20Station%20Boston%20Garden%20Advisory.pdf</link>
+      <description>The new path of travel will be along a protected path along Legends Way and across Causeway Street to the station entrances along Haverhill Street. The path will include a barrier and kick-plate for blind and low vision passengers.</description>
+      <category>Commuter Rail</category>
+      <guid isPermaLink="false">T-Alert ID 152291</guid>
+      <pubDate>Fri, 21 Oct 2016 19:31:35 GMT</pubDate>
+    </item>
+    <item>
+      <title>Elevator 804 PARK STREET - Tremont Street to the Lobby will be reconstructed and will be out of service through June 2017.</title>
+      <description>If entering the station, cross Tremont Street to the Boston Common and use Park Street Elevator 978 to the Green Line westbound platform. Red Line platform access is available via the elevator beyond the fare gates. If exiting the station, please travel down the Winter Street Concourse toward Downtown Crossing Station, exit through the fare gates, and take Downtown Crossing Elevator 892 to the street level.</description>
+      <category>Access</category>
+      <guid isPermaLink="false">T-Alert ID 131196</guid>
+      <pubDate>Tue, 15 Nov 2016 13:08:21 GMT</pubDate>
+    </item>
+    <item>
+      <title>Congress St @ Franklin St (inbound) has moved from the farside of Congress St to the nearside due to construction at 100 Federal St</title>
+      <description>Affected routes:
+4</description>
+      <category>Bus</category>
+      <guid isPermaLink="false">T-Alert ID 154672</guid>
+      <pubDate>Tue, 31 Jan 2017 15:56:45 GMT</pubDate>
+    </item>
+    <item>
+      <title>Route 47: Inbound bus stops on Pearl Street and Putnam Avenue are closed until June 2018.</title>
+      <link>http://www.mbta.com/uploadedfiles/Schedules_and_Maps/Bus/2016-07%20047%20Service%20Advisory%20-%20Detour%20Magazine%20St%20due%20to%20Pearl%20St%20construction.pdf</link>
+      <description>Affected stops: 
+Pearl Street @ Franklin Street 
+Pearl Street @ Cottage Street 
+Pearl Street @ Lawrence Street 
+Pearl Street @ Erie Street 
+Pearl Street @ Allston Street 
+Putnam Avenue @ Magazine Street 
+
+Temporary bus stops on Magazine Street can be found at: 
+Magazine Street @ William Street 
+Magazine Street @ Kelly Road 
+Magazine Street @ Allston Street 
+
+The temporary stop at Magazine St @ Allston St has moved across Allston Street to the north.</description>
+      <category>Bus</category>
+      <guid isPermaLink="false">T-Alert ID 165272</guid>
+      <pubDate>Sun, 15 Jan 2017 17:07:23 GMT</pubDate>
+    </item>
+    <item>
+      <title>Vassar St @ Mass Ave (outbound) moved permanently to 62 Vassar Street.</title>
+      <description>Affected routes:
+CT2</description>
+      <category>Bus</category>
+      <guid isPermaLink="false">T-Alert ID 155400</guid>
+      <pubDate>Thu, 09 Feb 2017 10:09:03 GMT</pubDate>
+    </item>
+    <item>
+      <title>Arsenal St @ Irving St (inbound) permanently moved to the farside of Irving St  due to sidewalk construction.</title>
+      <description>Affected routes:
+70
+70A</description>
+      <category>Bus</category>
+      <guid isPermaLink="false">T-Alert ID 166450</guid>
+      <pubDate>Wed, 25 Jan 2017 14:57:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Please board all trains on the inbound platforms at Haverhill and Bradford except Trains 216 (1:35 pm from Haverhill) and 222 (6:09 pm from Haverhill).</title>
+      <description>Due to the Merrimack River Bridge project, trains that operate between Bradford and Haverhill will only use the inbound track. Trains that are bused between Haverhill and Bradford will board on the outbound platform at Bradford for service into Boston. Note: Train 216 (1:35 pm from Haverhill) and Train 222 (6:09 pm from Haverhill) are bused from Haverhill Station to Bradford Station. The outbound platform at Bradford may be accessed via the crossing that is south (to the right when facing the tracks from the parking lot) of the mini-high platforms. Alternatively, the outbound platform can also be accessed via the sidewalk from Laurel Avenue.
+
+
+Affected stops:
+Bradford
+Haverhill</description>
+      <category>Commuter Rail</category>
+      <guid isPermaLink="false">T-Alert ID 144368</guid>
+      <pubDate>Fri, 10 Feb 2017 10:03:58 GMT</pubDate>
+    </item>
+    <item>
+      <title>Shuttle buses will replace Blue Line service between Bowdoin and Airport Stations on the weekends of 2/18 - 2/19 &amp; 2/25 - 2/26 due to track work.</title>
+      <description>Due to necessary track work, buses will replace Blue Line trains between Bowdoin and Airport Stations in both directions from start to end of service on the following weekends:
+
+- Saturday, February 18, 2017 and Sunday, February 19, 2017 
+- Saturday, February 25, 2017 and Sunday, February 26, 2017 
+
+Regular Blue Line train service will resume at the start of service on the following Monday.
+
+All shuttle bus stops are accessible for persons with disabilities. 
+
+Shuttling the following stops:
+Airport (busway)
+Maverick (busway)
+Aquarium (State Street @ Surface Artery)
+State Street (State Street at Washington St bus berth)
+Government Center
+Bowdoin
+
+Customers looking to board shuttle bus service at Government Center and Bowdoin Stations must do so at the State Street bus stop</description>
+      <category>Subway</category>
+      <guid isPermaLink="false">T-Alert ID 168231</guid>
+      <pubDate>Thu, 16 Feb 2017 12:25:30 GMT</pubDate>
+    </item>
+    <item>
+      <title>Elevator 941 NORTH STATION - Lobby to the Commuter Rail and Boston Garden will remain closed until further notice due to construction of the Boston Garden Development.</title>
+      <description>If exiting, return to the fare lobby to use North Station Elevator 912 (lobby to Causeway Street) or pass through the fare gates, walk the full length of the Green Line platform to use North Station Elevator 909 (lobby to Valenti Way). If boarding, cross Causeway Street to use North Station Elevator 912 (lobby to street) or travel one-tenth of a mile down Haverhill Street to the entrance located at the intersection of Haverhill Street and Valenti Way.</description>
+      <category>Access</category>
+      <guid isPermaLink="false">T-Alert ID 105025</guid>
+      <pubDate>Fri, 23 Dec 2016 12:15:40 GMT</pubDate>
+    </item>
+    <item>
+      <title>Escalator 360 CENTRAL - Outbound Platform to Street unavailable through Fri Mar 3 due to maintenance</title>
+      <description />
+      <category>Access</category>
+      <guid isPermaLink="false">T-Alert ID 168677</guid>
+      <pubDate>Fri, 17 Feb 2017 16:28:36 GMT</pubDate>
+    </item>
+    <item>
+      <title>The South Station Concourse Elevator, which operates to/from the Commuter Rail and Red Line/Silver Line levels, will be out of service from Monday, February 13, through Monday, March 27, due to modernization.</title>
+      <description>During this scheduled outage, please utilize South Station Elevator 926 (located on Atlantic Ave) for access to the Red Line and Silver Line.
+
+Affected routes:
+Framingham/Worcester Line
+Needham Line
+Franklin Line
+Fairmount Line
+Providence/Stoughton Line
+Middleborough/Lakeville Line
+Kingston/Plymouth Line
+Greenbush Line</description>
+      <category>Commuter Rail</category>
+      <guid isPermaLink="false">T-Alert ID 168691</guid>
+      <pubDate>Fri, 10 Feb 2017 16:41:15 GMT</pubDate>
+    </item>
+    <item>
+      <title>Due to the Simon Company's Copley Place construction, Back Bay Stations Dartmouth Street underpass will remain closed until April 8, 2017.</title>
+      <description>Due to Copley Place construction being performed by the Simon Company, the Dartmouth Street underpass  leading to and from the west side of Dartmouth Street at Back Bay Station will be temporarily closed until April 8, 2017.
+
+Customers are encouraged to use the stations main entrance on the east side of Dartmouth Street during the underpass closure. 
+
+Affected routes:
+Orange Line
+Framingham/Worcester Line
+Needham Line
+Franklin Line
+Providence/Stoughton Line</description>
+      <category>Subway, Commuter Rail</category>
+      <guid isPermaLink="false">T-Alert ID 116064</guid>
+      <pubDate>Fri, 10 Feb 2017 14:22:07 GMT</pubDate>
+    </item>
+    <item>
+      <title>The South Station Concourse Elevator, which operates to/from the Commuter Rail and Red Line/Silver Line levels, will be out of service through Monday, March 27, due to modernization</title>
+      <link>http://www.mbta.com/uploadedfiles/170209_SOUTH%20STATION_%20St%20and%20Lobby%20Elevator%20closure%20advisory.pdf</link>
+      <description>During this scheduled outage, please utilize South Station Elevator 926 (located on Atlantic Ave) for access to the Red Line and Silver Line.</description>
+      <category>Access</category>
+      <guid isPermaLink="false">T-Alert ID 168356</guid>
+      <pubDate>Mon, 13 Feb 2017 16:28:34 GMT</pubDate>
+    </item>
+    <item>
+      <title>The South Station Concourse Elevator, which operates to/from the Commuter Rail and Red Line/Silver Line levels, will be out of service from Monday, February 13, through Monday, March 27, due to modernization</title>
+      <link>http://www.mbta.com/uploadedfiles/170209_SOUTH%20STATION_%20St%20and%20Lobby%20Elevator%20closure%20advisory.pdf</link>
+      <description>During this scheduled outage, please utilize South Station Elevator 926 (located on Atlantic Ave) for access to the Red Line and Silver Line.
+
+Affected routes:
+Red Line
+Silver Line - SL1
+Silver Line - SL2</description>
+      <category>Subway, Bus</category>
+      <guid isPermaLink="false">T-Alert ID 168391</guid>
+      <pubDate>Fri, 10 Feb 2017 16:17:45 GMT</pubDate>
+    </item>
+    <item>
+      <title>Route 88 experiencing minor delays due to traffic</title>
+      <description />
+      <category>Bus</category>
+      <guid isPermaLink="false">T-Alert ID 170275</guid>
+      <pubDate>Sat, 18 Feb 2017 20:03:07 GMT</pubDate>
+    </item>
+    <item>
+      <title>Route 442 experiencing minor delays due to traffic</title>
+      <description />
+      <category>Bus</category>
+      <guid isPermaLink="false">T-Alert ID 170276</guid>
+      <pubDate>Sat, 18 Feb 2017 20:44:36 GMT</pubDate>
+    </item>
+    <item>
+      <title>The Commuter Rail will operate on a Saturday schedule for Presidents' Day, Monday, February 20, 2017.</title>
+      <link>http://www.mbta.com/events/</link>
+      <description>Please note there is no service on the Stoughton Line or to TF Green/Wickford Junction on the Saturday schedule.</description>
+      <category>Commuter Rail</category>
+      <guid isPermaLink="false">T-Alert ID 169843</guid>
+      <pubDate>Thu, 16 Feb 2017 16:56:32 GMT</pubDate>
+    </item>
+    <item>
+      <title>The pedestrian bridge at the Braintree Parking Garage will be closed beginning Tuesday, February 21, through Summer 2020 due to construction.</title>
+      <description>For access to Braintree Station during this closure, travel down to the first floor and use the pedestrian crosswalk to enter the station at the street level.
+This closure is due to the South Shore Parking Garages Improvements and Renovations Project. The pedestrian bridge will be replaced by a new garage lobby featuring elevators and stairwells.
+
+Affected routes:
+Red Line
+210
+230
+236
+Middleborough/Lakeville Line
+Kingston/Plymouth Line</description>
+      <category>Subway, Commuter Rail, Bus</category>
+      <guid isPermaLink="false">T-Alert ID 169844</guid>
+      <pubDate>Thu, 16 Feb 2017 17:05:13 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

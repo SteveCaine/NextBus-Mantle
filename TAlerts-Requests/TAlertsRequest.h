@@ -12,20 +12,10 @@
 #import <Foundation/Foundation.h>
 
 // ----------------------------------------------------------------------
-// TODO: combine logic for making requests to and naming cache files from
-// these two versions of TAlerts RSS feed (in an object)
-typedef enum TAlertFeeds {
-	talerts_rss2,
-	talerts_rss4
-} TAlertFeed;
-
-// ----------------------------------------------------------------------
 @class TAlertsList;
 // ----------------------------------------------------------------------
 
 @interface TAlertsRequest : NSObject
-
-- (instancetype)initWithFeed:(TAlertFeed)feed;
 
 - (void)refresh_success:(void(^)(TAlertsRequest *request))success
 				failure:(void(^)(NSError *error))failure;

@@ -77,16 +77,9 @@ static NSString * const elem_pubDate = @"pubDate";
 			 PROPERTY_FROM_XML_CHILD_ATTRIBUTE( messageid,	metadata ),
 			 PROPERTY_FROM_XML_CHILD_ATTRIBUTE( mode,		metadata ),
 			 
-			 // RSS2 & RSS4
 			 PROPERTY_FROM_XML_CONTENT(			title ),
 			 @"desc"						: @"description/text()",
 			 PROPERTY_FROM_XML_CONTENT(			pubDate ),
-			 
-			 // RSS2 ONLY
-			 PROPERTY_FROM_XML_CHILD_ATTRIBUTE( line,		metadata ),
-			 PROPERTY_FROM_XML_CHILD_ATTRIBUTE( name,		metadata ),
-			 PROPERTY_FROM_XML_CHILD_ATTRIBUTE( direction,	metadata ),
-			 
 			 };
 }
 
@@ -159,8 +152,8 @@ static NSString * const elem_pubDate = @"pubDate";
 	[result appendFormat:@", date = '%@'", self.pubDate];
 	
 	// any of these may be empty/nil
-	if (self.direction.length)
-		[result appendFormat:@", direction = '%@'", self.direction];
+//	if (self.direction.length)
+//		[result appendFormat:@", direction = '%@'", self.direction];
 	if (self.title.length)
 		[result appendFormat:@", title = '%@'", self.title];
 	

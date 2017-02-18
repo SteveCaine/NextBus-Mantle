@@ -17,7 +17,6 @@
 
 static NSString * const str_BaseURL = @"http://realtime.mbta.com/alertsrss/";
 
-static NSString * const str_path_rss2 = @"rssfeed2"; // newer format
 static NSString * const str_path_rss4 = @"rssfeed4"; // backward compatible
 
 // ----------------------------------------------------------------------
@@ -33,13 +32,6 @@ static NSString * const str_path_rss4 = @"rssfeed4"; // backward compatible
 	});
 	
 	return _sharedInstance;
-}
-
-// ----------------------------------------------------------------------
-
-- (NSString *)requestV2_success:(void(^)(NSURLSessionDataTask *task, id responseObject))success
-						failure:(void(^)(NSURLSessionDataTask *task, NSError *error))failure {
-	return [self request_path:str_path_rss2 success:success failure:failure];
 }
 
 // ----------------------------------------------------------------------
