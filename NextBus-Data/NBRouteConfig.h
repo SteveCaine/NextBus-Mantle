@@ -9,6 +9,8 @@
 //	Copyright (c) 2015 Steve Caine.
 //
 
+#import <UIKit/UIKit.h>
+
 #import <Mantle/Mantle.h>
 #import "MTLXMLAdapter.h"
 

@@ -16,6 +16,7 @@
 		8E2C08B71B3A45AB0020E2BE /* NBVehicleLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08AB1B3A45AB0020E2BE /* NBVehicleLocations.m */; };
 		8E2C08B91B3A45AB0020E2BE /* NSDate+NextBus.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08AF1B3A45AB0020E2BE /* NSDate+NextBus.m */; };
 		8E2C08BA1B3A45AB0020E2BE /* NSString+NextBus.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C08B11B3A45AB0020E2BE /* NSString+NextBus.m */; };
+		8E6263D21EB283BC00B374F4 /* Debug_ObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6263D11EB283BC00B374F4 /* Debug_ObjC.m */; };
 		8E67AC931B98DCED008E811E /* MapBounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E67AC921B98DCED008E811E /* MapBounds.m */; };
 		8E76F6341B3A056B00E03F55 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E76F6331B3A056B00E03F55 /* Foundation.framework */; };
 		8E76F6361B3A056B00E03F55 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E76F6351B3A056B00E03F55 /* CoreGraphics.framework */; };
@@ -33,7 +34,6 @@
 		8E76F6601B3A056B00E03F55 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8E76F65E1B3A056B00E03F55 /* InfoPlist.strings */; };
 		8E76F6621B3A056B00E03F55 /* NextBus_MantleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E76F6611B3A056B00E03F55 /* NextBus_MantleTests.m */; };
 		8E7E1BA61E58EC4E00E401AE /* -talerts-rss4.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8E7E1BA51E58EC4E00E401AE /* -talerts-rss4.xml */; };
-		8EBD7AF61B3A0E9C00BA02BD /* Debug_iOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD7AAD1B3A0E9B00BA02BD /* Debug_iOS.cpp */; };
 		8EBD7AF71B3A0E9C00BA02BD /* Debug_iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD7AAF1B3A0E9B00BA02BD /* Debug_iOS.m */; };
 		8EBD7B151B3A0E9C00BA02BD /* FilesUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD7AEF1B3A0E9C00BA02BD /* FilesUtil.m */; };
 		8EBD7B161B3A0E9C00BA02BD /* FolderWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD7AF11B3A0E9C00BA02BD /* FolderWatcher.m */; };
@@ -99,6 +99,8 @@
 		8E2C08AF1B3A45AB0020E2BE /* NSDate+NextBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+NextBus.m"; path = "utils/NSDate+NextBus.m"; sourceTree = "<group>"; };
 		8E2C08B01B3A45AB0020E2BE /* NSString+NextBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+NextBus.h"; path = "utils/NSString+NextBus.h"; sourceTree = "<group>"; };
 		8E2C08B11B3A45AB0020E2BE /* NSString+NextBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+NextBus.m"; path = "utils/NSString+NextBus.m"; sourceTree = "<group>"; };
+		8E6263D01EB283BC00B374F4 /* Debug_ObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug_ObjC.h; sourceTree = "<group>"; };
+		8E6263D11EB283BC00B374F4 /* Debug_ObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Debug_ObjC.m; sourceTree = "<group>"; };
 		8E67AC911B98DCED008E811E /* MapBounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapBounds.h; sourceTree = "<group>"; };
 		8E67AC921B98DCED008E811E /* MapBounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapBounds.m; sourceTree = "<group>"; };
 		8E76F6301B3A056B00E03F55 /* NextBus-Mantle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NextBus-Mantle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,7 +126,6 @@
 		8E76F6611B3A056B00E03F55 /* NextBus_MantleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NextBus_MantleTests.m; sourceTree = "<group>"; };
 		8E7E1BA51E58EC4E00E401AE /* -talerts-rss4.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "-talerts-rss4.xml"; sourceTree = "<group>"; };
 		8E885A3C1DAC323200934CB4 /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = metamacros.h; path = misc/metamacros.h; sourceTree = SOURCE_ROOT; };
-		8EBD7AAD1B3A0E9B00BA02BD /* Debug_iOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Debug_iOS.cpp; sourceTree = "<group>"; };
 		8EBD7AAE1B3A0E9B00BA02BD /* Debug_iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug_iOS.h; sourceTree = "<group>"; };
 		8EBD7AAF1B3A0E9B00BA02BD /* Debug_iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Debug_iOS.m; sourceTree = "<group>"; };
 		8EBD7AEA1B3A0E9C00BA02BD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -352,7 +353,8 @@
 		8EBD7AA91B3A0E9B00BA02BD /* DebugUtil */ = {
 			isa = PBXGroup;
 			children = (
-				8EBD7AAD1B3A0E9B00BA02BD /* Debug_iOS.cpp */,
+				8E6263D01EB283BC00B374F4 /* Debug_ObjC.h */,
+				8E6263D11EB283BC00B374F4 /* Debug_ObjC.m */,
 				8EBD7AAE1B3A0E9B00BA02BD /* Debug_iOS.h */,
 				8EBD7AAF1B3A0E9B00BA02BD /* Debug_iOS.m */,
 				8E67AC911B98DCED008E811E /* MapBounds.h */,
@@ -546,7 +548,7 @@
 		8E76F6281B3A056B00E03F55 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Steve Caine";
 				TargetAttributes = {
 					8E76F6531B3A056B00E03F55 = {
@@ -717,6 +719,7 @@
 				8ECBE79D1B8BDAF0002F8365 /* Categories.m in Sources */,
 				8EC62F011B8A6127008B546A /* NBRequestService.m in Sources */,
 				8EC0803C1B82769F00BFE99E /* TAlerts.m in Sources */,
+				8E6263D21EB283BC00B374F4 /* Debug_ObjC.m in Sources */,
 				8EBD7AF71B3A0E9C00BA02BD /* Debug_iOS.m in Sources */,
 				8EBD7B151B3A0E9C00BA02BD /* FilesUtil.m in Sources */,
 				8E2C08B71B3A45AB0020E2BE /* NBVehicleLocations.m in Sources */,
@@ -725,7 +728,6 @@
 				8EFA25E31B8F6EB10094CE56 /* Debug_KissXML.m in Sources */,
 				8ECBE7871B8BA322002F8365 /* NBPredictionsRequest.m in Sources */,
 				8EFA25E51B8F6EB10094CE56 /* NSValue+MapKit.m in Sources */,
-				8EBD7AF61B3A0E9C00BA02BD /* Debug_iOS.cpp in Sources */,
 				8E76F64A1B3A056B00E03F55 /* MasterViewController.m in Sources */,
 				8E76F6401B3A056B00E03F55 /* main.m in Sources */,
 				8E76F64D1B3A056B00E03F55 /* DetailViewController.m in Sources */,
@@ -805,6 +807,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -867,6 +870,7 @@
 				GCC_PREFIX_HEADER = "NextBus-Mantle/NextBus-Mantle-Prefix.pch";
 				INFOPLIST_FILE = "NextBus-Mantle/NextBus-Mantle-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SteveCaine.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -882,6 +886,7 @@
 				GCC_PREFIX_HEADER = "NextBus-Mantle/NextBus-Mantle-Prefix.pch";
 				INFOPLIST_FILE = "NextBus-Mantle/NextBus-Mantle-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SteveCaine.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -904,6 +909,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "NextBus-MantleTests/NextBus-MantleTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SteveCaine.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -923,6 +929,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NextBus-Mantle/NextBus-Mantle-Prefix.pch";
 				INFOPLIST_FILE = "NextBus-MantleTests/NextBus-MantleTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SteveCaine.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
