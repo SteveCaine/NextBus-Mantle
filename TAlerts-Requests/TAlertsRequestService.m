@@ -41,7 +41,7 @@ static void do_success(NSURLSessionDataTask *task, id responseObject, NSString *
 	
 //	log_NSURLSessionDataTask(task, NO);
 	
-	if (![responseObject isKindOfClass:[NSData class]]) {
+	if (![responseObject isKindOfClass:NSData.class]) {
 		NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : @"Response object is not JSON data." };
 		error = [NSError errorWithDomain:TAlertsErrorDomain code:TAlertsInvalidResponse userInfo:userInfo];
 	}
@@ -60,7 +60,7 @@ static void do_success(NSURLSessionDataTask *task, id responseObject, NSString *
 		if (failure)
 			failure(error);
 		else
-			NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
+			NSLog(@"%s %@", __FUNCTION__, error.localizedDescription);
 	}
 }
 
@@ -87,7 +87,7 @@ static void do_success(NSURLSessionDataTask *task, id responseObject, NSString *
 			if (failure)
 				failure(error);
 			else
-				NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
+				NSLog(@"%s %@", __FUNCTION__, error.localizedDescription);
 		}];
 	}
 }

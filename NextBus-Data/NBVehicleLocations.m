@@ -83,14 +83,14 @@ static NSString * const attr_time	  = @"time";
 }
 
 + (NSValueTransformer *)vehiclesXMLTransformer {
-	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:[NBVehicle class]];
+	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:NBVehicle.class];
 }
 
 + (NSValueTransformer *)lastTimeXMLTransformer {
 	return [MTLValueTransformer transformerUsingForwardBlock:^id(NSArray *nodes, BOOL *success, NSError **error) {
 		NSDate *result = nil;
 		
-		DDXMLNode *aNode = [nodes firstObject];
+		DDXMLNode *aNode = nodes.firstObject;
 		if (aNode && aNode.kind == DDXMLElementKind && [aNode.name isEqualToString:elem_lastTime]) {
 			
 			DDXMLElement *elem = (DDXMLElement *)aNode;
@@ -99,8 +99,8 @@ static NSString * const attr_time	  = @"time";
 				
 				// NextBus's epochTime integer is milliseconds since Jan 1 1970
 				NSString *epochString = bNode.stringValue;
-				if ([epochString length]) {
-					NSTimeInterval epoch = [epochString doubleValue] / 1000.0;
+				if (epochString.length) {
+					NSTimeInterval epoch = epochString.doubleValue / 1000.0;
 					result = [NSDate dateWithTimeIntervalSince1970:epoch];
 				}
 			}
@@ -110,7 +110,7 @@ static NSString * const attr_time	  = @"time";
 }
 
 - (void)finish {
-	self.timestamp = [NSDate date];
+	self.timestamp = NSDate.date;
 }
 
 // ----------------------------------------------------------------------

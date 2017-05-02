@@ -41,7 +41,7 @@
 - (NSString *)description {
 	NSMutableString *result = [NSMutableString stringWithFormat:@"<%@ %p> ", NSStringFromClass(self.class), self];
 	[result appendFormat:@"tag='%@', title='%@'", self.tag, self.title];
-	if ([self.shortTitle length])
+	if (self.shortTitle.length)
 		[result appendFormat:@", (title)='%@'", self.shortTitle];
 	[result appendFormat:@", region='%@'", self.regionTitle];
 	return result;
@@ -64,11 +64,11 @@
 }
 
 + (NSValueTransformer *)agenciesXMLTransformer {
-	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:[NBAgency class]];
+	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:NBAgency.class];
 }
 
 - (void)finish {
-	self.timestamp = [NSDate date];
+	self.timestamp = NSDate.date;
 }
 
 - (NSString *)description {

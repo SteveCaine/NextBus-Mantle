@@ -20,7 +20,7 @@
 - (UIColor *)colorValue {
 	UIColor *result = nil;
 	
-	if ([self length] >= 6) {
+	if (self.length >= 6) {
 		float redFloat = 0.0;
 		NSString *redString = [self substringWithRange:NSMakeRange(0,2)];
 		unsigned redHex = 0;
@@ -50,8 +50,8 @@
 - (NSDate *)epochTime {
 	NSDate *result = nil;
 	// NextBus's epochTime integer is milliseconds since Jan 1 1970
-	if ([self length]) {
-		NSTimeInterval epoch = [self doubleValue] / 1000.0;
+	if (self.length) {
+		NSTimeInterval epoch = self.doubleValue / 1000.0;
 		result = [NSDate dateWithTimeIntervalSince1970:epoch];
 	}
 	return result;

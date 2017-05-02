@@ -159,7 +159,7 @@ static NSString * const attr_lon			= @"lon";
 - (NSString *)description {
 	NSMutableString *result = [NSMutableString stringWithFormat:@"<%@ %p> ", NSStringFromClass(self.class), self];
 	
-	[result appendFormat:@"\n with %i tags", (int) [self.tags count]];
+	[result appendFormat:@"\n with %lu tags", self.tags.count];
 #if 0
 	int index = 0;
 	for (NSString *tag_id in self.tags) {
@@ -167,7 +167,7 @@ static NSString * const attr_lon			= @"lon";
 	}
 #endif
 	
-	[result appendFormat:@"\n with %i points", (int) [self.points count]];
+	[result appendFormat:@"\n with %lu points", self.points.count];
 #if 0
 	int index = 0;
 	for (NSValue *point in self.points) {
@@ -210,7 +210,7 @@ static NSString * const attr_lon			= @"lon";
 		NSMutableArray *result = [NSMutableArray arrayWithCapacity:nodes.count];
 		for (DDXMLElement *elem in nodes) {
 			NSString *tag = [elem attributeForName:attr_tag].stringValue;
-			if ([tag length])
+			if (tag.length)
 				[result addObject:tag];
 		}
 		return result;
@@ -226,7 +226,7 @@ static NSString * const attr_lon			= @"lon";
 - (NSString *)description {
 	NSMutableString *result = [NSMutableString stringWithFormat:@"<%@ %p> ", NSStringFromClass(self.class), self];
 	[result appendFormat:@"tag='%@', title='%@', name='%@', useForUI=%s", self.tag, self.title, self.name, (self. useForUI ? "YES" : "NO")];
-	[result appendFormat:@"\n with %i stops", (int) [self.stops count]];
+	[result appendFormat:@"\n with %lu stops", self.stops.count];
 #if 0
 	int index = 0;
 	for (NBRouteStop *stop in self.stops) {
@@ -271,10 +271,10 @@ static NSString * const attr_lon			= @"lon";
 	return [MTLValueTransformer transformerUsingForwardBlock:^id(NSArray *nodes, BOOL *success, NSError **error) {
 		NSString *colorString = nil;
 		
-		DDXMLNode *aNode = [nodes firstObject];
+		DDXMLNode *aNode = nodes.firstObject;
 		if (aNode && aNode.kind == DDXMLAttributeKind && [aNode.name isEqualToString:attr_color])
 			colorString = aNode.stringValue;
-		return [colorString colorValue];
+		return colorString.colorValue;
 	}];
 }
 
@@ -282,23 +282,23 @@ static NSString * const attr_lon			= @"lon";
 	return [MTLValueTransformer transformerUsingForwardBlock:^id(NSArray *nodes, BOOL *success, NSError **error) {
 		NSString *colorString = nil;
 		
-		DDXMLNode *aNode = [nodes firstObject];
+		DDXMLNode *aNode = nodes.firstObject;
 		if (aNode && aNode.kind == DDXMLAttributeKind && [aNode.name isEqualToString:attr_oppositeColor])
 			colorString = aNode.stringValue;
-		return [colorString colorValue];
+		return colorString.colorValue;
 	}];
 }
 
 + (NSValueTransformer *)directionsXMLTransformer {
-	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:[NBRouteDirection class]];
+	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:NBRouteDirection.class];
 }
 
 + (NSValueTransformer *)a_stopsXMLTransformer {
-	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:[NBRouteStop class]];
+	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:NBRouteStop.class];
 }
 
 + (NSValueTransformer *)a_pathsXMLTransformer {
-	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:[NBRoutePath class]];
+	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:NBRoutePath.class];
 }
 
 // ----------------------------------------------------------------------
@@ -306,7 +306,7 @@ static NSString * const attr_lon			= @"lon";
 // ----------------------------------------------------------------------
 
 - (void)finish {
-	self.timestamp = [NSDate date];
+	self.timestamp = NSDate.date;
 
 	NSMutableDictionary *stops = [NSMutableDictionary dictionary];
 	for (NBRouteStop *stop in self.a_stops) {
@@ -331,7 +331,7 @@ static NSString * const attr_lon			= @"lon";
 				for (NSString *stop in direction.stops) {
 					if ([stop isEqualToString:stopTag]) {
 						if (result == nil)
-							result = [NSMutableArray array];
+							result = @[].mutableCopy;
 						[result addObject:direction];
 						break;
 					}
@@ -355,7 +355,7 @@ static NSString * const attr_lon			= @"lon";
 					NBRouteStop *stop = self.stops[stopTag];
 					if (stop) {
 						if (result == nil)
-							result = [NSMutableArray array];
+							result = @[].mutableCopy;
 						[result addObject:stop];
 					}
 				}
@@ -378,7 +378,7 @@ static NSString * const attr_lon			= @"lon";
 			for (NSString *tag in path.tags) {
 				if ([tag hasPrefix:directionTag]) {
 					if (result == nil)
-						result = [NSMutableArray array];
+						result = @[].mutableCopy;
 					[result addObject:path];
 					break;
 				}
@@ -399,7 +399,7 @@ static NSString * const attr_lon			= @"lon";
 	[result appendFormat:@", bounds={ %f, %f, %f, %f } (NSEW)", bounds.north, bounds.south, bounds.east, bounds.west];
 	
 	[result appendFormat:@"\n with %i stops", (int) [self.a_stops count]];
-	[result appendFormat:@"\n with %i directions", (int) [self.directions count]];
+	[result appendFormat:@"\n with %i directions", (int) self.directions.count];
 #if 1
 	[result appendFormat:@"\n with %i paths", (int) [self.a_paths count]];
 #elif 0
@@ -408,7 +408,7 @@ static NSString * const attr_lon			= @"lon";
 	for (NBRouteStop *stop in self.a_stops) {
 		[result appendFormat:@"\n%3i: %@", index++, stop];
 	}
-	[result appendFormat:@"\n\n with %i directions", (int) [self.directions count]];
+	[result appendFormat:@"\n\n with %i directions", (int) self.directions.count];
 	index = 0;
 	for (NBRouteDirection *direction in self.directions) {
 		[result appendFormat:@"\n\n%2i: %@", index++, direction];

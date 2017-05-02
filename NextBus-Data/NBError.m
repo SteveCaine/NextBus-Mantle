@@ -37,7 +37,7 @@
 
 - (NSString *)message {
 	if ([_message length]) {
-		 _message = [_message stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+		 _message = [_message stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
 	}
 	return _message;
 }

@@ -47,7 +47,7 @@ static NSString * const format_path = @"publicXMLFeed?command=%@&a=mbta%@";
 	NSString *command = [NBRequestTypes nameOfRequest:request];
 
 	NSMutableString *str_params = [NSMutableString string];
-	NSArray *keys = [params allKeys];
+	NSArray *keys = params.allKeys;
 	for (NSString *key in keys) {
 		NSString *val = params[key];
 		if (val.length)
@@ -70,7 +70,7 @@ static NSString * const format_path = @"publicXMLFeed?command=%@&a=mbta%@";
 		if (failure)
 			failure(task, error);
 		else
-			NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
+			NSLog(@"%s %@", __FUNCTION__, error.localizedDescription);
 	}];
 
 	return result;

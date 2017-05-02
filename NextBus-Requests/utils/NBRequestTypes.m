@@ -40,7 +40,7 @@ static NSUInteger num_requestTypes = sizeof(requestTypes)/sizeof(requestTypes[0]
 }
 
 + (NBRequestType)findRequestTypeInName:(NSString *)name {
-	if ([name length]) {
+	if (name.length) {
 		for (NBRequestType type = NBRequestType_begin; type != NBRequestType_end; ++type) {
 			if ([name rangeOfString:requestTypes[type]].location != NSNotFound)
 				return type;

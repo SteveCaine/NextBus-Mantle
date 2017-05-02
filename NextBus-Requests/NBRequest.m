@@ -82,7 +82,7 @@ static NSString * const key_staleAges = @"staleAges";
 				if (failure)
 					failure(error);
 				else
-					NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
+					NSLog(@"%s %@", __FUNCTION__, error.localizedDescription);
 			}];
 		}
 	}
@@ -137,7 +137,7 @@ static NSString * const key_staleAges = @"staleAges";
 			NSString *name = [NBRequestTypes nameOfRequest:type];
 			if (name.length) {
 				NSNumber *staleAge = staleAges[name];		 // in days
-				result = [staleAge doubleValue] * 24 * 3600; // seconds
+				result = staleAge.doubleValue * 24 * 3600; // seconds
 			}
 		}
 	}
@@ -192,11 +192,11 @@ static NSString * const key_staleAges = @"staleAges";
 	if (key.length && staleAge > 0) {
 		NSString *path = [AppDelegate responseFileForKey:key];
 		if (path.length) {
-			NSString *name = [path lastPathComponent];
+			NSString *name = path.lastPathComponent;
 			NSError *error = nil;
 			double age = [FilesUtil ageOfFile:path error:&error];
 			if (error && error.code != NSFileReadNoSuchFileError) {
-				NSLog(@"Error checking age of cached file '%@': %@", name, [error localizedDescription]);
+				NSLog(@"Error checking age of cached file '%@': %@", name, error.localizedDescription);
 			}
 			else if (age > 0 && age < staleAge) {
 				// string up to first '&' should be name of request
@@ -207,7 +207,7 @@ static NSString * const key_staleAges = @"staleAges";
 					if (type != NBRequest_invalid) {
 						id obj = [NBData dataForFile:path type:type error:&error];
 						if (error)
-							NSLog(@"Error reading cached XML file: %@", [error localizedDescription]);
+							NSLog(@"Error reading cached XML file: %@", error.localizedDescription);
 						else
 							result = obj; // SUCCESS
 					}

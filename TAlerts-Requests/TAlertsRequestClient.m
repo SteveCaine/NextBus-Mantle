@@ -61,7 +61,7 @@ static NSString * const str_path_rss4 = @"rssfeed4"; // backward compatible
 		if (failure)
 			failure(task, error);
 		else
-			NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
+			NSLog(@"%s %@", __FUNCTION__, error.localizedDescription);
 	}];
 	MyLog(@"%s returns '%@'", __FUNCTION__, result);
 	

@@ -61,11 +61,11 @@
 }
 
 + (NSValueTransformer *)routesXMLTransformer {
-	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:[NBRoute class]];
+	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:NBRoute.class];
 }
 
 - (void)finish {
-	self.timestamp = [NSDate date];
+	self.timestamp = NSDate.date;
 }
 
 - (NSString *)description {

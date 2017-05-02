@@ -35,7 +35,7 @@ static NSString * const xml_dir_name		= @"XMLs";
 
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-		NSString *path = [[NSBundle mainBundle] pathForResource:plist_appData ofType:type_plist];
+		NSString *path = [NSBundle.mainBundle pathForResource:plist_appData ofType:type_plist];
 		if (path.length)
 			result = [[NSDictionary alloc] initWithContentsOfFile:path];
 	});
@@ -51,15 +51,15 @@ static NSString * const xml_dir_name		= @"XMLs";
 	
 	if (name.length) {
 		NSString *path = [[self xmlsDirectory] stringByAppendingPathComponent:name];
-		BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:path];
+		BOOL exists = [NSFileManager.defaultManager fileExistsAtPath:path];
 		NSError *error = nil;
 		if (exists) {
-			BOOL cleared = [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+			BOOL cleared = [NSFileManager.defaultManager removeItemAtPath:path error:&error];
 			if (!cleared)
-				NSLog(@" error clearing older response file '%@' - %@", name, [error localizedDescription]);
+				NSLog(@" error clearing older response file '%@' - %@", name, error.localizedDescription);
 		}
 		if (error == nil) {
-			result = [[NSFileManager defaultManager] createFileAtPath:path contents:data attributes:nil];
+			result = [NSFileManager.defaultManager createFileAtPath:path contents:data attributes:nil];
 			if (!result)
 				NSLog(@" error saving response as file '%@'", name);
 		}
@@ -74,7 +74,7 @@ static NSString * const xml_dir_name		= @"XMLs";
 	if (key.length) {
 		NSString *name = [key stringByAppendingPathExtension:xml_file_extension];
 		NSString *path = [[self xmlsDirectory] stringByAppendingPathComponent:name];
-		if ([[NSFileManager defaultManager] fileExistsAtPath:path])
+		if ([NSFileManager.defaultManager fileExistsAtPath:path])
 			result = path;
 	}
 	return result;
@@ -86,7 +86,7 @@ static NSString * const xml_dir_name		= @"XMLs";
 	double result = 0.0;
 	
 	NSError *error = nil;
-	NSDictionary *attribs = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:&error];
+	NSDictionary *attribs = [NSFileManager.defaultManager attributesOfItemAtPath:path error:&error];
 	if (error) {
 		if (errorP)
 			*errorP = error;
@@ -108,7 +108,7 @@ static NSString * const xml_dir_name		= @"XMLs";
 + (NSString *)xmlsDirectory {
 	NSString *result = nil;
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    result = [[paths firstObject] stringByAppendingPathComponent:xml_dir_name];
+    result = [paths.firstObject stringByAppendingPathComponent:xml_dir_name];
 	return result;
 }
 
@@ -123,16 +123,16 @@ static NSString * const xml_dir_name		= @"XMLs";
 	
 	// if XMLs folder doesn't already exist, create it
 	NSString *xmlsDir = [AppDelegate xmlsDirectory];
-	if ([xmlsDir length]) {
-		if (![[NSFileManager defaultManager] fileExistsAtPath:xmlsDir]) {
+	if (xmlsDir.length) {
+		if (![NSFileManager.defaultManager fileExistsAtPath:xmlsDir]) {
 			NSError *error = nil;
-			if ([[NSFileManager defaultManager] createDirectoryAtPath:xmlsDir
+			if ([NSFileManager.defaultManager createDirectoryAtPath:xmlsDir
 										  withIntermediateDirectories:NO
 														   attributes:nil
 																error:&error]) {
 			}
 			else {
-				NSLog(@"Error creating XMLs directory: %@", [error localizedDescription]);
+				NSLog(@"Error creating XMLs directory: %@", error.localizedDescription);
 			}
 		}
 	}

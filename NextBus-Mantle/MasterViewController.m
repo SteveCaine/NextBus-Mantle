@@ -93,12 +93,12 @@ static const NSTimeInterval resetDelay = 1.5;
 	@weakify(self)
 	
 	[self.alertsV4Request refresh_success:^(TAlertsRequest *request) {
-		TAlertsList *alertsList = [TAlertsList cast:[request alertsList]];
+		TAlertsList *alertsList = [TAlertsList cast:request.alertsList];
 		MyLog(@" => alertsList = %@", alertsList);
 		@strongify(self)
 		[self reportSuccess:YES forRequest:__FUNCTION__];
 	} failure:^(NSError *error) {
-		NSLog(@"Error: %@", [error localizedDescription]);
+		NSLog(@"Error: %@", error.localizedDescription);
 		@strongify(self)
 		[self reportSuccess:NO forRequest:__FUNCTION__];
 	}];
@@ -118,7 +118,7 @@ static const NSTimeInterval resetDelay = 1.5;
 		@strongify(self)
 		[self reportSuccess:YES forRequest:__FUNCTION__];
 	} failure:^(NSError *error) {
-		NSLog(@"Error: %@", [error localizedDescription]);
+		NSLog(@"Error: %@", error.localizedDescription);
 		@strongify(self)
 		[self reportSuccess:NO forRequest:__FUNCTION__];
 	}];
@@ -138,7 +138,7 @@ static const NSTimeInterval resetDelay = 1.5;
 		@strongify(self)
 		[self reportSuccess:YES forRequest:__FUNCTION__];
 	} failure:^(NSError *error) {
-		NSLog(@"Error: %@", [error localizedDescription]);
+		NSLog(@"Error: %@", error.localizedDescription);
 		@strongify(self)
 		[self reportSuccess:NO forRequest:__FUNCTION__];
 	}];
@@ -161,7 +161,7 @@ static const NSTimeInterval resetDelay = 1.5;
 		@strongify(self)
 		[self reportSuccess:YES forRequest:__FUNCTION__];
 	} failure:^(NSError *error) {
-		NSLog(@"Error: %@", [error localizedDescription]);
+		NSLog(@"Error: %@", error.localizedDescription);
 		@strongify(self)
 		[self reportSuccess:NO forRequest:__FUNCTION__];
 	}];
@@ -181,7 +181,7 @@ static const NSTimeInterval resetDelay = 1.5;
 		@strongify(self)
 		[self reportSuccess:YES forRequest:__FUNCTION__];
 	} failure:^(NSError *error) {
-		NSLog(@"Error: %@", [error localizedDescription]);
+		NSLog(@"Error: %@", error.localizedDescription);
 		@strongify(self)
 		[self reportSuccess:NO forRequest:__FUNCTION__];
 	}];
@@ -195,11 +195,11 @@ static const NSTimeInterval resetDelay = 1.5;
 	BOOL result = NO;
 	
 	NSData *data = [NSData dataWithContentsOfFile:xmlPath];
-	if ([data length]) {
+	if (data.length) {
 		NSError *error = nil;
 		DDXMLDocument *doc = [[DDXMLDocument alloc] initWithData:data options:0 error:&error];
 		if (error)
-			NSLog(@"Error (1): %@", [error debugDescription]);
+			NSLog(@"Error (1): %@", error.debugDescription);
 		else {
 			NSString *name = [[FilesUtil namesFromPaths:@[xmlPath] stripExtensions:YES] firstObject];
 			NBRequestType requestType = [NBRequestTypes findRequestTypeInName:name];
@@ -207,21 +207,21 @@ static const NSTimeInterval resetDelay = 1.5;
 			id obj = nil;
 			
 			if ([name rangeOfString:@"talerts"].location != NSNotFound) {
-				obj = [MTLXMLAdapter modelOfClass:[TAlertsList class] fromXMLNode:doc error:&error];
+				obj = [MTLXMLAdapter modelOfClass:TAlertsList.class fromXMLNode:doc error:&error];
 				MyLog(@"\n obj = %@\n", obj);
 				result = (obj != nil);
 			}
 			else
 			// our test "error.xml" file?
 			if ([name rangeOfString:@"error"].location != NSNotFound) {
-				obj = [MTLXMLAdapter modelOfClass:[NBError class] fromXMLNode:doc error:&error];
+				obj = [MTLXMLAdapter modelOfClass:NBError.class fromXMLNode:doc error:&error];
 				MyLog(@"\n obj = %@\n", obj);
 				result = (obj != nil);
 			}
 			else {
 				// standard practice: check every NextBus response for an error;
 				// if none found, move on to process response
-				obj = [MTLXMLAdapter modelOfClass:[NBError class] fromXMLNode:doc error:&error];
+				obj = [MTLXMLAdapter modelOfClass:NBError.class fromXMLNode:doc error:&error];
 				if (obj) {
 					NBError *error = (NBError *)obj;
 					NSLog(@"Error (2) - NextBus error in response: %@", error.message);
@@ -229,25 +229,25 @@ static const NSTimeInterval resetDelay = 1.5;
 				else {
 					switch (requestType) {
 						case NBRequest_agencyList:
-							obj = [MTLXMLAdapter modelOfClass:[NBAgencyList class] fromXMLNode:doc error:&error];
+							obj = [MTLXMLAdapter modelOfClass:NBAgencyList.class fromXMLNode:doc error:&error];
 							break;
 						case NBRequest_routeList:
-							obj = [MTLXMLAdapter modelOfClass:[NBRouteList class] fromXMLNode:doc error:&error];
+							obj = [MTLXMLAdapter modelOfClass:NBRouteList.class fromXMLNode:doc error:&error];
 							break;
 						case NBRequest_routeConfig:
-							obj = [MTLXMLAdapter modelOfClass:[NBRouteConfig class] fromXMLNode:doc error:&error];
+							obj = [MTLXMLAdapter modelOfClass:NBRouteConfig.class fromXMLNode:doc error:&error];
 							break;
 						case NBRequest_predictions:
-							obj = [MTLXMLAdapter modelOfClass:[NBPredictionsResponse class] fromXMLNode:doc error:&error];
+							obj = [MTLXMLAdapter modelOfClass:NBPredictionsResponse.class fromXMLNode:doc error:&error];
 							break;
 						case NBRequest_vehicleLocations:
-							obj = [MTLXMLAdapter modelOfClass:[NBVehicleLocations class] fromXMLNode:doc error:&error];
+							obj = [MTLXMLAdapter modelOfClass:NBVehicleLocations.class fromXMLNode:doc error:&error];
 							break;
 						default:
 							break;
 					}
 					if (error)
-						NSLog(@"Error (3): %@", [error debugDescription]);
+						NSLog(@"Error (3): %@", error.debugDescription);
 					else {
 						MyLog(@"\n obj = %@\n", obj);
 						result = (obj != nil);
@@ -291,7 +291,7 @@ static const NSTimeInterval resetDelay = 1.5;
 		[cell setSelected: NO animated:YES];
 		// stop spinner
 		UIView *accessoryView = cell.accessoryView;
-		if ([accessoryView isKindOfClass:[UIActivityIndicatorView class]]) {
+		if ([accessoryView isKindOfClass:UIActivityIndicatorView.class]) {
 			UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)accessoryView;
 			[spinner stopAnimating];
 		}
@@ -385,7 +385,7 @@ static const NSTimeInterval resetDelay = 1.5;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID forIndexPath:indexPath];
 	
-//	if (indexPath.row < [self.strs count])
+//	if (indexPath.row < self.strs.count)
 //		cell.textLabel.text = self.strs[indexPath.row];
 
 	switch (indexPath.section) {
@@ -438,7 +438,7 @@ static const NSTimeInterval resetDelay = 1.5;
 					
 					// need to start spinning before we call ...
 					UIView *accessoryView = cell.accessoryView;
-					if ([accessoryView isKindOfClass:[UIActivityIndicatorView class]]) {
+					if ([accessoryView isKindOfClass:UIActivityIndicatorView.class]) {
 						UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)accessoryView;
 						[spinner startAnimating];
 					}
@@ -452,10 +452,10 @@ static const NSTimeInterval resetDelay = 1.5;
 			}
 			break;
 		case Section_Parse:
-			if (indexPath.row < [self.xmlNames count]) {
+			if (indexPath.row < self.xmlNames.count) {
 				NSString *xmlName = self.xmlNames[indexPath.row];
-				NSString *xmlPath = [[NSBundle mainBundle] pathForResource:xmlName ofType:str_type_xml];
-				if ([xmlPath length]) {
+				NSString *xmlPath = [NSBundle.mainBundle pathForResource:xmlName ofType:str_type_xml];
+				if (xmlPath.length) {
 					BOOL success = [self parseXML:xmlPath];
 					cell.detailTextLabel.text = (success ? @"Success!" : @"Failed!");
 					// now post new 'ready' for this row: after X seconds, reset to its original state
@@ -477,10 +477,10 @@ static const NSTimeInterval resetDelay = 1.5;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if ([[segue identifier] isEqualToString:SequeID_DetailViewController]) {
+	if ([segue.identifier isEqualToString:SequeID_DetailViewController]) {
 //		NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-		NSDate *object = [NSDate date];
-		[[segue destinationViewController] setDetailItem:object];
+		NSDate *object = NSDate.date;
+		[segue.destinationViewController setDetailItem:object];
 	}
 }
 

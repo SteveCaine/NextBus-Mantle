@@ -56,7 +56,7 @@ typedef void (^block_failure)(NSError *error);
 static TAlertsList* do_success(id data) {
 	TAlertsList *result = [TAlertsList cast:data];
 	if (result) {
-		[TAlertsRequest setTimeToLive:[result.timeToLive doubleValue] * 24.0 * 3600];
+		[TAlertsRequest setTimeToLive:result.timeToLive.doubleValue * 24.0 * 3600];
 	}
 	return result;
 }
@@ -103,8 +103,8 @@ static TAlertsList* do_success(id data) {
 			NSError *error = nil;
 			double age = [FilesUtil ageOfFile:path error:&error];
 			if (error && error.code != NSFileReadNoSuchFileError) {
-				NSString *name = [path lastPathComponent];
-				NSLog(@"Error checking age of cached file '%@': %@", name, [error localizedDescription]);
+				NSString *name = path.lastPathComponent;
+				NSLog(@"Error checking age of cached file '%@': %@", name, error.localizedDescription);
 			}
 			else if (age > 0
 #if DEBUG_alwaysUseCache
@@ -117,7 +117,7 @@ static TAlertsList* do_success(id data) {
 					 ) {
 				id obj = [TAlertsData alertsForFile:path error:&error];
 				if (error) {
-					NSLog(@"Error parsing cached file: %@", [error localizedDescription]);
+					NSLog(@"Error parsing cached file: %@", error.localizedDescription);
 				}
 				else
 					result = obj;
@@ -153,7 +153,7 @@ static TAlertsList* do_success(id data) {
 		if (failure)
 			failure(error);
 		else
-			NSLog(@"%s %@", __FUNCTION__, [error localizedDescription]);
+			NSLog(@"%s %@", __FUNCTION__, error.localizedDescription);
 	}];
 }
 

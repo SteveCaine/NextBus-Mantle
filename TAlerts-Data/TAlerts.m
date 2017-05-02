@@ -58,7 +58,7 @@ static NSString * const elem_pubDate = @"pubDate";
 	dispatch_once(&onceToken, ^{
 		NSDictionary *appData = [AppDelegate appData];
 		id array = appData[key_alertModes];
-		if ([array isKindOfClass:[NSArray class]])
+		if ([array isKindOfClass:NSArray.class])
 			modeNames = (NSArray *)array;
 	});
 
@@ -91,12 +91,14 @@ static NSString * const elem_pubDate = @"pubDate";
 	return [MTLValueTransformer transformerUsingForwardBlock:^id(NSArray *nodes, BOOL *success, NSError **error) {
 		NSDate *result = nil;
 		
-		DDXMLNode *aNode = [nodes firstObject];
+		DDXMLNode *aNode = nodes.firstObject;
 		if (aNode && aNode.kind == DDXMLTextKind && [aNode.parent.name isEqualToString:elem_pubDate]) {
 			NSString *pubDateString = aNode.stringValue;
-			if ([pubDateString length]) {
+			if (pubDateString.length) {
+				static NSDateFormatter *formatter;
+				if (formatter == nil)
+					formatter = [[NSDateFormatter alloc] init];
 				// pubDate is in format 'Fri, 12 Sep 2014 02:26:24 GMT'
-				NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 				[formatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss zzz"];
 				result = [formatter dateFromString:pubDateString];
 			}
@@ -120,7 +122,7 @@ static NSString * const elem_pubDate = @"pubDate";
 		// RSS2: <guid isPermaLink="false">talerts70691</guid>
 		// RSS4: <guid isPermaLink="false">T-Alert ID 70691</guid>
 		// so we trim non-digits from ends of string, then validate what remains is just digits
-		NSCharacterSet *nondigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+		NSCharacterSet *nondigits = NSCharacterSet.decimalDigitCharacterSet.invertedSet;
 		NSString *digits = [self.guid stringByTrimmingCharactersInSet:nondigits];
 		NSRange range = [digits rangeOfCharacterFromSet:nondigits];
 		if (range.location == NSNotFound) {
@@ -207,17 +209,17 @@ static NSString * const elem_pubDate = @"pubDate";
 }
 
 + (NSValueTransformer *)alertsXMLTransformer {
-	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:[TAlert class]];
+	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:TAlert.class];
 }
 
 - (void)finish {
-	self.timestamp = [NSDate date];
+	self.timestamp = NSDate.date;
 }
 
 - (TAlert *)alertByID:(NSNumber *)inID {
 	TAlert *result = nil;
 	
-	if ([inID integerValue]) {
+	if (inID.integerValue) {
 		if (self.alertsByID == nil) {
 			NSMutableDictionary *alertsByID = [NSMutableDictionary dictionaryWithCapacity:self.alerts.count];
 			for (TAlert *alert in self.alerts) {

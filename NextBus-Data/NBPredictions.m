@@ -49,7 +49,7 @@ static NSString * const attr_epochTime	= @"epochTime";
 	return [MTLValueTransformer transformerUsingForwardBlock:^id(NSArray *nodes, BOOL *success, NSError **error) {
 		NSDate *result = nil;
 		
-		DDXMLNode *aNode = [nodes firstObject];
+		DDXMLNode *aNode = nodes.firstObject;
 		if (aNode && aNode.kind == DDXMLAttributeKind && [aNode.name isEqualToString:attr_epochTime]) {
 			// NextBus's epochTime integer is milliseconds since Jan 1 1970
 			NSString *epochString = aNode.stringValue;
@@ -88,7 +88,7 @@ static NSString * const attr_epochTime	= @"epochTime";
 }
 
 + (NSValueTransformer *)predictionsXMLTransformer {
-	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:[NBPrediction class]];
+	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:NBPrediction.class];
 }
 
 - (NSString *)description {
@@ -153,11 +153,11 @@ static NSString * const attr_epochTime	= @"epochTime";
 }
 
 + (NSValueTransformer *)directionsXMLTransformer {
-	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:[NBPredictionsDirection class]];
+	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:NBPredictionsDirection.class];
 }
 
 + (NSValueTransformer *)messagesXMLTransformer {
-	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:[NBPredictionsMessage class]];
+	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:NBPredictionsMessage.class];
 }
 
 - (NSString *)description {
@@ -195,11 +195,11 @@ static NSString * const attr_epochTime	= @"epochTime";
 }
 
 + (NSValueTransformer *)predictionsXMLTransformer {
-	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:[NBPredictions class]];
+	return [NSValueTransformer mtl_XMLArrayTransformerWithModelClass:NBPredictions.class];
 }
 
 - (void)finish {
-	self.timestamp = [NSDate date];
+	self.timestamp = NSDate.date;
 }
 
 - (NSString *)description {

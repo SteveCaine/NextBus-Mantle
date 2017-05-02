@@ -35,7 +35,7 @@
 	
 	if (path.length && type >= NBRequestType_begin && type < NBRequestType_end) {
 		
-		if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+		if ([NSFileManager.defaultManager fileExistsAtPath:path]) {
 			NSData *xml = [NSData dataWithContentsOfFile:path];
 			
 			if (xml.length)
@@ -55,16 +55,16 @@
 		DDXMLDocument *doc = [[DDXMLDocument alloc] initWithData:xml options:0 error:&error];
 		if (error) {
 #if DEBUG
-			NSLog(@"Error (1): %@", [error debugDescription]);
+			NSLog(@"Error (1): %@", error.debugDescription);
 #else
-			NSLog(@"Error (1): %@", [error localizedDescription]);
+			NSLog(@"Error (1): %@", error.localizedDescription);
 #endif
 		}
 		else {
 			id obj = nil;
 			// standard practice: check every NextBus response for an error;
 			// if none found, move on to process response
-			obj = [MTLXMLAdapter modelOfClass:[NBError class] fromXMLNode:doc error:&error];
+			obj = [MTLXMLAdapter modelOfClass:NBError.class fromXMLNode:doc error:&error];
 			if (obj) {
 				NBError *error2 = (NBError *)obj;
 				// TODO: create/return NSError object here
@@ -73,19 +73,19 @@
 			else {
 				switch (requestType) {
 					case NBRequest_agencyList:
-						obj = [MTLXMLAdapter modelOfClass:[NBAgencyList class] fromXMLNode:doc error:&error];
+						obj = [MTLXMLAdapter modelOfClass:NBAgencyList.class fromXMLNode:doc error:&error];
 						break;
 					case NBRequest_routeList:
-						obj = [MTLXMLAdapter modelOfClass:[NBRouteList class] fromXMLNode:doc error:&error];
+						obj = [MTLXMLAdapter modelOfClass:NBRouteList.class fromXMLNode:doc error:&error];
 						break;
 					case NBRequest_routeConfig:
-						obj = [MTLXMLAdapter modelOfClass:[NBRouteConfig class] fromXMLNode:doc error:&error];
+						obj = [MTLXMLAdapter modelOfClass:NBRouteConfig.class fromXMLNode:doc error:&error];
 						break;
 					case NBRequest_predictions:
-						obj = [MTLXMLAdapter modelOfClass:[NBPredictionsResponse class] fromXMLNode:doc error:&error];
+						obj = [MTLXMLAdapter modelOfClass:NBPredictionsResponse.class fromXMLNode:doc error:&error];
 						break;
 					case NBRequest_vehicleLocations:
-						obj = [MTLXMLAdapter modelOfClass:[NBVehicleLocations class] fromXMLNode:doc error:&error];
+						obj = [MTLXMLAdapter modelOfClass:NBVehicleLocations.class fromXMLNode:doc error:&error];
 						break;
 					default:
 						break;
