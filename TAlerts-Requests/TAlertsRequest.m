@@ -178,9 +178,8 @@ static TAlertsList* do_success(id data) {
 - (BOOL)isCacheStale {
 #if DEBUG_neverUseCache
 	return YES;
-#else
-	BOOL result = YES;
 #endif
+	BOOL result = YES;
 	
 	double ttl = last_ttl_NOW;
 #if DEBUG_alwaysUseCache

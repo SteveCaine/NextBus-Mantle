@@ -54,7 +54,14 @@ static NSString * const str_path_rss4 = @"rssfeed4"; // backward compatible
 	[self GET:path parameters:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
 //		log_NSURLSessionDataTask(task, NO);
 		if (success) {
+#if DEBUG && 0
+#warning SIMULATE BROKEN T-ALERTS RESPONSE
+			// original bug was a ~30 delay followed by an empty response: '<rss >\n  <channel />\n</rss>'
+			// here we simulate that delay by failing to pass on the response XML
+#else
+			// normal handing - pass XML on to 'success' handler
 			success(task, responseObject);
+#endif
 		}
 	} failure:^(NSURLSessionDataTask *task, NSError *error) {
 		log_NSURLSessionDataTask(task, YES);
