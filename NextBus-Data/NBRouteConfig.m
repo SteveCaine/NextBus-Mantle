@@ -128,7 +128,7 @@ static NSString * const attr_lon			= @"lon";
 		for (DDXMLElement *elem in nodes) {
 			
 			NSString *tag_id = [elem attributeForName:attr_id].stringValue;
-			if ([tag_id length])
+			if (tag_id.length)
 				[result addObject:tag_id];
 		}
 		return result;
@@ -144,8 +144,8 @@ static NSString * const attr_lon			= @"lon";
 			NSString *str_lat = [elem attributeForName:attr_lat].stringValue;
 			NSString *str_lon = [elem attributeForName:attr_lon].stringValue;
 			
-			if ([str_lat length] && [str_lon length]) {
-				CLLocationCoordinate2D coordinate = { [str_lat doubleValue], [str_lon doubleValue] };
+			if (str_lat.length && str_lon.length) {
+				CLLocationCoordinate2D coordinate = { str_lat.doubleValue, str_lon.doubleValue };
 				NSValue *value = [NSValue valueWithMKCoordinate:coordinate];
 				[result addObject:value];
 			}
@@ -218,7 +218,7 @@ static NSString * const attr_lon			= @"lon";
 }
 
 - (BOOL)useForUI {
-	return [self.useForUI_ boolValue];
+	return self.useForUI_.boolValue;
 }
 
 // ----------------------------------------------------------------------
@@ -339,7 +339,7 @@ static NSString * const attr_lon			= @"lon";
 			}
 		}
 	}
-//	MyLog(@"%s (%@ : %@) returns %i directions", __FUNCTION__, self.tag, stopTag, result.count);
+//	MyLog(@"%s (%@ : %@) returns %lu directions", __FUNCTION__, self.tag, stopTag, result.count);
 	return result;
 }
 
@@ -363,7 +363,7 @@ static NSString * const attr_lon			= @"lon";
 			}
 		}
 	}
-//	MyLog(@"%s (%@ : %@) returns %i stops", __FUNCTION__, self.tag, directionTag, result.count);
+//	MyLog(@"%s (%@ : %@) returns %lu stops", __FUNCTION__, self.tag, directionTag, result.count);
 	return result;
 }
 
@@ -385,7 +385,7 @@ static NSString * const attr_lon			= @"lon";
 			}
 		}
 	}
-//	MyLog(@"%s (%@ : %@) returns %i paths", __FUNCTION__, self.tag, directionTag, result.count);
+//	MyLog(@"%s (%@ : %@) returns %lu paths", __FUNCTION__, self.tag, directionTag, result.count);
 	return result;
 }
 
@@ -398,23 +398,23 @@ static NSString * const attr_lon			= @"lon";
 	MapBounds bounds = self.bounds;
 	[result appendFormat:@", bounds={ %f, %f, %f, %f } (NSEW)", bounds.north, bounds.south, bounds.east, bounds.west];
 	
-	[result appendFormat:@"\n with %i stops", (int) [self.a_stops count]];
-	[result appendFormat:@"\n with %i directions", (int) self.directions.count];
+	[result appendFormat:@"\n with %lu stops",		self.a_stops.count];
+	[result appendFormat:@"\n with %lu directions",	self.directions.count];
 #if 1
-	[result appendFormat:@"\n with %i paths", (int) [self.a_paths count]];
+	[result appendFormat:@"\n with %lu paths",		self.a_paths.count];
 #elif 0
-	[result appendFormat:@"\n\n with %i stops", (int) [self.a_stops count]];
+	[result appendFormat:@"\n\n with %lu stops",	self.a_stops.count];
 	int index = 0;
 	for (NBRouteStop *stop in self.a_stops) {
 		[result appendFormat:@"\n%3i: %@", index++, stop];
 	}
-	[result appendFormat:@"\n\n with %i directions", (int) self.directions.count];
+	[result appendFormat:@"\n\n with %lu directions", self.directions.count];
 	index = 0;
 	for (NBRouteDirection *direction in self.directions) {
 		[result appendFormat:@"\n\n%2i: %@", index++, direction];
 	}
 #else
-	[result appendFormat:@"\n\n with %i paths", (int) [self.a_paths count]];
+	[result appendFormat:@"\n\n with %lu paths", self.a_paths.count];
 	int index = 0;
 	for (NBRouteStop *path in self.a_paths) {
 		[result appendFormat:@"\n\n%2i: %@", index++, path];

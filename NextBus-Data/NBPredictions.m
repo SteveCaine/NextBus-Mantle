@@ -63,7 +63,7 @@ static NSString * const attr_epochTime	= @"epochTime";
 - (NSString *)description {
 	NSMutableString *result = [NSMutableString stringWithFormat:@"<%@ %p> ", NSStringFromClass(self.class), self];
 	NSString *predictionString = [self.epochTime predictionString_short];
-	[result appendFormat:@"epoch=%@, minutes=%i, vehicle='%@'", predictionString, (int) self.minutes, self.vehicle];
+	[result appendFormat:@"epoch=%@, minutes=%lu, vehicle='%@'", predictionString, self.minutes, self.vehicle];
 	return result;
 }
 
