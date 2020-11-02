@@ -51,7 +51,11 @@ static NSString * const str_path_rss4 = @"rssfeed4"; // backward compatible
 	
 	NSString *result = [NSString stringWithFormat:@"%@%@", str_BaseURL, path];
 	
-	[self GET:path parameters:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+	[self GET:path
+   parameters:nil
+	 headers:nil
+	 progress:NULL
+	  success:^(NSURLSessionDataTask *task, id responseObject) {
 //		log_NSURLSessionDataTask(task, NO);
 		if (success) {
 #if DEBUG && 0

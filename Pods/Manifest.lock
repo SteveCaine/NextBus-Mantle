@@ -1,36 +1,47 @@
 PODS:
-  - AFNetworking (3.1.0):
-    - AFNetworking/NSURLSession (= 3.1.0)
-    - AFNetworking/Reachability (= 3.1.0)
-    - AFNetworking/Security (= 3.1.0)
-    - AFNetworking/Serialization (= 3.1.0)
-    - AFNetworking/UIKit (= 3.1.0)
-  - AFNetworking/NSURLSession (3.1.0):
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.1.0)
-  - AFNetworking/Security (3.1.0)
-  - AFNetworking/Serialization (3.1.0)
-  - AFNetworking/UIKit (3.1.0):
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - KissXML (5.1.2):
-    - KissXML/Core (= 5.1.2)
-  - KissXML/Core (5.1.2)
-  - Mantle (2.0.7):
-    - Mantle/extobjc (= 2.0.7)
-  - Mantle/extobjc (2.0.7)
+  - KissXML (5.3.1):
+    - KissXML/All (= 5.3.1)
+  - KissXML/Additions (5.3.1):
+    - KissXML/Core
+  - KissXML/All (5.3.1):
+    - KissXML/Additions
+    - KissXML/Core
+  - KissXML/Core (5.3.1)
+  - Mantle (2.1.6):
+    - Mantle/extobjc (= 2.1.6)
+  - Mantle/extobjc (2.1.6)
 
 DEPENDENCIES:
   - AFNetworking
   - KissXML
   - Mantle
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs:
+    - AFNetworking
+    - KissXML
+    - Mantle
+
 SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  KissXML: 246c842586bb77110e04fb88e19376d96245c856
-  Mantle: bc40bb061d8c2c6fb48d5083e04d928c3b7f73d9
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  KissXML: 5c8e0f2e8b9f071d3e1ae123dec3eb5da615c10c
+  Mantle: 4c0ed6ce47c96eccc4dc3bb071deb3def0e2c3be
 
-PODFILE CHECKSUM: 582a64b15b0d602f6ff6b5ad3b97cbc958991b32
+PODFILE CHECKSUM: 3d9818897736a5472c89cc805c4651a970dee0b1
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.8.4
