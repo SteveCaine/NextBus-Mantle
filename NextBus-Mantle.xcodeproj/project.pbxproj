@@ -256,9 +256,8 @@
 				8EFA25E11B8F6EB10094CE56 /* NSValue+MapKit.h */,
 				8EFA25E21B8F6EB10094CE56 /* NSValue+MapKit.m */,
 			);
-			name = misc;
-			path = HACKS;
-			sourceTree = "<group>";
+			path = misc;
+			sourceTree = SOURCE_ROOT;
 		};
 		8E76F6271B3A056B00E03F55 = {
 			isa = PBXGroup;
@@ -461,8 +460,8 @@
 				8EC62F001B8A6127008B546A /* NBRequestService.m */,
 			);
 			name = utils;
-			path = "NextBus-Requests/requests";
-			sourceTree = "<group>";
+			path = "NextBus-Requests/utils";
+			sourceTree = SOURCE_ROOT;
 		};
 		8ECBE78E1B8BC629002F8365 /* TAlerts-Requests */ = {
 			isa = PBXGroup;
@@ -484,8 +483,8 @@
 				8ECBE79C1B8BDAF0002F8365 /* Categories.m */,
 			);
 			name = Categories;
-			path = ../Categories;
-			sourceTree = "<group>";
+			path = "NextBus-Mantle/Categories";
+			sourceTree = SOURCE_ROOT;
 		};
 		F060843066F1FD87EE75FB6C /* Pods */ = {
 			isa = PBXGroup;
