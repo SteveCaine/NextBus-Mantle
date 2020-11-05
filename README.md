@@ -1,7 +1,11 @@
 NextBus-Mantle
 ==============
 
-This repository demonstrates how to use MantleXMLAdapter, an addition to the popular Objective-C model framework Mantle, to parse XML responses from NextBus, Inc., an RESTful web service that tracks the MBTA bus system, as well as the MBTA's own service alerts ('T-Alerts') RSS feed.
+***NOTE:*** *NextBus has discontinued support for the MBTA transit agency. Thus all methods called by 'Make Request' table rows just return errors. The project remains useful only in demonstrating code to parse the XML responses this service used to return for the MBTA, using files captured when the service was still active. (updated Nov. 5, 2020)*
+
+*Also, the T-Alerts service this project has been replaced with an entirely different service that this project does not implement. Again, this project is only useful for demonstrating how to parse the responses this service used to provide.*
+
+This repository demonstrates how to use MantleXMLAdapter, an addition to the popular Objective-C model framework Mantle, to parse XML responses from NextBus, Inc., an RESTful web service that *used to track* the MBTA bus system, as well as the MBTA's *now discontinued* service alerts ('T-Alerts') RSS feed.
 
 It also implements a block-based system to make requests to this web service, with caching, using the popular AFNetworking framework. 
 
@@ -19,7 +23,7 @@ It also uses code from several other repositories of mine on GitHub, to provide 
 
 To simplify this, my [unix-scripts](https://github.com/SteveCaine/unix-scripts) repository includes a 'cloneall' script to download all my public repositories to the current folder; the script contains detailed instructions on its use. 
 
-**To use this code**, launch the app and tap any row in either the two sections of the table presented. Each will execute a single operation (either requesting new data or parsing cached/bundle data) and display a Success/Failed messagse in the table cell. Detailed information about the response is written to the Xcode debugger's console. 
+**To use this code**, launch the app and tap any row in either the two sections of the table presented. Each will execute a single operation (either requesting new data or parsing cached/bundle data) and display a Success/Failed messagse in the table cell. Detailed information about the response is written to the Xcode debugger's console. *See note above that this service has been discontinued.*
 
 Rows in the first section -- "**Make Request**" create a 'request' object that is responsible for making the request and holding the response data. This pattern allows the request object to look for XML files saved from previous requests, and use those in place of a new request if the file is younger than a 'stale age' specified by each request class.
 
