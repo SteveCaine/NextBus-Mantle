@@ -69,6 +69,11 @@
 				NBError *error2 = (NBError *)obj;
 				// TODO: create/return NSError object here
 				NSLog(@"Error (2) - NextBus error in response: %@", error2.message);
+				error = [[NSError alloc] initWithDomain:@"NBDataErrorDomain"
+												   code:1
+											   userInfo:@{
+												   NSLocalizedDescriptionKey : (error2.message ?: @"Unknown error.")
+											   }];
 			}
 			else {
 				switch (requestType) {
@@ -97,6 +102,8 @@
 				else
 					result = obj;
 			}
+			if (error && errorP)
+				*errorP = error;
 			if ([obj respondsToSelector:@selector(finish)])
 				[obj finish];
 		}
